@@ -1,4 +1,4 @@
-# Trabalho SI - Adnetwork
+# Adbot - PMR2490
 
 Repositório geral do trabalho da turma 4 de laboratório de PMR2490 - Sistemas da Informação. Iremos construir uma Adnetwork.
 
