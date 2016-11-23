@@ -1,0 +1,11 @@
+<html>
+<header>
+  <title>Exemplo de aplicação com JSP</title>
+</header>
+<body>
+  <li><a href="./insert.jsp">Inserir Contato</a>
+  <li><a href="./edit.jsp">Editar Contato</a>
+  <li><a href="./remove.jsp">Remover Contato</a>
+  <li><a href="./search.jsp">Pesquisar Contato</a>
+</body>
+</html>

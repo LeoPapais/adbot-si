@@ -1,0 +1,69 @@
+<html>
+<header>
+  <title>Pesquisar Contato</title>
+</header>
+
+<body bgcolor="white">
+<%@ page import="java.util.Vector" %>
+<%@ page import="transacoes.Contato" %>
+<%@ page import="data.ContatoDO" %>
+
+<! ------------------------------------------------------------------->
+<!--   sempre mostrar o formulario de busca, ateh acao ser "voltar" -->
+
+<%     if ( null != request.getParameter("voltar")) {
+%>        <jsp:forward page="./index.html" />
+<%        return;
+       }
+%>
+
+         <form action="./search.jsp" method="post">
+           <table>
+             <tr>
+               <td>Nome para pesquisar: </td>
+               <td><input type="text" name="nome" />
+             </tr>
+           </table>
+           <input type="submit" name="pesquisar" value="pesquisar" />
+           <input type="submit" name="voltar" value="voltar" />
+         </form>
+
+<! ------------------------------------------------------------------->
+<!--   se nao for o request inicial, acionar a transacao de negocio -->
+
+
+<%   if ( null != request.getParameter("pesquisar")) {  
+       String nome = request.getParameter("nome");
+       transacoes.Contato tn = new transacoes.Contato();
+       Vector contatos = tn.pesquisar(nome);
+       if ( (contatos == null) || (contatos.size() == 0)) {
+         // avisar usuario que nao ha' contatos com este nome
+%>
+          Nenhum contato com este nome foi encontrado!
+          <form action="./index.html" method="post">
+             <input type="submit" name="voltar" value="Voltar" />
+          </form>
+<%     } else {
+%>
+          <table>
+             <tr>
+                <td>Nome</td>
+                <td>Telefone</td>
+             </tr>
+<%           for(int i = 0; i < contatos.size(); i++) {
+                ContatoDO contato = (ContatoDO)contatos.elementAt(i);
+%>              <tr>
+                   <td><%= contato.getNome() %></td>
+                   <td><%= contato.getTelefone() %></td>
+                </tr>        
+<%           } // for i      
+%>        </table            
+          <form action="./insert.jsp" method="post">
+             <input type="submit" name="retry" value="Repetir" />
+          </form>
+<%     } // contatos retornados
+     } // pesquisar
+%>
+
+</body>
+</html>
