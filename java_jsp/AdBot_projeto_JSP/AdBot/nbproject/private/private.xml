@@ -3,10 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/j/diego/Poli/2016-2sem/PMR2490%20-%20Sistemas%20de%20Informação/projeto/AdBot_projeto_JSP/AdBot/src/java/data_Model/CampaignData.java</file>
+            <file>file:/home/j/diego/Poli/2016-2sem/PMR2490%20-%20Sistemas%20de%20Informação/projeto/AdBot_projeto_JSP/AdBot/web/Log_in_de_usuario.jsp</file>
+            <file>file:/home/j/diego/Poli/2016-2sem/PMR2490%20-%20Sistemas%20de%20Informação/projeto/AdBot_projeto_JSP/AdBot/web/Perfil_de_advertiser.jsp</file>
             <file>file:/home/j/diego/Poli/2016-2sem/PMR2490%20-%20Sistemas%20de%20Informação/projeto/AdBot_projeto_JSP/AdBot/web/Homepage.jsp</file>
-            <file>file:/home/j/diego/Poli/2016-2sem/PMR2490%20-%20Sistemas%20de%20Informação/projeto/AdBot_projeto_JSP/AdBot/web/Atributos_de_uma_campaign.jsp</file>
+            <file>file:/home/j/diego/Poli/2016-2sem/PMR2490%20-%20Sistemas%20de%20Informação/projeto/AdBot_projeto_JSP/AdBot/src/java/data_Model/UsuarioData.java</file>
+            <file>file:/home/j/diego/Poli/2016-2sem/PMR2490%20-%20Sistemas%20de%20Informação/projeto/AdBot_projeto_JSP/AdBot/src/java/data_Model/AdvertiserData.java</file>
             <file>file:/home/j/diego/Poli/2016-2sem/PMR2490%20-%20Sistemas%20de%20Informação/projeto/AdBot_projeto_JSP/AdBot/web/Listagem_campaigns.jsp</file>
+            <file>file:/home/j/diego/Poli/2016-2sem/PMR2490%20-%20Sistemas%20de%20Informação/projeto/AdBot_projeto_JSP/AdBot/src/java/DTO_Objects/VisualizacaoAdvertiserPublisherDTO.java</file>
         </group>
     </open-files>
 </project-private>

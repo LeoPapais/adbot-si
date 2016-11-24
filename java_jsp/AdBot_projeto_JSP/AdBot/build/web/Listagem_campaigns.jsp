@@ -23,9 +23,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     
 <%
+
     // Verificação manual do Log in e obter o Usuario_ID da página "Homepage.jsp"
-    if ( session.getAttribute("Usuario_ID") == null) {
-       pageContext.forward("Homepage.jsp");
+    if ( session.getAttribute("Usuario_ID") == null ) {
+       pageContext.forward("Log_in_de_usuario.jsp");
     }
 
     String Usuario_ID_st = (String)session.getAttribute("Usuario_ID");
@@ -191,7 +192,12 @@
 
 <%
             UsuarioController uc = new UsuarioController();
-            UsuarioNomeDTO ud = uc.getNomeUsuario(Usuario_ID);
+            UsuarioNomeDTO ud = uc.getNomeUsuario(Usuario_ID);    
+            UsuarioBloqueioDTO ub = uc.getBloqueioUsuario(Usuario_ID);
+            
+            if ( ub.getBloqueio() == 1) { // Se o usuário estiver bloqueado, não deixá-lo ir para esta página
+                pageContext.forward("Perfil_de_advertiser.jsp");
+            }
 %>
             <font size="3" color="#BF223C"><i>&nbsp&nbsp&nbspAdvertiser</i>: <%= String.format("%s %s", ud.getNome(), ud.getSobrenome()) %> </font>
                 
@@ -299,7 +305,6 @@
                             }
 %>
                
-
                             <!-- Ao se clicar em um dos seguintes botões, o Campaign_ID é enviado para a próxima tela pelo método "GET" de processamento de formulário em JSP -->
                             <!-- Para pegar o parâmetro enviado, utilize o seguinte código JSP:
                                  String Campaign_ID_st = request.getParameter("Campaign_ID");
@@ -350,9 +355,9 @@
                         
             <br><br>  
             <center>
-                <a id="Bota_Criar_campaign" href="Criacao_de_campaign.jsp" class="button_options">Criar <i>Campaign</i></a>
-                <a id="Bota_Sumario_geral" href="Sumario_geral_das_metricas_de_performance_de_campaigns.jsp" class="button_options">Sumário geral</a>  
-                <a id="Bota_Quebra_de_gastos" href="Quebra_de_gastos.jsp" class="button_options">Quebra de gastos</a> 
+                <a id="Botao_Criar_campaign" href="Criacao_de_campaign.jsp" class="button_options">Criar <i>Campaign</i></a>
+                <a id="Botao_Sumario_geral" href="Sumario_geral_das_metricas_de_performance_de_campaigns.jsp" class="button_options">Sumário geral</a>  
+                <a id="Botao_Quebra_de_gastos" href="Quebra_de_gastos.jsp" class="button_options">Quebra de gastos</a> 
             </center>
             <br><br><hr><br>
             <div id="footer">
