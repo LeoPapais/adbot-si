@@ -224,6 +224,14 @@ insert into Usuario (UserName, Nome, Sobrenome, E_mail, Senha, Tipo_Usuario, Con
 insert into Usuario (UserName, Nome, Sobrenome, E_mail, Senha, Tipo_Usuario, Conta_de_banco, Credito_disponivel) 
 	values ("amazon", "Amazon", "Ads", "amazon@amazon.adbot", "amazon", "Advertiser", "CONTA1212465426", 5.00);
 
+# 8 - Advertiser
+insert into Usuario (UserName, Nome, Sobrenome, E_mail, Senha, Tipo_Usuario, Conta_de_banco, Credito_disponivel) 
+	values ("voldemort", "Lord", "Voldemort", "voldemort@lord.adbot", "phoenix", "Advertiser", "CONTA0000000000", 40000.00);
+
+# 9 - Advertiser
+insert into Usuario (UserName, Nome, Sobrenome, E_mail, Senha, Tipo_Usuario, Conta_de_banco, Credito_disponivel) 
+	values ("remo", "Remus", "John Lupin", "remus@lupin.adbot", "remus", "Advertiser", "CONTA5512465426", 3000.00);
+
 # Campaigns
 insert into Campaign 
 	(Usuario_ID, Nome, Bid, clickURL, Tipo_produto, Marca_produto, Limite_gasto, Idade_alvo_max, Idade_alvo_min, Genero_alvo, Link_figura_da_impression) 
@@ -245,16 +253,26 @@ insert into Campaign
     values 
     (6, "Relógio Masculino Casio Digital Esportivo A158WA-1DF", 10.00, "www.livraria_muito_interessante.com.br/propagandaRelogio", "Eletrônico", "Casio", 25.00, 100, 10, "Ambos", "https://images-submarino.b2w.io/produtos/01/00/item/113374/0/113374009_1GG.jpg");
 
+insert into Campaign 
+	(Usuario_ID, Nome, Bid, clickURL, Tipo_produto, Marca_produto, Limite_gasto, Idade_alvo_max, Idade_alvo_min, Genero_alvo, Link_figura_da_impression) 
+    values 
+    (9, "Silver bullet", 5.00, "https://www.warewolf.com.br", "Artefato", "", 500.00, 100, 30, "Ambos", "");
+    
 # Medias
 insert into Media
 	(Usuario_ID, Nome, Tipo_produto, Dinheiro_arrecadado, Total_clicks, Total_visualizacoes, Endereco_REST_API_chatbot, CPC_minimo) 
     values 
-    (2, "Chapéu Seletor", NULL, 25.00, 15, 20, "https://ENDERECO", 2.00);
+    (2, "Chapéu Seletor", NULL, 25.00, 15, 20, "ENDERECO", 2.00);
 
 insert into Media
 	(Usuario_ID, Nome, Tipo_produto, Dinheiro_arrecadado, Total_clicks, Total_visualizacoes, Endereco_REST_API_chatbot, CPC_minimo) 
     values 
-    (3, "Meowth", NULL, 25.00, 15, 20, "https://ENDERECO__", 2.00);
+    (3, "Meowth", NULL, 25.00, 15, 20, "ENDERECO", 2.00);
+    
+insert into Media
+	(Usuario_ID, Nome, Tipo_produto, Dinheiro_arrecadado, Total_clicks, Total_visualizacoes, Endereco_REST_API_chatbot, CPC_minimo) 
+    values 
+    (3, "Cranicola", NULL, 25.00, 15, 20, "ENDERECO", 6.00);
 
 # Click_logs
 insert into Click_log (Media_ID, Campaign_ID, Nome_cliente, Idade_cliente, IP_cliente, Genero_cliente, Gasto_click)
@@ -291,7 +309,8 @@ update Campaign set Total_visualizacoes = 25, Total_clicks = 25, Gasto_total = 2
 update Campaign set Total_visualizacoes = 50, Total_clicks = 25, Gasto_total = 25.00 where ID = 2;
 update Campaign set Total_visualizacoes = 40, Total_clicks = 31, Gasto_total = 50.00 where ID = 3;
 update Campaign set Total_visualizacoes = 50, Total_clicks = 31, Gasto_total = 50.00 where ID = 4;
-
+update Usuario set Bloqueio = 1 where ID = 8;
+update Campaign set Autorizacao = 0 where ID = 5;
 
 ####################################################################
 ############################ TESTES ################################

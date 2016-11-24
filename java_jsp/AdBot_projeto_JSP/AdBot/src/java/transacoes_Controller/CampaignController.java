@@ -16,7 +16,6 @@ import utils.*;
 import java.util.*;
 import utils.Transacao;
 
-
 public class CampaignController {
 
     public CampaignController() {

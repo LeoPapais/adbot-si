@@ -24,7 +24,7 @@
 <%
     // Verificação manual do Log in e obter o Usuario_ID da página "Homepage.jsp"
     if ( session.getAttribute("Usuario_ID") == null) {
-       pageContext.forward("Homepage.jsp");
+       pageContext.forward("Log_in_de_usuario.jsp");
     }
 
     String Usuario_ID_st = (String)session.getAttribute("Usuario_ID");
@@ -177,6 +177,11 @@
 <%
             UsuarioController uc = new UsuarioController();
             UsuarioNomeDTO ud = uc.getNomeUsuario(Usuario_ID);
+            UsuarioBloqueioDTO ub = uc.getBloqueioUsuario(Usuario_ID);
+            
+            if ( ub.getBloqueio() == 1) { // Se o usuário estiver bloqueado, não deixá-lo ir para esta página
+                pageContext.forward("Perfil_de_advertiser.jsp");
+            }
 %>
             <font size="3" color="#BF223C"><i>&nbsp&nbsp&nbspAdvertiser</i>: <%= String.format("%s %s", ud.getNome(), ud.getSobrenome()) %> </font>
                 
