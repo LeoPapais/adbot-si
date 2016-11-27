@@ -9,6 +9,8 @@
             [02/11/2016] Diego - [TESTE] Versão inicial
             [04/11/2016] Diego - [TESTE] Edições adicionais na formatação
             [23/11/2016] Diego - [TESTE] Redirecionar para Perfil_de_advertiser.jsp
+            [27/11/2016, 07:11:11] Victor - passei o estilo .css prum arquivo separado nas páginas jsp
+            [27/11/2016] Diego - Usando ".button_options_homepage" de index.css
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -25,7 +27,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>AdBot - Log in de usuário</title>
         <link rel="stylesheet" type="text/css" href="view.css" media="all">
-        <link rel="stylesheet" type="text/css" href="index.css">
+        <link rel="stylesheet" type="text/css" href="index.css"> <!-- Arquivo com as formatações de página e cores dos tipos de botão -->
         <script type="text/javascript" src="view.js"></script>
         <link rel="shortcut icon" href="imagens/icone_homepage.ico" type="image/x-icon" />
     </head>
@@ -73,10 +75,10 @@
             <br><br>
                     
             <center>
-                <a id="Botao_Voltar" href="Homepage.jsp" class="button_options"><i>Voltar</i></a>
+                <a id="Botao_Voltar" href="Homepage.jsp" class="button_options_homepage"><i>Voltar</i></a>
             </center>
             <br><br>
-                    
+ 
             <hr>
                     
             <div id="footer">

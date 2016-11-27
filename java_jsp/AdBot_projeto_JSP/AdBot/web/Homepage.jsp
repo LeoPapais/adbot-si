@@ -9,6 +9,9 @@
             [02/11/2016] Diego - Versão inicial
             [04/11/2016] Diego - Edições adicionais na formatação
             [23/11/2016] Diego - Redirecionar para Perfil_de_advertiser.jsp
+            [27/11/2016, 07:11:11] Victor - passei o estilo .css prum arquivo separado nas páginas jsp
+            [27/11/2016] Diego - Usando ".button_options_homepage" de index.css
+
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -27,85 +30,7 @@
         <title>AdBot</title>
         <link rel="stylesheet" type="text/css" href="view.css" media="all">
         <script type="text/javascript" src="view.js"></script>
-        <style type="text/css">
-
-            .button_menu {
-                background-color: #FF91A4;
-                border: none;
-                color: white;
-                padding: 10px 15px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 14px;
-                margin: 2px 2px;
-                cursor: pointer;
-            }
-            
-            .button_options {
-                background-color: #48968E;
-                border: none;
-                color: white;
-                padding: 10px 15px;
-                text-align: right;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 14px;
-                margin: 2px 2px;
-                cursor: pointer;
-            }   
-
-            table.A {
-                width: 100%; 
-            }
-
-            table.B {
-                width: 100%; 
-                padding: 5px;
-                border-spacing: 5px;
-                border-collapse: collapse;
-                overflow: scroll;
-                border-style: solid;
-                border-width: 5px;
-                border-color: #FF91A4;
-            }
-
-            th.B {
-                border: 1px solid graytext;
-                border-collapse: collapse;
-                border-style: solid;
-                border-width: 3px;
-                border-color: #FF91A4;
-            }
-
-            td.B {
-                border: 1px solid graytext;
-                border-collapse: collapse;
-                border-style: solid;
-                border-width: 3px;
-                border-color: #FF91A4;
-            }
-
-            tr.B:nth-child(even) {
-                background-color: #FFC0CB;
-                border-style: solid;
-                border-width: 3px;
-                border-color: #FF91A4;
-            }
-
-            tr.B:nth-child(odd) {
-                background-color:#fff;
-                border-style: solid;
-                border-width: 3px;
-                border-color: #FF91A4;
-            }
-
-            hr {
-                border: none;
-                height: 5px;
-                background-color: #eee;
-            }
-        </style>
+        <link rel="stylesheet" type="text/css" href="index.css"> <!-- Arquivo com as formatações de página e cores dos tipos de botão -->
         <link rel="shortcut icon" href="imagens/icone_homepage.ico" type="image/x-icon" />
     </head>
 
@@ -124,8 +49,8 @@
             <br><br>
                     
             <center>
-                <a id="Botao_Log_in" href="Log_in_de_usuario.jsp" class="button_options"><i>Log in</i></a>
-                <a id="Botao_Criar_Cadastro" href="Cadastro_de_usuario.jsp" class="button_options">Cadastrar</a>
+                <a id="Botao_Log_in" href="Log_in_de_usuario.jsp" class="button_options_homepage"><i>Log in</i></a>
+                <a id="Botao_Criar_Cadastro" href="Cadastro_de_usuario.jsp" class="button_options_homepage">Cadastrar</a>
             </center>
             <br><br>
                     

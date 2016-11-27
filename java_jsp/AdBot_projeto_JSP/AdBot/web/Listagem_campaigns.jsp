@@ -9,6 +9,7 @@
             [02/11/2016] Diego - Versão inicial
             [04/11/2016] Diego - Edições adicionais na formatação
             [12/11/2016] Diego - Envio de parâmetro (Campaign_ID) para as páginas específicas de cada Campaign
+            [27/11/2016, 07:11:11] Victor - passei o estilo .css prum arquivo separado nas páginas jsp
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -41,7 +42,7 @@
         <title>AdBot Advertiser: Listagem de Campaigns</title>
         <!-- Link pros aquivos de estilo .css -->
         <link rel="stylesheet" type="text/css" href="view.css" media="all">
-        <link rel="stylesheet" type="text/css" href="index.css">
+        <link rel="stylesheet" type="text/css" href="index.css"> <!-- Arquivo com as formatações de página e cores dos tipos de botão -->
         <script type="text/javascript" src="view.js"></script>
         <link rel="shortcut icon" href="imagens/icone_advertiser.ico" type="image/x-icon" />
     </head>
