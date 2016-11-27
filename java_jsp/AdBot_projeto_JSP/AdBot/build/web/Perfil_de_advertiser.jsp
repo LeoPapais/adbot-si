@@ -203,18 +203,17 @@
             <font size="3" color="#BF223C"><i>&nbsp;&nbsp;&nbsp;Advertiser</i>: <%= String.format("%s %s", ud.getNome(), ud.getSobrenome()) %> </font>
                 
             <!------ Título da página ------>
-            <h3><center><font size="5" color="#FF5773">Perfil de <i>Advertiser</i></font></center></h3>
+            <h3><center><font size="5" color="A71010">Perfil de Advertiser</font></center></h3>
 
             <br><hr><br>
             <center><IMG src="imagens/perfil_advertiser.jpg" width="60" height="80" align="center" border="0"></center>
             <br> 
-            <font size="4" color = "A71010"><center><i>Username</i>: <%= String.format("%s", vap.getUserName()) %></center></font>
+            <font size="4" color = "A71010"><center>Username: <%= String.format("%s", vap.getUserName()) %></center></font>
             <br>
-            <font size="4" color = "A71010"><center>Senha: <%= String.format("%s", vap.getSenha()) %></center></font>
-            <br>
-            <font size="4"><center>Nome: <%= String.format("%s", vap.getNome()) %></center></font>
-            <br>
-            <font size="4"><center>Sobrenome: <%= String.format("%s", vap.getSobrenome()) %></center></font>
+            <!--<font size="4" color = "A71010"><center>Senha: <%= String.format("%s", vap.getSenha()) %></center></font>
+            <br>-->
+            <font size="4"><center>Nome: <%= String.format("%s", vap.getNome()) + " " +
+                    String.format("%s", vap.getSobrenome()) %> </center></font>
             <br>
             <font size="4"><center>E-mail: <%= String.format("%s", vap.getE_mail()) %></center></font>
             <br>
