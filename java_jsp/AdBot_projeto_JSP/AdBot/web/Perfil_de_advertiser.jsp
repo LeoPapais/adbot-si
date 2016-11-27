@@ -1,4 +1,4 @@
-<%-- 
+﻿<%-- 
     Página : Perfil_de_advertiser.jsp
     Sistema de Informação : AdBot
     Disciplina: PMR2490 - Sistemas de Informação
@@ -36,140 +36,10 @@
     <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>AdBot Advertiser: Perfil de Advertiser</title> <!-- Título da página -->
-        <link rel="stylesheet" type="text/css" href="view.css" media="all"></link>
+        <link rel="stylesheet" type="text/css" href="view.css" media="all">
+        <link rel="stylesheet" type="text/css" href="index.css">
         <script type="text/javascript" src="view.js"></script>
-        <style type="text/css">
-
-            .button_menu {
-                background-color: #FF91A4;
-                border: none;
-                color: white;
-                padding: 10px 15px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 14px;
-                margin: 2px 2px;
-                cursor: pointer;
-            }
-            
-            .button_options {
-                background-color: #E04C64;
-                border: none;
-                color: white;
-                padding: 10px 15px;
-                text-align: right;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 14px;
-                margin: 2px 2px;
-                cursor: pointer;
-            }   
-            
-            .button_log_out {
-                background-color: #64AEA6;
-                border: none;
-                color: white;
-                padding: 10px 15px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 14px;
-                margin: 2px 2px;
-                cursor: pointer;
-            } 
-            
-            .button_play {
-                background-color: #FF3F3F;
-                border: none;
-                color: white;
-                padding: 10px 15px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 14px;
-                margin: 2px 2px;
-                cursor: pointer;
-            }     
-            
-            .button_pause {
-                background-color: #4CAF50;
-                border: none;
-                color: white;
-                padding: 10px 15px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 14px;
-                margin: 2px 2px;
-                cursor: pointer;
-            }
-            
-            .button_blocked {
-                background-color: #919191;
-                border: none;
-                color: black;
-                padding: 10px 15px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 14px;
-                margin: 2px 2px;
-                cursor: pointer;
-            }
-            
-            table.A {
-                width: 100%; 
-            }
-
-            table.B {
-                width: 100%; 
-                padding: 5px;
-                border-spacing: 5px;
-                border-collapse: collapse;
-                overflow: scroll;
-                border-style: solid;
-                border-width: 5px;
-                border-color: #FF91A4;
-            }
-
-            th.B {
-                border: 1px solid graytext;
-                border-collapse: collapse;
-                border-style: solid;
-                border-width: 3px;
-                border-color: #FF91A4;
-            }
-
-            td.B {
-                border: 1px solid graytext;
-                border-collapse: collapse;
-                border-style: solid;
-                border-width: 3px;
-                border-color: #FF91A4;
-            }
-
-            tr.B:nth-child(even) {
-                background-color: #FFC0CB;
-                border-style: solid;
-                border-width: 3px;
-                border-color: #FF91A4;
-            }
-
-            tr.B:nth-child(odd) {
-                background-color:#fff;
-                border-style: solid;
-                border-width: 3px;
-                border-color: #FF91A4;
-            }
-
-            hr {
-                border: none;
-                height: 5px;
-                background-color: #eee;
-            }
-        </style>
-        <link rel="shortcut icon" href="imagens/icone_advertiser.ico" type="image/x-icon"></link>
+        <link rel="shortcut icon" href="imagens/icone_advertiser.ico" type="image/x-icon">
     </head>
     
     <body id="main_body" >
@@ -180,13 +50,13 @@
                 
             <!------ Linha 1 ------>
             <h2>     
-                <input id="Botao_Log_out" type="button" class="button_log_out" value="Log out">    
+                <input id="Botao_Log_out" type="button" class="button_log_out" value="Log out" href="#">    
                 <!------ Implementar rotina de Log Out -> On click function ------>
-                <i><left><font color="#BF223C">&nbsp&nbsp&nbspAdBot: Advertiser</font></left></i>  
+                <left><font color="#BF223C">&nbsp;&nbsp;&nbsp;AdBot: Advertiser</font></left> 
             </h2>
             
             <!------ Linha 2 ------>
-            <a id="Botao_Perfil_advertiser" href="Perfil_de_advertiser.jsp" class="button_options">Perfil de <i>Advertiser</i></a>
+            <a id="Botao_Perfil_advertiser" href="Perfil_de_advertiser.jsp" class="button_options">Perfil de Advertiser</a>
 
 <%
 
@@ -200,7 +70,7 @@
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy"); // Formato de data para exibir na tela
 %>
 
-            <font size="3" color="#BF223C"><i>&nbsp;&nbsp;&nbsp;Advertiser</i>: <%= String.format("%s %s", ud.getNome(), ud.getSobrenome()) %> </font>
+            <font size="3" color="#BF223C">&nbsp;&nbsp;&nbsp;Advertiser: <%= String.format("%s %s", ud.getNome(), ud.getSobrenome()) %> </font>
                 
             <!------ Título da página ------>
             <h3><center><font size="5" color="A71010">Perfil de Advertiser</font></center></h3>
@@ -240,7 +110,7 @@
                 <center>
                     <a id="Botao_Voltar" href="Edicao_de_perfil_de_advertiser.jsp" class="button_options"> Editar perfil </a> 
                     <a id="Botao_Voltar" href="Insercao_de_credito.jsp" class="button_options">Inserir crédito</a> 
-                    <a id="Botao_Voltar" href="Listagem_campaigns.jsp" class="button_options">Listagem de <i> Campaigns </i></a> 
+                    <a id="Botao_Voltar" href="Listagem_campaigns.jsp" class="button_options">Listagem de Campaigns</a> 
                 </center>
 <%
             }

@@ -25,86 +25,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>AdBot - Log in de usuário</title>
         <link rel="stylesheet" type="text/css" href="view.css" media="all">
+        <link rel="stylesheet" type="text/css" href="index.css">
         <script type="text/javascript" src="view.js"></script>
-        <style type="text/css">
-
-            .button_menu {
-                background-color: #FF91A4;
-                border: none;
-                color: white;
-                padding: 10px 15px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 14px;
-                margin: 2px 2px;
-                cursor: pointer;
-            }
-            
-            .button_options {
-                background-color: #48968E;
-                border: none;
-                color: white;
-                padding: 10px 15px;
-                text-align: right;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 14px;
-                margin: 2px 2px;
-                cursor: pointer;
-            }   
-            
-            table.A {
-                width: 100%; 
-            }
-
-            table.B {
-                width: 100%; 
-                padding: 5px;
-                border-spacing: 5px;
-                border-collapse: collapse;
-                overflow: scroll;
-                border-style: solid;
-                border-width: 5px;
-                border-color: #FF91A4;
-            }
-
-            th.B {
-                border: 1px solid graytext;
-                border-collapse: collapse;
-                border-style: solid;
-                border-width: 3px;
-                border-color: #FF91A4;
-            }
-
-            td.B {
-                border: 1px solid graytext;
-                border-collapse: collapse;
-                border-style: solid;
-                border-width: 3px;
-                border-color: #FF91A4;
-            }
-
-            tr.B:nth-child(even) {
-                background-color: #FFC0CB;
-                border-style: solid;
-                border-width: 3px;
-                border-color: #FF91A4;
-            }
-
-            tr.B:nth-child(odd) {
-                background-color:#fff;
-                border-style: solid;
-                border-width: 3px;
-                border-color: #FF91A4;
-            }
-
-            hr {
-                border: none;
-                height: 5px;
-                background-color: #eee;
-            }
-        </style>
         <link rel="shortcut icon" href="imagens/icone_homepage.ico" type="image/x-icon" />
     </head>
 

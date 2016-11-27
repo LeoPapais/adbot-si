@@ -1,4 +1,4 @@
-<%-- 
+﻿<%-- 
     Página : Listagem_campaigns.jsp
     Sistema de Informação : AdBot
     Disciplina: PMR2490 - Sistemas de Informação
@@ -13,7 +13,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@ page import="java.sql.*" %>  <!importando biblioteca SQL do Java>
+<%@ page import="java.sql.*" %>  <!--importando biblioteca SQL do Java-->
 <%@ page import="java.util.Vector" %>
 <%@ page import="transacoes_Controller.*" %>
 <%@ page import="data_Model.*" %>
@@ -37,141 +37,12 @@
 
     <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>AdBot Advertiser: Listagem de Campaigns</title> <!-- Título da página -->
+        <!-- Título da página -->
+        <title>AdBot Advertiser: Listagem de Campaigns</title>
+        <!-- Link pros aquivos de estilo .css -->
         <link rel="stylesheet" type="text/css" href="view.css" media="all">
+        <link rel="stylesheet" type="text/css" href="index.css">
         <script type="text/javascript" src="view.js"></script>
-        <style type="text/css">
-
-            .button_menu {
-                background-color: #FF91A4;
-                border: none;
-                color: white;
-                padding: 10px 15px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 14px;
-                margin: 2px 2px;
-                cursor: pointer;
-            }
-            
-            .button_options {
-                background-color: #E04C64;
-                border: none;
-                color: white;
-                padding: 10px 15px;
-                text-align: right;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 14px;
-                margin: 2px 2px;
-                cursor: pointer;
-            }   
-            
-            .button_log_out {
-                background-color: #64AEA6;
-                border: none;
-                color: white;
-                padding: 10px 15px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 14px;
-                margin: 2px 2px;
-                cursor: pointer;
-            } 
-            
-            .button_play {
-                background-color: #FF3F3F;
-                border: none;
-                color: white;
-                padding: 10px 15px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 14px;
-                margin: 2px 2px;
-                cursor: pointer;
-            }  
-            
-            .button_pause {
-                background-color: #4CAF50;
-                border: none;
-                color: white;
-                padding: 10px 15px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 14px;
-                margin: 2px 2px;
-                cursor: pointer;
-            }
-            
-            .button_blocked {
-                background-color: #919191;
-                border: none;
-                color: black;
-                padding: 10px 15px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 14px;
-                margin: 2px 2px;
-                cursor: pointer;
-            }
-            
-            
-            table.A {
-                width: 100%; 
-            }
-
-            table.B {
-                width: 100%; 
-                padding: 5px;
-                border-spacing: 5px;
-                border-collapse: collapse;
-                overflow: scroll;
-                border-style: solid;
-                border-width: 5px;
-                border-color: #FF91A4;
-            }
-
-            th.B {
-                border: 1px solid graytext;
-                border-collapse: collapse;
-                border-style: solid;
-                border-width: 3px;
-                border-color: #FF91A4;
-            }
-
-            td.B {
-                border: 1px solid graytext;
-                border-collapse: collapse;
-                border-style: solid;
-                border-width: 3px;
-                border-color: #FF91A4;
-            }
-
-            tr.B:nth-child(even) {
-                background-color: #FFC0CB;
-                border-style: solid;
-                border-width: 3px;
-                border-color: #FF91A4;
-            }
-
-            tr.B:nth-child(odd) {
-                background-color:#fff;
-                border-style: solid;
-                border-width: 3px;
-                border-color: #FF91A4;
-            }
-
-            hr {
-                border: none;
-                height: 5px;
-                background-color: #eee;
-            }
-        </style>
         <link rel="shortcut icon" href="imagens/icone_advertiser.ico" type="image/x-icon" />
     </head>
 
