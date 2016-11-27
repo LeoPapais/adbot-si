@@ -11,7 +11,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@ page import="java.sql.*" %>  <!importando biblioteca SQL do Java>
+<%@ page import="java.sql.*" %>  <!--importando biblioteca SQL do Java-->
 <%@ page import="java.util.Vector" %>
 <%@ page import="transacoes_Controller.*" %>
 <%@ page import="data_Model.*" %>
@@ -36,7 +36,7 @@
     <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>AdBot Advertiser: Perfil de Advertiser</title> <!-- Título da página -->
-        <link rel="stylesheet" type="text/css" href="view.css" media="all">
+        <link rel="stylesheet" type="text/css" href="view.css" media="all"></link>
         <script type="text/javascript" src="view.js"></script>
         <style type="text/css">
 
@@ -169,7 +169,7 @@
                 background-color: #eee;
             }
         </style>
-        <link rel="shortcut icon" href="imagens/icone_advertiser.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="imagens/icone_advertiser.ico" type="image/x-icon"></link>
     </head>
     
     <body id="main_body" >
@@ -200,7 +200,7 @@
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy"); // Formato de data para exibir na tela
 %>
 
-            <font size="3" color="#BF223C"><i>&nbsp&nbsp&nbspAdvertiser</i>: <%= String.format("%s %s", ud.getNome(), ud.getSobrenome()) %> </font>
+            <font size="3" color="#BF223C"><i>&nbsp;&nbsp;&nbsp;Advertiser</i>: <%= String.format("%s %s", ud.getNome(), ud.getSobrenome()) %> </font>
                 
             <!------ Título da página ------>
             <h3><center><font size="5" color="#FF5773">Perfil de <i>Advertiser</i></font></center></h3>

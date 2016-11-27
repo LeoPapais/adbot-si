@@ -15,7 +15,7 @@ public class Transacao {
 
   public void begin() throws Exception{
       Class.forName(ODBC_DRIVER).newInstance();
-      _conexao = DriverManager.getConnection(DSN,USER,PWD);
+      _conexao = DriverManager.getConnection(DSN);
       _conexao.setAutoCommit(false);
 	  _readOnly = false;
   } // begin
@@ -35,9 +35,9 @@ public class Transacao {
 
   public void rollback() throws Exception {
       if ( !_readOnly) {
-         _conexao.rollback();
+         //_conexao.rollback();
 	  }
-	  _conexao.close();
+	  //_conexao.close();
   } // rollback
 
   public Connection obterConexao() {

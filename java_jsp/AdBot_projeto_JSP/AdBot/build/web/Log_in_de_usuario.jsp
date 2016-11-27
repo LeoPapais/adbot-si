@@ -13,7 +13,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@ page import="java.sql.*" %>  <!importando biblioteca SQL do Java>
+<%@ page import="java.sql.*" %>  <!--importando biblioteca SQL do Java-->
 <%@ page import="java.util.Vector" %>
 <%@ page import="transacoes_Controller.*" %>
 <%@ page import="data_Model.*" %>
@@ -163,7 +163,7 @@
 
         </div>    
                 
-        <img id="bottom" src="bottom.png" alt="">
+        <img id="bottom" src="./bottom.png" alt="">
 
     </body>
 
