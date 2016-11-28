@@ -95,8 +95,8 @@
             <h2>     
                 <form action="Logout">
                     <input id="Botao_Log_out" type="submit" class="button_log_out" value="Logout">
+                    <i><left><font color="#000080">&nbsp&nbsp&nbspAdBot: Administrador</font></left></i>
                 </form>
-                <i><left><font color="#000080">&nbsp&nbsp&nbspAdBot: Administrador</font></left></i>  
             </h2> 
             <!-- FIM: botão logout -->
 
