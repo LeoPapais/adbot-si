@@ -7,12 +7,12 @@
     Desenvolvido em : NetBeans IDE 8.2, Java 1.8.0_111, Glass Fish Server 4.1.1
     Histórico de edição deste arquivo :
             [23/11/2016] Diego - Versão inicial
-            [27/11/2016, 07:11:11] Victor - passei o estilo .css prum arquivo separado nas páginas jsp
+            [27/11/2016] Diego - Os estilos dos botões foram passados para o arquivo index.css
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@ page import="java.sql.*" %>  <!--importando biblioteca SQL do Java-->
+<%@ page import="java.sql.*" %>  <!importando biblioteca SQL do Java>
 <%@ page import="java.util.Vector" %>
 <%@ page import="transacoes_Controller.*" %>
 <%@ page import="data_Model.*" %>
@@ -38,9 +38,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>AdBot Advertiser: Perfil de Advertiser</title> <!-- Título da página -->
         <link rel="stylesheet" type="text/css" href="view.css" media="all">
-        <link rel="stylesheet" type="text/css" href="index.css"> <!-- Arquivo com as formatações de página e cores dos tipos de botão -->
         <script type="text/javascript" src="view.js"></script>
-        <link rel="shortcut icon" href="imagens/icone_advertiser.ico" type="image/x-icon">
+        <link rel="stylesheet" type="text/css" href="index.css"> <!-- Arquivo com as formatações de página e cores dos tipos de botão -->
+        <link rel="shortcut icon" href="imagens/icone_advertiser.ico" type="image/x-icon" />
     </head>
     
     <body id="main_body" >
@@ -51,13 +51,13 @@
                 
             <!------ Linha 1 ------>
             <h2>     
-                <input id="Botao_Log_out" type="button" class="button_log_out" value="Log out" href="#">    
+                <input id="Botao_Log_out" type="button" class="button_log_out" value="Log out">    
                 <!------ Implementar rotina de Log Out -> On click function ------>
-                <left><font color="#BF223C">&nbsp;&nbsp;&nbsp;AdBot: Advertiser</font></left> 
+                <i><left><font color="#BF223C">&nbsp&nbsp&nbspAdBot: Advertiser</font></left></i>  
             </h2>
             
             <!------ Linha 2 ------>
-            <a id="Botao_Perfil_advertiser" href="Perfil_de_advertiser.jsp" class="button_options">Perfil de Advertiser</a>
+            <a id="Botao_Perfil_advertiser" href="Perfil_de_advertiser.jsp" class="button_options">Perfil de <i>Advertiser</i></a>
 
 <%
 
@@ -71,20 +71,21 @@
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy"); // Formato de data para exibir na tela
 %>
 
-            <font size="3" color="#BF223C">&nbsp;&nbsp;&nbsp;Advertiser: <%= String.format("%s %s", ud.getNome(), ud.getSobrenome()) %> </font>
+            <font size="3" color="#BF223C"><i>&nbsp&nbsp&nbspAdvertiser</i>: <%= String.format("%s %s", ud.getNome(), ud.getSobrenome()) %> </font>
                 
             <!------ Título da página ------>
-            <h3><center><font size="5" color="A71010">Perfil de Advertiser</font></center></h3>
+            <h3><center><font size="5" color="#FF5773">Perfil de <i>Advertiser</i></font></center></h3>
 
             <br><hr><br>
             <center><IMG src="imagens/perfil_advertiser.jpg" width="60" height="80" align="center" border="0"></center>
             <br> 
-            <font size="4" color = "A71010"><center>Username: <%= String.format("%s", vap.getUserName()) %></center></font>
+            <font size="4" color = "A71010"><center><i>Username</i>: <%= String.format("%s", vap.getUserName()) %></center></font>
             <br>
-            <!--<font size="4" color = "A71010"><center>Senha: <%= String.format("%s", vap.getSenha()) %></center></font>
-            <br>-->
-            <font size="4"><center>Nome: <%= String.format("%s", vap.getNome()) + " " +
-                    String.format("%s", vap.getSobrenome()) %> </center></font>
+            <font size="4" color = "A71010"><center>Senha: <%= String.format("%s", vap.getSenha()) %></center></font>
+            <br>
+            <font size="4"><center>Nome: <%= String.format("%s", vap.getNome()) %></center></font>
+            <br>
+            <font size="4"><center>Sobrenome: <%= String.format("%s", vap.getSobrenome()) %></center></font>
             <br>
             <font size="4"><center>E-mail: <%= String.format("%s", vap.getE_mail()) %></center></font>
             <br>
@@ -111,7 +112,7 @@
                 <center>
                     <a id="Botao_Voltar" href="Edicao_de_perfil_de_advertiser.jsp" class="button_options"> Editar perfil </a> 
                     <a id="Botao_Voltar" href="Insercao_de_credito.jsp" class="button_options">Inserir crédito</a> 
-                    <a id="Botao_Voltar" href="Listagem_campaigns.jsp" class="button_options">Listagem de Campaigns</a> 
+                    <a id="Botao_Voltar" href="Listagem_campaigns.jsp" class="button_options">Listagem de <i> Campaigns </i></a> 
                 </center>
 <%
             }
