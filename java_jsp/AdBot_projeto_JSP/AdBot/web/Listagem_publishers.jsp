@@ -1,5 +1,5 @@
 <%-- 
-    Página : Listagem_Publishers.jsp
+    Página : Listagem_publishers.jsp
     Sistema de Informação : AdBot
     Disciplina: PMR2490 - Sistemas de Informação
     Turma: 50 (2016)  Professor: Marcos Ribeiro Pereira Barretto
@@ -12,6 +12,7 @@
             [19/11/2016] Nelson - Adaptação para Listagem_Advertisers.jsp
             [19/11/2016] Nelson - Adaptação para Listagem_Publishers.jsp
             [23/11/2016] Nelson - Atualização: segundo requisistos V3 e mudanças no database
+            [28/11/2016] Nelson - Rename do Arquivo
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -41,25 +42,25 @@
     //////////////////////////////////////////////////////////////////////////////////////////
 
     if (request.getParameter("Action") != null){
-        System.out.println("Listagem_Publishers.jsp: Action: " + request.getParameter("Action"));
+        System.out.println("Listagem_publishers.jsp: Action: " + request.getParameter("Action"));
         // Case A - to block publisher
         if (Integer.parseInt( (String)request.getParameter("Action") ) == 1){
-            System.out.println("Listagem_Publishers.jsp: Action: block");
+            System.out.println("Listagem_publishers.jsp: Action: block");
             int id_to_use = Integer.parseInt( (String)request.getParameter("id_to_use") );
             BloqueioAdvertiserPublisherDTO blockDTO = new BloqueioAdvertiserPublisherDTO( 1 );
             AdministradorController adminCtl = new AdministradorController();
             adminCtl.bloquearAdvertiserPublisher(id_to_use, blockDTO);
-            System.out.println("Listagem_Publishers.jsp: Action: block: proceed...");
+            System.out.println("Listagem_publishers.jsp: Action: block: proceed...");
         } // fim: case a
         
         // Case B - to unblock publisher
         if (Integer.parseInt( (String)request.getParameter("Action") ) == 0){
-            System.out.println("Listagem_Publishers.jsp: Action: unblock");
+            System.out.println("Listagem_publishers.jsp: Action: unblock");
             int id_to_use = Integer.parseInt( (String)request.getParameter("id_to_use") );
             BloqueioAdvertiserPublisherDTO blockDTO = new BloqueioAdvertiserPublisherDTO( 0 );
             AdministradorController adminCtl = new AdministradorController();
             adminCtl.bloquearAdvertiserPublisher(id_to_use, blockDTO);
-            System.out.println("Listagem_Publishers.jsp: Action: unblock: proceed...");
+            System.out.println("Listagem_publishers.jsp: Action: unblock: proceed...");
         } // fim: case b
 
     } // fim: bloqueio e desbloqueio de usuario
@@ -177,7 +178,7 @@
                                             </tr>
                                             <tr> 
                                                 <center>
-                                                    <a id=<%= String.format("Botao_%d_to_block_or_not_to_block", i)%>, href="Listagem_Publishers.jsp?Action=0&id_to_use=<%=pbshDTO.getID()%>" class="button_menu">&nbsp Desbloquear &nbsp</a>
+                                                    <a id=<%= String.format("Botao_%d_to_block_or_not_to_block", i)%>, href="Listagem_publishers.jsp?Action=0&id_to_use=<%=pbshDTO.getID()%>" class="button_menu">&nbsp Desbloquear &nbsp</a>
                                                 </center>
                                             </tr>
                                         </table>
@@ -195,7 +196,7 @@
                                             </tr>
                                             <tr> 
                                                 <center>
-                                                    <a id=<%= String.format("Botao_%d_to_block_or_not_to_block", i)%>, href="Listagem_Publishers.jsp?Action=1&id_to_use=<%=pbshDTO.getID()%>" class="button_menu">&nbsp Bloquear &nbsp</a>
+                                                    <a id=<%= String.format("Botao_%d_to_block_or_not_to_block", i)%>, href="Listagem_publishers.jsp?Action=1&id_to_use=<%=pbshDTO.getID()%>" class="button_menu">&nbsp Bloquear &nbsp</a>
                                                 </center>
                                             </tr>                                            
                                         </table>
