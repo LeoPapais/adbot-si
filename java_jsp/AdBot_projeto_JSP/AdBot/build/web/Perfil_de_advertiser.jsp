@@ -4,7 +4,7 @@
     Disciplina: PMR2490 - Sistemas de Informação
     Turma: 50 (2016)  Professor: Marcos Ribeiro Pereira Barretto
     Turma: 4(B) (2016)  Professor: José Reinaldo Silva  
-    Desenvolvido em : NetBeans IDE 8.2, Java 1.8.0_111, Glass Fish Server 4.1.1
+    Desenvolvido em : NetBeans IDE 8.2, Java 1.8.0_111, GlassFish Server 4.1.1
     Histórico de edição deste arquivo :
             [23/11/2016] Diego - Versão inicial
             [27/11/2016] Diego - Os estilos dos botões foram passados para o arquivo index.css
@@ -68,7 +68,7 @@
             AdvertiserController ac = new AdvertiserController();                        // Instanciar AdvertiserController
             AdvertiserCredito_disponivelDTO cd = ac.getCredito_disponivel(Usuario_ID);   // Obter o Crédito disponível do Advertiser        
             
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy"); // Formato de data para exibir na tela
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); // Formato de data para exibir na tela
 %>
 
             <font size="3" color="#BF223C"><i>&nbsp&nbsp&nbspAdvertiser</i>: <%= String.format("%s %s", ud.getNome(), ud.getSobrenome()) %> </font>
@@ -101,18 +101,26 @@
                 <font size="4" color = "gray"><center><b>BLOQUEADO<br> pelo Adm do <i>SI AdBot</i></b></center></font>
                 <br><br>  
                 <center>
-                    <a id="Botao_Voltar" class="button_blocked"> Editar perfil </a> 
-                    <a id="Botao_Voltar" class="button_blocked">Inserir crédito</a> 
-                    <a id="Botao_Voltar" class="button_blocked">Listagem de <i> Campaigns </i></a> 
-                </center>                
+                    <a id="Botao_Editar_perfil" class="button_blocked"> Editar perfil </a> 
+                    <a id="Botao_Inserir_credito" class="button_blocked">Inserir crédito</a> 
+                    <a id="Botao_Listagem_de_Campaigns" class="button_blocked">Listagem de <i> Campaigns </i></a> 
+                </center>               
+                <center>
+                    <a id="Botao_Historico_de_movimentacao" href="Historico_de_movimentacao.jsp" class="button_blocked">Histórico de movimentação</a> 
+                    <a id="Botao_Balance_do_usuario" href="Balance_do_usuario.jsp" class="button_blocked"><i>Balance</i> do usuário</a> 
+                </center> 
 <%
             } else{
 %>  
                 <br><br>  
                 <center>
-                    <a id="Botao_Voltar" href="Edicao_de_perfil_de_advertiser.jsp" class="button_options"> Editar perfil </a> 
-                    <a id="Botao_Voltar" href="Insercao_de_credito.jsp" class="button_options">Inserir crédito</a> 
-                    <a id="Botao_Voltar" href="Listagem_campaigns.jsp" class="button_options">Listagem de <i> Campaigns </i></a> 
+                    <a id="Botao_Editar_perfil" href="Edicao_de_perfil_de_advertiser.jsp" class="button_options"> Editar perfil </a> 
+                    <a id="Botao_Inserir_credito" href="Insercao_de_credito.jsp" class="button_options">Inserir crédito</a> 
+                    <a id="Botao_Listagem_de_Campaigns" href="Listagem_campaigns.jsp" class="button_options">Listagem de <i> Campaigns </i></a> 
+                </center>
+                <center>
+                    <a id="Botao_Historico_de_movimentacao" href="Historico_de_movimentacao.jsp" class="button_balance">Histórico de movimentação</a> 
+                    <a id="Botao_Balance_do_usuario" href="Balance_do_usuario.jsp" class="button_balance"><i>Balance</i> do usuário</a> 
                 </center>
 <%
             }

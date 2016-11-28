@@ -4,7 +4,7 @@
     Disciplina: PMR2490 - Sistemas de Informação
     Turma: 50 (2016)  Professor: Marcos Ribeiro Pereira Barretto
     Turma: 4(B) (2016)  Professor: José Reinaldo Silva  
-    Desenvolvido em : NetBeans IDE 8.2, Java 1.8.0_111, Glass Fish Server 4.1.1
+    Desenvolvido em : NetBeans IDE 8.2, Java 1.8.0_111, GlassFish Server 4.1.1
     Histórico de edição deste arquivo :
             [02/11/2016] Diego - Versão inicial
             [04/11/2016] Diego - Edições adicionais na formatação
