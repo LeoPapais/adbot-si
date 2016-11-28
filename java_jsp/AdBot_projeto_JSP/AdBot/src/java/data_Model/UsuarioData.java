@@ -79,7 +79,12 @@ public class UsuarioData {
         u.setE_mail(rs.getString("E_mail"));
         u.setConta_de_banco(rs.getString("Conta_de_banco"));
         u.setTipo_Usuario(rs.getString("Tipo_Usuario"));
-        u.setData_de_cadastro(rs.getDate("Data_de_cadastro"));
+        
+        // Armazenar a data de cadastro (dia e horário)
+        Timestamp stamp;
+        stamp = rs.getTimestamp("Data_de_cadastro");
+        u.setData_de_cadastro(new java.sql.Date(stamp.getTime()));
+        
         u.setBloqueio(rs.getInt("Bloqueio"));
 
         // O que é passado para visualização é a indicativa de quantidade de caracteres da senha 
