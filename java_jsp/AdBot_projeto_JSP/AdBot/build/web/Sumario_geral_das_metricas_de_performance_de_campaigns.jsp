@@ -13,12 +13,15 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@ page import="java.sql.*" %>  <!importando biblioteca SQL do Java>
+<%@ page import="java.sql.*" %>  <!-- importando biblioteca SQL do Java -->
 <%@ page import="java.util.Vector" %>
 <%@ page import="transacoes_Controller.*" %>
 <%@ page import="data_Model.*" %>
 <%@ page import="DTO_Objects.*" %>
 <%@ page import="java.lang.Integer.*" %>
+
+<!-- Importa classes do projeto (Servlets) -->
+<%@ page import="utils.Logout" %>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
     
@@ -50,8 +53,9 @@
                 
             <!------ Linha 1 ------>
             <h2>     
-                <input id="Botao_Log_out" type="button" class="button_log_out" value="Log out">    
-                <!------ Implementar rotina de Log Out -> On click function ------>
+                <form action="Logout">
+                    <input id="Botao_Log_out" type="submit" class="button_log_out" value="Logout">
+                </form>
                 <i><left><font color="#BF223C">&nbsp&nbsp&nbspAdBot: Advertiser</font></left></i>  
             </h2>
             

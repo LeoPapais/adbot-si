@@ -23,6 +23,9 @@
 <%@ page import="DTO_Objects.*" %>
 <%@ page import="java.lang.Integer.*" %>
 
+<!-- Importa classes do projeto (Servlets) -->
+<%@ page import="utils.Logout" %>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
     
 <%
@@ -88,8 +91,9 @@
 
             <!-- BOTÃO: LOGOUT -->
             <h2>     
-                <input id="Botao_Log_out" type="button" class="button_log_out" value="Log out">
-<!-- WARNING: FALTA Implementar rotina de Log Out -->
+                <form action="Logout">
+                    <input id="Botao_Log_out" type="submit" class="button_log_out" value="Logout">
+                </form>
                 <i><left><font color="#BF223C">&nbsp&nbsp&nbspAdBot: Administrador</font></left></i>  
             </h2> 
             <!-- FIM: botão logout -->
