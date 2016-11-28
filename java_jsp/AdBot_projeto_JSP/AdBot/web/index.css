@@ -9,6 +9,7 @@
     Histórico de edição deste arquivo :
         [27/11/2016, 07:11:11] Victor - passei o estilo .css prum arquivo separado nas páginas jsp
         [02/11/2016] Diego - Inclusão de ".button_options_homepage"
+        [28/11/2016] Nelson - Inclusão de elementos azuis para admin
 */
 
 /*
@@ -172,6 +173,47 @@ tr.B:nth-child(odd) {
     border-style: solid;
     border-width: 3px;
     border-color: #FF91A4;
+}
+
+table.C {
+    width: 100%; 
+    padding: 5px;
+    border-spacing: 5px;
+    border-collapse: collapse;
+    overflow: scroll;
+    border-style: solid;
+    border-width: 5px;
+    border-color: #000080;
+}
+
+th.C {
+    border: 1px solid graytext;
+    border-collapse: collapse;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #000080;
+}
+
+td.C {
+    border: 1px solid graytext;
+    border-collapse: collapse;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #000080;
+}
+
+tr.C:nth-child(even) {
+    background-color: #BBBBFF;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #000080;
+}
+
+tr.C:nth-child(odd) {
+    background-color:#fff;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #000080;
 }
 
 /*
