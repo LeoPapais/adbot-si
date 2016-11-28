@@ -1,5 +1,5 @@
 <%-- 
-    Página : Listagem_Advertisers.jsp
+    Página : Listagem_advertisers.jsp
     Sistema de Informação : AdBot
     Disciplina: PMR2490 - Sistemas de Informação
     Turma: 50 (2016)  Professor: Marcos Ribeiro Pereira Barretto
@@ -11,6 +11,7 @@
             [12/11/2016] Diego - Envio de parâmetro (Campaign_ID) para as páginas específicas de cada Campaign
             [19/11/2016] Nelson - Adaptação para Listagem_advertisers.jsp
             [23/11/2016] Nelson - Atualização: segundo requisistos V3 e mudanças no database
+            [28/11/2016] Nelson - Alteração do nome do arquivo
 
 --%>
 
@@ -41,7 +42,7 @@
     //////////////////////////////////////////////////////////////////////////////////////////
 
     if (request.getParameter("Action") != null){
-        System.out.println("Listagem_Advertiser.jsp: Action: " + request.getParameter("Action"));
+        System.out.println("Listagem_advertisers.jsp: Action: " + request.getParameter("Action"));
         // Case A - to block advertiser
         if (Integer.parseInt( (String)request.getParameter("Action") ) == 1){
             System.out.println("Listagem_Advertiser.jsp: Action: block");
@@ -49,17 +50,17 @@
             BloqueioAdvertiserPublisherDTO blockDTO = new BloqueioAdvertiserPublisherDTO( 1 );
             AdministradorController adminCtl = new AdministradorController();
             adminCtl.bloquearAdvertiserPublisher(id_to_use, blockDTO);
-            System.out.println("Listagem_Advertiser.jsp: Action: block: proceed...");
+            System.out.println("Listagem_advertisers.jsp: Action: block: proceed...");
         } // fim: case a
         
         // Case B - to unblock advetiser
         if (Integer.parseInt( (String)request.getParameter("Action") ) == 0){
-            System.out.println("Listagem_Advertiser.jsp: Action: unblock");
+            System.out.println("Listagem_advertisers.jsp: Action: unblock");
             int id_to_use = Integer.parseInt( (String)request.getParameter("id_to_use") );
             BloqueioAdvertiserPublisherDTO blockDTO = new BloqueioAdvertiserPublisherDTO( 0 );
             AdministradorController adminCtl = new AdministradorController();
             adminCtl.bloquearAdvertiserPublisher(id_to_use, blockDTO);
-            System.out.println("Listagem_Advertiser.jsp: Action: unblock: proceed...");
+            System.out.println("Listagem_advertisers.jsp: Action: unblock: proceed...");
         } // fim: case b
 
     } // fim: bloqueio e desbloqueio de usuario
@@ -176,7 +177,7 @@
                                             </tr>
                                             <tr>
                                                 <center>
-                                                    <a id=<%= String.format("Botao_%d_to_block_or_not_to_block", i)%>, href="Listagem_Advertisers.jsp?Action=0&id_to_use=<%=advDTO.getID()%>" class="button_menu">&nbsp Desbloquear &nbsp</a>
+                                                    <a id=<%= String.format("Botao_%d_to_block_or_not_to_block", i)%>, href="Listagem_advertisers.jsp?Action=0&id_to_use=<%=advDTO.getID()%>" class="button_menu">&nbsp Desbloquear &nbsp</a>
                                                 </center>
                                             </tr>
                                         </table>
@@ -194,7 +195,7 @@
                                             </tr>
                                             <tr> 
                                                 <center>
-                                                    <a id=<%= String.format("Botao_%d_to_block_or_not_to_block", i)%>, href="Listagem_Advertisers.jsp?Action=1&id_to_use=<%=advDTO.getID()%>" class="button_menu">&nbsp Bloquear &nbsp</a>
+                                                    <a id=<%= String.format("Botao_%d_to_block_or_not_to_block", i)%>, href="Listagem_advertisers.jsp?Action=1&id_to_use=<%=advDTO.getID()%>" class="button_menu">&nbsp Bloquear &nbsp</a>
                                                 </center>
                                             </tr>
                                         </table>
