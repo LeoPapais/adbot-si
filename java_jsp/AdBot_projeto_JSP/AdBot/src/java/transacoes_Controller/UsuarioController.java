@@ -6,6 +6,7 @@
  *                              - getNomeUsuario
  *           [23/11/2016] Diego - visualizarPerfilAdvertiserPublisher
  *                              - getUsuarioBloqueioDTO
+ *           [28/11/2016] Nelson - PerfilAdvertiserPublisher
  *
  *
  */
@@ -66,8 +67,8 @@ public class UsuarioController {
         Transacao tr = new Transacao();
         try {
             tr.beginReadOnly();
-              UsuarioData udata = new UsuarioData();
-              VisualizacaoAdvertiserPublisherDTO u = udata.visualizarPerfilAdvertiserPublisher(Usuario_ID, tr);
+            UsuarioData udata = new UsuarioData();
+            VisualizacaoAdvertiserPublisherDTO u = udata.visualizarPerfilAdvertiserPublisher(Usuario_ID, tr);
             tr.commit();
             System.out.println("OK ");   
             return u;
@@ -79,4 +80,41 @@ public class UsuarioController {
     
     } //visualizarPerfilAdvertiserPublisher
 
-}
+    // editarPerfilAdvertiserPublisher [Nelson: 28/11/2016]
+    public int editarPerfilAdvertiserPublisher(int usuario_ID, CriacaoUpdateAdvertiserPublisherDTO updateUsuarioDTO) {
+
+        Transacao tr = new Transacao();
+        try {
+            System.out.println("UsuarioControler: profEdit: begin.");
+            tr.begin();
+            UsuarioData userData = new UsuarioData();
+            // Completa info recebidas com info do database
+            VisualizacaoAdvertiserPublisherDTO userProfDTO = userData.visualizarPerfilAdvertiserPublisher(usuario_ID, tr);
+            if (updateUsuarioDTO.getUserName() == null)       updateUsuarioDTO.setUserName        (userProfDTO.getUserName()      );
+            if (updateUsuarioDTO.getNome() == null)           updateUsuarioDTO.setNome            (userProfDTO.getNome()          );
+            if (updateUsuarioDTO.getSobrenome() == null)      updateUsuarioDTO.setSobrenome       (userProfDTO.getSobrenome()     );
+            if (updateUsuarioDTO.getE_mail() == null)         updateUsuarioDTO.setE_mail          (userProfDTO.getE_mail()        );
+            if (updateUsuarioDTO.getConta_de_banco() == null) updateUsuarioDTO.setConta_de_banco  (userProfDTO.getConta_de_banco());
+            if (updateUsuarioDTO.getSenha() == null)          updateUsuarioDTO.setSenha           (userProfDTO.getSenha()         );
+            if (!"Advertiser".equals(updateUsuarioDTO.getTipo_Usuario())){
+                if (!"Publisher".equals(updateUsuarioDTO.getTipo_Usuario())){
+                    if (!"Administrador".equals(updateUsuarioDTO.getTipo_Usuario())){
+                        if (updateUsuarioDTO.getTipo_Usuario() == null) {
+                            updateUsuarioDTO.setTipo_Usuario    (userProfDTO.getTipo_Usuario()  );
+                        } // if: tipo_usuario == null
+                    } // if: tipo_usuario != Administrador
+                } // if: tipo_usuario != Publisher
+            } // if: tipo_usuario != Advertiser
+            int bloqueio_ok = userData.editarPerfilAdvertiserPublisher(usuario_ID, updateUsuarioDTO, tr);
+            tr.commit();
+            System.out.println("UsuarioControler: profEdit: Success.");
+            return bloqueio_ok;
+        } catch(Exception e) {
+            System.out.println("UsuarioControler: profEdit: Failed. Exception.");
+            e.printStackTrace();
+            return 0;
+        } // fim: try-catch
+
+    } // fim: editarPerfilAdvertiserPublisher
+
+} // fim: UsuarioController
