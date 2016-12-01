@@ -6,7 +6,8 @@
  *                              - getNomeUsuario
  *           [23/11/2016] Diego - visualizarPerfilAdvertiserPublisher
  *                              - getUsuarioBloqueioDTO
- *           [28/11/2016] Nelson - PerfilAdvertiserPublisher
+ *           [28/11/2016] Nelson - editarPerfilAdvertiserPublisher
+ *           [01/12/2016] Diego - getTipoUsuario
  *
  *
  */
@@ -25,7 +26,7 @@ public class UsuarioController {
     public UsuarioController() {
     }
     
-    // Adquirir nome do usuário
+    // Adquirir nome do usuário [Diego: 02/11/2016]
     public UsuarioNomeDTO getNomeUsuario(int Usuario_ID) throws Exception {
 
         Transacao tr = new Transacao();
@@ -41,9 +42,28 @@ public class UsuarioController {
             e.printStackTrace();
         }
         return null;
-    } //getListagemCampaigns
+    } //getNomeUsuario
     
-    // Adquirir valor que mostra se o usuário está bloqueado ou não
+    // Adquirir tipo do usuário [Diego: 01/12/2016]
+    public UsuarioTipoDTO getTipoUsuario(int Usuario_ID) throws Exception {
+
+        Transacao tr = new Transacao();
+        try {
+            tr.beginReadOnly();
+              UsuarioData udata = new UsuarioData();
+              UsuarioTipoDTO u = udata.getTipoUsuario(Usuario_ID, tr);
+            tr.commit();
+            System.out.println("OK ");   
+            return u;
+        } catch(Exception e) {
+            System.out.println("Erro ao pesquisar Tipo do Usuário " + Usuario_ID);
+            e.printStackTrace();
+        }
+        return null;
+    } //getTipoUsuario    
+    
+    
+    // Adquirir valor que mostra se o usuário está bloqueado ou não [Diego: 23/11/2016]
     public UsuarioBloqueioDTO getBloqueioUsuario(int Usuario_ID) throws Exception {
 
         Transacao tr = new Transacao();
@@ -61,7 +81,7 @@ public class UsuarioController {
         return null;
     } //getBloqueioUsuario
     
-    // Adquirir dados de perfil do usuário necessários à página Perfil_de_advertiser.jsp [Diego]
+    // Adquirir dados de perfil do usuário necessários à página Perfil_de_advertiser.jsp [Diego:  23/11/2016]
     public VisualizacaoAdvertiserPublisherDTO visualizarPerfilAdvertiserPublisher(int Usuario_ID) throws Exception {
 
         Transacao tr = new Transacao();

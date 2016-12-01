@@ -12,7 +12,8 @@
             [19/11/2016] Nelson - Adaptação para Listagem_Advertisers.jsp
             [19/11/2016] Nelson - Adaptação para Listagem_Publishers.jsp
             [23/11/2016] Nelson - Atualização: segundo requisistos V3 e mudanças no database
-            [28/11/2016] Nelson - Rename do arquivo
+            [28/11/2016] Nelson - Rename do Arquivo
+            [28/11/2016] Nelson - Cor azul para admin
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -94,8 +95,8 @@
             <h2>     
                 <form action="Logout">
                     <input id="Botao_Log_out" type="submit" class="button_log_out" value="Logout">
+                    <i><left><font color="#000080">&nbsp&nbsp&nbspAdBot: Administrador</font></left></i>
                 </form>
-                <i><left><font color="#BF223C">&nbsp&nbsp&nbspAdBot: Administrador</font></left></i>  
             </h2> 
             <!-- FIM: botão logout -->
 
@@ -110,12 +111,12 @@
             UsuarioController userCtl = new UsuarioController();
             UsuarioNomeDTO userNameDTO = userCtl.getNomeUsuario(Usuario_ID);
             %>
-            <font size="3" color="#BF223C"><i>&nbsp&nbsp&nbspAdministrador</i>: <%= String.format("%s %s", userNameDTO.getNome(), userNameDTO.getSobrenome()) %> </font>
+            <font size="3" color="#000080"><i>&nbsp&nbsp&nbspAdministrador</i>: <%= String.format("%s %s", userNameDTO.getNome(), userNameDTO.getSobrenome()) %> </font>
             <!-- FIM: indentificaçao do administrador -->
 
 
             <!-- TÍTULO DA PÁGINA -->
-            <h3><center><font size="5" color="#FF5773">Listagem de Publishers</font></center></h3>
+            <h3><center><font size="5" color="#000080">Listagem de Publishers</font></center></h3>
             <!-- fim: título da página -->
 
 <!--
@@ -129,13 +130,13 @@
 -->
             <!--TABELA PARA LISTAR Publisher-->
             <br><hr><br>
-            <table class="B"> 
+            <table class="C"> 
                 <!-- Headers da Tabela -->
-                <tr class="B">
-                    <th class="B" bgcolor="#FFFFFF"><center>Nome do Publisher<br>(E-mail)</center></th>
-                    <th class="B" bgcolor="#FFFFFF"><center>ID<br>(Data de Cadastro)</center></th>
-                    <th class="B" bgcolor="#FFFFFF"><center>Conta do Banco</center></th>
-                    <th class="B" bgcolor="#FFFFFF"><center>Situação</center></th>
+                <tr class="C">
+                    <th class="C" bgcolor="#FFFFFF"><center>Nome do Publisher<br>(E-mail)</center></th>
+                    <th class="C" bgcolor="#FFFFFF"><center>ID<br>(Data de Cadastro)</center></th>
+                    <th class="C" bgcolor="#FFFFFF"><center>Conta do Banco</center></th>
+                    <th class="C" bgcolor="#FFFFFF"><center>Situação</center></th>
                 </tr>
                 <!--FIM: Headers da Tabela -->
 <%
@@ -146,7 +147,7 @@
                     // A) CASE: NÃO HÁ PUBLISHERS
                     if ( (lista == null) || (lista.size() == 0)) {
 %>
-                        <tr class="B">
+                        <tr class="C">
                             Nenhum Publisher detectado no sistema!
                         </tr>
 <%                  } // fim: case a: sem publishers
@@ -156,18 +157,18 @@
                         for(int i = 0; i < lista.size(); i++){
                             ListagemPublishersDTO pbshDTO = (ListagemPublishersDTO)lista.elementAt(i);
 %>                    
-                            <tr class="B">
+                            <tr class="C">
                                 
                                 <!-- 1) Identificação do Publisher -->
-                                <td class="B"><b><%=pbshDTO.getNome()%>&nbsp<%=pbshDTO.getSobrenome()%></b><br>
+                                <td class="C"><b><%=pbshDTO.getNome()%>&nbsp<%=pbshDTO.getSobrenome()%></b><br>
                                 &nbsp&nbsp(<%= pbshDTO.getE_mail() %>) </td>
                                 
                                 <!-- 2) Cadastro: ID e data de cadastro -->
-                                <td class="B" style="text-align:center"><%= pbshDTO.getID() %><br>
+                                <td class="C" style="text-align:center"><%= pbshDTO.getID() %><br>
                                 (<%= pbshDTO.getData_de_cadastro() %>)</td>
                                 
                                 <!-- 3) Situação Econômica: credito e conta -->
-                                <td class="B" style="text-align:center"><%= pbshDTO.getConta_de_banco() %>&nbsp </td>
+                                <td class="C" style="text-align:center"><%= pbshDTO.getConta_de_banco() %>&nbsp </td>
                                 
 
                                 <!-- 4) Situação no Sistema: bloqueio -->
@@ -200,7 +201,7 @@
                                             </tr>
                                             <tr> 
                                                 <center>
-                                                    <a id=<%= String.format("Botao_%d_to_block_or_not_to_block", i)%>, href="Listagem_publishers.jsp?Action=1&id_to_use=<%=pbshDTO.getID()%>" class="button_menu">&nbsp Bloquear &nbsp</a>
+                                                    <a id=<%= String.format("Botao_%d_to_block_or_not_to_block", i)%>, href="Listagem_publishers.jsp?Action=1&id_to_use=<%=pbshDTO.getID()%>" class="button_blocked">&nbsp Bloquear &nbsp</a>
                                                 </center>
                                             </tr>                                            
                                         </table>

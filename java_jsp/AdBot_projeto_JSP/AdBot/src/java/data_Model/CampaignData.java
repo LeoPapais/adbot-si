@@ -19,7 +19,7 @@ import utils.Transacao;
 
 public class CampaignData {
     
-    // Adquirir dados necessários à página Listagem_campaigns.jsp [Diego]
+    // Adquirir dados necessários à página Listagem_campaigns.jsp [Diego: 02/11/2016, 22/11/2016]
     public Vector getListagemCampaigns(int Usuario_ID, Transacao tr) throws Exception {
         
         Connection con = tr.obterConexao();
@@ -51,7 +51,7 @@ public class CampaignData {
         return lista;
     } //getListagemCampaigns
     
-    // Adquirir dados necessários à página Quebra_de_gastos.jsp [Diego]
+    // Adquirir dados necessários à página Quebra_de_gastos.jsp [Diego: 02/11/2016, 22/11/2016]
     public Vector getQuebraCampaignMedia(int Usuario_ID, Transacao tr) throws Exception {
         
         Connection con = tr.obterConexao();

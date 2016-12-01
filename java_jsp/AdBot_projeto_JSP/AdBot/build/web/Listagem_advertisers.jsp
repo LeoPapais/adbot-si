@@ -11,7 +11,8 @@
             [12/11/2016] Diego - Envio de parâmetro (Campaign_ID) para as páginas específicas de cada Campaign
             [19/11/2016] Nelson - Adaptação para Listagem_advertisers.jsp
             [23/11/2016] Nelson - Atualização: segundo requisistos V3 e mudanças no database
-            [28/11/2016] Nelson - Rename do arquivo Listagem_advertisers.jsp e alterações necessárias
+            [28/11/2016] Nelson - Alteração do nome do arquivo
+            [28/11/2016] Nelson - Cor azul para admin
 
 --%>
 
@@ -32,12 +33,13 @@
 <%
 
     // Verificação manual do Log in e obter o Usuario_ID da página "Homepage.jsp"
+    //session.setAttribute("Usuario_ID", "1");
     if ( session.getAttribute("Usuario_ID") == null) {
        pageContext.forward("Homepage.jsp");
     } // fim: verificação
 
     int Usuario_ID = Integer.parseInt( (String)session.getAttribute("Usuario_ID") );
-    
+
     //////////////////////////////////////////////////////////////////////////////////////////
     //                                                                                      //
     // USECASE-AM07 IMPLEMENTAÇÃO DO BLOQUEIO E DESBOQUEIO DE USUARIO [Nelson: 20/11/2016]  //
@@ -48,7 +50,7 @@
         System.out.println("Listagem_advertisers.jsp: Action: " + request.getParameter("Action"));
         // Case A - to block advertiser
         if (Integer.parseInt( (String)request.getParameter("Action") ) == 1){
-            System.out.println("Listagem_advertisers.jsp: Action: block");
+            System.out.println("Listagem_advertiser.jsp: Action: block");
             int id_to_use = Integer.parseInt( (String)request.getParameter("id_to_use") );
             BloqueioAdvertiserPublisherDTO blockDTO = new BloqueioAdvertiserPublisherDTO( 1 );
             AdministradorController adminCtl = new AdministradorController();
@@ -94,8 +96,8 @@
             <h2>     
                 <form action="Logout">
                     <input id="Botao_Log_out" type="submit" class="button_log_out" value="Logout">
+                    <i><left><font color="#000080">&nbsp&nbsp&nbspAdBot: Administrador</font></left></i>  
                 </form>
-                <i><left><font color="#BF223C">&nbsp&nbsp&nbspAdBot: Administrador</font></left></i>  
             </h2> 
             <!-- FIM: botão logout -->
 
@@ -110,12 +112,12 @@
             UsuarioController userCtl = new UsuarioController();
             UsuarioNomeDTO userNameDTO = userCtl.getNomeUsuario(Usuario_ID);
             %>
-            <font size="3" color="#BF223C"><i>&nbsp&nbsp&nbspAdministrador</i>: <%= String.format("%s %s", userNameDTO.getNome(), userNameDTO.getSobrenome()) %> </font>
+            <font size="3" color="#000080"><i>&nbsp&nbsp&nbspAdministrador</i>: <%= String.format("%s %s", userNameDTO.getNome(), userNameDTO.getSobrenome()) %> </font>
             <!-- FIM: indentificaçao do administrador -->
 
 
             <!-- TÍTULO DA PÁGINA -->
-            <h3><center><font size="5" color="#FF5773">Listagem de Advertisers</font></center></h3>
+            <h3><center><font size="5" color="#000080">Listagem de Advertisers</font></center></h3>
             <!-- fim: título da página -->
 
 <!--
@@ -129,13 +131,13 @@
 -->
             <!--TABELA PARA LISTAR ADVERTISERS-->
             <br><hr><br>
-            <table class="B"> 
+            <table class="C"> 
                 <!-- Headers da Tabela -->
-                <tr class="B">
-                    <th class="B" bgcolor="#FFFFFF"><center>Nome do Advertiser<br>(E-mail)</center></th>
-                    <th class="B" bgcolor="#FFFFFF"><center>ID<br>(Data de Cadastro)</center></th>
-                    <th class="B" bgcolor="#FFFFFF"><center>Crédito Disponível<br>(Conta do Banco)</center></th>
-                    <th class="B" bgcolor="#FFFFFF"><center>Situação</center></th>
+                <tr class="C">
+                    <th class="C" bgcolor="#FFFFFF"><center>Nome do Advertiser<br>(E-mail)</center></th>
+                    <th class="C" bgcolor="#FFFFFF"><center>ID<br>(Data de Cadastro)</center></th>
+                    <th class="C" bgcolor="#FFFFFF"><center>Crédito Disponível<br>(Conta do Banco)</center></th>
+                    <th class="C" bgcolor="#FFFFFF"><center>Situação</center></th>
                 </tr>
                 <!--FIM: Headers da Tabela -->
 <%
@@ -146,7 +148,7 @@
                     // A) CASE: NÃO HÁ ADVERTISERS
                     if ( (lista == null) || (lista.size() == 0)) {
 %>
-                        <tr class="B">
+                        <tr class="C">
                             Nenhum Advertiser detectado no sistema!
                         </tr>
 <%                  } // fim: case a: sem advertisers
@@ -156,17 +158,17 @@
                         for(int i = 0; i < lista.size(); i++){
                             ListagemAdvertisersDTO advDTO = (ListagemAdvertisersDTO)lista.elementAt(i);
 %>                    
-                            <tr class="B">
+                            <tr class="C">
                                 
                                 <!-- 1) Identificação do advertiser -->
-                                <td class="B"><b><%=advDTO.getNome()%>&nbsp<%=advDTO.getSobrenome()%></b><br>&nbsp&nbsp(<%= advDTO.getE_mail() %>) </td>
+                                <td class="C"><b><%=advDTO.getNome()%>&nbsp<%=advDTO.getSobrenome()%></b><br>&nbsp&nbsp(<%= advDTO.getE_mail() %>) </td>
                                 
                                 <!-- 2) Cadastro: ID e data de cadastro -->
-                                <td class="B" style="text-align:center"><%= advDTO.getID() %><br>
+                                <td class="C" style="text-align:center"><%= advDTO.getID() %><br>
                                 (<%= advDTO.getData_de_cadastro() %>)</td>
                                 
                                 <!-- 3) Situação Econômica: credito e conta -->
-                                <td class="B" style="text-align:center"><%= advDTO.getCredito_disponivel() %>&nbsp<br>
+                                <td class="C" style="text-align:center"><%= advDTO.getCredito_disponivel() %>&nbsp<br>
                                 (<%= advDTO.getConta_de_banco() %>)&nbsp </td>
                                 
                                 <!-- 4) Situação no Sistema: bloqueio -->
@@ -181,7 +183,7 @@
                                             </tr>
                                             <tr>
                                                 <center>
-                                                    <a id=<%= String.format("Botao_%d_to_block_or_not_to_block", i)%>, href="Listagem_advertisers.jsp?Action=0&id_to_use=<%=advDTO.getID()%>" class="button_menu">&nbsp Desbloquear &nbsp</a>
+                                                    <a id=<%= String.format("Botao_%d_to_block_or_not_to_block", i)%>, href="Listagem_advertisers.jsp?Action=0&id_to_use=<%=advDTO.getID()%>" class="button_blocked">&nbsp Desbloquear &nbsp</a>
                                                 </center>
                                             </tr>
                                         </table>
@@ -199,7 +201,7 @@
                                             </tr>
                                             <tr> 
                                                 <center>
-                                                    <a id=<%= String.format("Botao_%d_to_block_or_not_to_block", i)%>, href="Listagem_advertisers.jsp?Action=1&id_to_use=<%=advDTO.getID()%>" class="button_menu">&nbsp Bloquear &nbsp</a>
+                                                    <a id=<%= String.format("Botao_%d_to_block_or_not_to_block", i)%>, href="Listagem_advertisers.jsp?Action=1&id_to_use=<%=advDTO.getID()%>" class="button_blocked">&nbsp Bloquear &nbsp</a>
                                                 </center>
                                             </tr>
                                         </table>

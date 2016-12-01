@@ -7,6 +7,7 @@
  *           [23/11/2016] Diego - visualizarPerfilAdvertiserPublisher
  *                              - getUsuarioBloqueioDTO
  *           [28/11/2016] Nelson - inclusao de edicao de perfil de usuario
+ *           [01/12/2016] Diego - getTipoUsuario
  *
  */
 
@@ -20,7 +21,7 @@ import utils.Transacao;
 
 public class UsuarioData {
     
-    // Adquirir nome do usuário
+    // Adquirir nome do usuário [Diego: 02/11/2016]
     public UsuarioNomeDTO getNomeUsuario(int Usuario_ID, Transacao tr) throws Exception {
         
         Connection con = tr.obterConexao();
@@ -40,7 +41,26 @@ public class UsuarioData {
         return u;
     } //getNomeUsuario
 
-    // Adquirir valor que mostra se o usuário está bloqueado ou não
+    // Adquirir tipo do usuário [Diego: 01/12/2016]
+    public UsuarioTipoDTO getTipoUsuario(int Usuario_ID, Transacao tr) throws Exception {
+        
+        Connection con = tr.obterConexao();
+
+        String sql = "select Tipo_Usuario from Usuario where ID = ?";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, Usuario_ID);
+        ResultSet rs = ps.executeQuery();
+        System.out.println("Query executada");
+        
+        rs.next(); // Antes de começar a ler os resultados, precisa desta linha
+        
+        UsuarioTipoDTO u = new UsuarioTipoDTO();
+        u.setTipo(rs.getString("Tipo_Usuario"));
+
+        return u;
+    } //getNomeUsuario
+    
+    // Adquirir valor que mostra se o usuário está bloqueado ou não [Diego: 23/11/2016]
     public UsuarioBloqueioDTO getBloqueioUsuario(int Usuario_ID, Transacao tr) throws Exception {
         
         Connection con = tr.obterConexao();
@@ -59,7 +79,7 @@ public class UsuarioData {
         return u;
     } //getBloqueioUsuario
     
-    // Adquirir dados de perfil do usuário necessários à página Perfil_de_advertiser.jsp [Diego]
+    // Adquirir dados de perfil do usuário necessários à página Perfil_de_advertiser.jsp [Diego: 23/11/2016]
     public VisualizacaoAdvertiserPublisherDTO visualizarPerfilAdvertiserPublisher(int Usuario_ID, Transacao tr) throws Exception {
         
         Connection con = tr.obterConexao();

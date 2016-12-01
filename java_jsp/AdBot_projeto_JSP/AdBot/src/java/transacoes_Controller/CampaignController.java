@@ -21,7 +21,7 @@ public class CampaignController {
     public CampaignController() {
     }
 
-    // Adquirir dados necessários à página Listagem_campaigns.jsp e Sumario_geral_das_metricas_de_performance_de_campaigns.jsp [Diego]
+    // Adquirir dados necessários à página Listagem_campaigns.jsp e Sumario_geral_das_metricas_de_performance_de_campaigns.jsp [Diego: 02/11/2016]
     public Vector getListagemCampaigns(int Usuario_ID) throws Exception {
 
         Transacao tr = new Transacao();
@@ -40,7 +40,7 @@ public class CampaignController {
     } //getListagemCampaigns
    
     
-    // Adquirir dados necessários à página Quebra_de_gastos.jsp [Diego]
+    // Adquirir dados necessários à página Quebra_de_gastos.jsp [Diego: 02/11/2016]
     public Vector getQuebraCampaignMediaDTO(int Usuario_ID) throws Exception {
 
         Transacao tr = new Transacao();

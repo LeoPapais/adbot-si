@@ -21,7 +21,7 @@ public class AdvertiserController {
     public AdvertiserController() {
     }
     
-    // Adquirir Crédito disponível de Advertiser
+    // Adquirir Crédito disponível de Advertiser [Diego: 01/12/2016]
     public AdvertiserCredito_disponivelDTO getCredito_disponivel(int Usuario_ID) throws Exception {
 
         Transacao tr = new Transacao();

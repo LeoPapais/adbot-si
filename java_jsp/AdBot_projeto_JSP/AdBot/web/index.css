@@ -10,6 +10,7 @@
         [27/11/2016, 07:11:11] Victor - passei o estilo .css prum arquivo separado nas páginas jsp
         [02/11/2016] Diego - Inclusão de ".button_options_homepage"
         [28/11/2016] Nelson - Inclusão de elementos azuis para admin
+        [01/11/2016] Diego - Inclusão de ".button_options_administrador"
 */
 
 /*
@@ -175,6 +176,30 @@ tr.B:nth-child(odd) {
     border-color: #FF91A4;
 }
 
+/*
+    4: Formatações de página e cores dos tipos de botão usados nas páginas de Publisher/Media
+*/
+
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>FAZER */
+
+
+/*
+    5: Formatações de página e cores dos tipos de botão usados nas páginas de Administrador
+*/
+
+.button_options_administrador {
+    background-color: #BBBBFF;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    text-align: right;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 2px 2px;
+    cursor: pointer;
+}   
+
 table.C {
     width: 100%; 
     padding: 5px;
@@ -217,15 +242,7 @@ tr.C:nth-child(odd) {
 }
 
 /*
-    4: Formatações de página e cores dos tipos de botão usados nas páginas de Publisher/Media
+    6: Formatações de página e cores dos tipos de botão usados nas páginas de ChatBot
 */
 
 /* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>FAZER */
-
-
-/*
-    5: Formatações de página e cores dos tipos de botão usados nas páginas de Administrador
-*/
-
-/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>FAZER */
-

@@ -1,6 +1,6 @@
 /*
- * ListagemCampaignsDTO: Classe que contém o objeto de transferência de dados (DTO)
- *                        para Crédito do Advertiser
+ * AdvertiserCredito_disponivelDTO: Classe que contém o objeto de transferência de dados (DTO)
+ *                                          para Crédito do Advertiser
  *
  * Histórico de edição deste arquivo :
  *           [23/11/2016] Diego - Versão inicial

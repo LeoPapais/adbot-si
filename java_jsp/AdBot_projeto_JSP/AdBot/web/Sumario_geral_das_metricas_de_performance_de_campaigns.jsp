@@ -9,31 +9,48 @@
             [02/11/2016] Diego - Versão inicial
             [04/11/2016] Diego - Edições adicionais na formatação
             [27/11/2016] Diego - Os estilos dos botões foram passados para o arquivo index.css
+            [28/11/2016] Victor Teodoro - Implementação do logout
+            [01/12/2016] Diego - Verificação de tipo de usuário (se não for "Advertiser", não pode entrar nesta página) 
+                               - Ajustes de comentários
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@ page import="java.sql.*" %>  <!-- importando biblioteca SQL do Java -->
-<%@ page import="java.util.Vector" %>
-<%@ page import="transacoes_Controller.*" %>
-<%@ page import="data_Model.*" %>
-<%@ page import="DTO_Objects.*" %>
-<%@ page import="java.lang.Integer.*" %>
-
-<!-- Importa classes do projeto (Servlets) -->
-<%@ page import="utils.Logout" %>
+<%@ page import="java.sql.*" %>                 <!-- Importando biblioteca SQL do Java -->
+<%@ page import="java.util.Vector" %>           <!-- Importando variável Vector de Java -->
+<%@ page import="transacoes_Controller.*" %>    <!-- Importando Controllers -->
+<%@ page import="data_Model.*" %>               <!-- Importando Models -->
+<%@ page import="DTO_Objects.*" %>              <!-- Importando DTOs -->
+<%@ page import="java.lang.Integer.*" %>        <!-- Importando Integer de Java (para poder utilizar Integer.parseInt) -->
+<%@ page import="utils.Logout" %>               <!-- Importando Servlet de Logout [Victor Teodoro: 28/11/2016] -->
 
 <html xmlns="http://www.w3.org/1999/xhtml">
     
 <%
-    // Verificação manual do Log in e obter o Usuario_ID da página "Homepage.jsp"
-    if ( session.getAttribute("Usuario_ID") == null) {
+    // Verificação manual do Log in
+    if ( session.getAttribute("Usuario_ID") == null ) {
        pageContext.forward("Log_in_de_usuario.jsp");
     }
+    String Usuario_ID_st = (String)session.getAttribute("Usuario_ID"); // Obter o Usuario_ID da página "Homepage.jsp"
+    int Usuario_ID = Integer.parseInt(Usuario_ID_st); // Converter para número
 
-    String Usuario_ID_st = (String)session.getAttribute("Usuario_ID");
-    int Usuario_ID = Integer.parseInt(Usuario_ID_st);
-
+    // Instanciar UsuarioController
+    UsuarioController uc = new UsuarioController();
+        
+    // Verificação do tipo do usuário
+    UsuarioTipoDTO ut = uc.getTipoUsuario(Usuario_ID);
+    if ( ut.getTipo() == "Advertiser") { // Se o usuário não for Advertiser, não deixá-lo ir para esta página
+        pageContext.forward("Homepage.jsp");
+    }
+    
+    // Verificação de bloqueio do usuário
+    UsuarioBloqueioDTO ub = uc.getBloqueioUsuario(Usuario_ID);
+    if ( ub.getBloqueio() == 1) { // Se o usuário estiver bloqueado, não deixá-lo ir para esta página
+        pageContext.forward("Perfil_de_advertiser.jsp");
+    }
+    
+    // Nome + Sobrenome do usuário
+    UsuarioNomeDTO ud = uc.getNomeUsuario(Usuario_ID); 
 %>    
     
     <head>
@@ -52,25 +69,15 @@
             <br>
                 
             <!------ Linha 1 ------>
-            <h2>     
-                <form action="Logout">
+            <h2>
+                <form action="Logout"> <!-- [Victor Teodoro: 28/11/2016] -->
                     <input id="Botao_Log_out" type="submit" class="button_log_out" value="Logout">
-                </form>
-                <i><left><font color="#BF223C">&nbsp&nbsp&nbspAdBot: Advertiser</font></left></i>  
+                    <i><left><font color="#BF223C">&nbsp&nbsp&nbspAdBot: Advertiser</font></left></i>  
+                </form> 
             </h2>
             
             <!------ Linha 2 ------>
-            <a id="Botao_PErfil_advertiser" href="Perfil_de_advertiser.jsp" class="button_options">Perfil de <i>Advertiser</i></a>
-
-<%
-            UsuarioController uc = new UsuarioController();
-            UsuarioNomeDTO ud = uc.getNomeUsuario(Usuario_ID);
-            UsuarioBloqueioDTO ub = uc.getBloqueioUsuario(Usuario_ID);
-            
-            if ( ub.getBloqueio() == 1) { // Se o usuário estiver bloqueado, não deixá-lo ir para esta página
-                pageContext.forward("Perfil_de_advertiser.jsp");
-            }
-%>
+            <a id="Botao_Perfil_advertiser" href="Perfil_de_advertiser.jsp" class="button_options">Perfil de <i>Advertiser</i></a>
             <font size="3" color="#BF223C"><i>&nbsp&nbsp&nbspAdvertiser</i>: <%= String.format("%s %s", ud.getNome(), ud.getSobrenome()) %> </font>
                 
             <!------ Título da página ------>
@@ -87,22 +94,35 @@
                 </tr>
                 
 <%
+                    // Instanciar CampaignController
                     CampaignController cc = new CampaignController();
+                    
+                    // Obter vetor com todas as Campaigns com os dados a serem exibidos na listagem
                     Vector lista = cc.getListagemCampaigns(Usuario_ID);
-                    if ( (lista == null) || (lista.size() == 0)) {
-                        // avisar usuario que nao há Campaigns
+                    
+                    // Verificar se há Campaigns a serem exibidas
+                    if ( (lista == null) || (lista.size() == 0)) { // Avisar usuario que nao há Campaigns
 %>
-                        Nenhuma <i>Campaign</i> foi encontrada!
+                        <tr class="B">
+                            Nenhuma <i>Campaign</i> foi encontrada!
+                        </tr>
 <%                  } else {
+
+                        // Inicializar totais de visualizações, clicks e gasto
                         int Balanco_Total_visualizacoes = 0;
                         int Balanco_Total_clicks = 0;
                         double Balanco_Gasto_total = 0;
+
+                        // Exibir todas as Campaigns na tela, em forma de tabela
                         for(int i = 0; i < lista.size(); i++){
+
+                            // Obter uma das Campaigns da listagem
                             ListagemCampaignsDTO c = (ListagemCampaignsDTO)lista.elementAt(i);
+
+                            // Atualizar totais de visualizações, clicks e gasto
                             Balanco_Total_visualizacoes += c.getTotal_visualizacoes();
                             Balanco_Total_clicks += c.getTotal_clicks();
                             Balanco_Gasto_total += c.getGasto_total();
-
 %>                    
                             <tr class="B">
                                 <td class="B"><b><%= c.getNome() %></b><br>&nbsp&nbsp<%= c.getClickURL() %></td>
@@ -114,11 +134,11 @@
 <%
                         }
 %>
-                        <tr class="B">
-                                <td class="B" bgcolor="#ADD8E6" style="text-align:center">Valores gerais: </td>        
-                                <td class="B" bgcolor="#ADD8E6" style="text-align:right"><%= String.format("%1.2f", Balanco_Gasto_total/Balanco_Total_visualizacoes) %>&nbsp</td>
-                                <td class="B" bgcolor="#ADD8E6" style="text-align:right"><%= String.format("%1.2f", Balanco_Gasto_total/Balanco_Total_clicks) %>&nbsp</td>
-                                <td class="B" bgcolor="#ADD8E6" style="text-align:right"><%= String.format("%1.2f", Balanco_Total_clicks/((float)Balanco_Total_visualizacoes)) %>&nbsp</td>          
+                        <tr class="B"> <!-- Exibir os valores gerais na última linha da tabela -->
+                            <td class="B" bgcolor="#ADD8E6" style="text-align:center">Valores gerais: </td>        
+                            <td class="B" bgcolor="#ADD8E6" style="text-align:right"><%= String.format("%1.2f", Balanco_Gasto_total/Balanco_Total_visualizacoes) %>&nbsp</td>
+                            <td class="B" bgcolor="#ADD8E6" style="text-align:right"><%= String.format("%1.2f", Balanco_Gasto_total/Balanco_Total_clicks) %>&nbsp</td>
+                            <td class="B" bgcolor="#ADD8E6" style="text-align:right"><%= String.format("%1.2f", Balanco_Total_clicks/((float)Balanco_Total_visualizacoes)) %>&nbsp</td>          
                         </tr>
 <%
                     }
@@ -127,14 +147,16 @@
             </table> 
                         
             <br><br>  
-            <center>
+            <center> <!-- Botão embaixo da página -->
                 <a id="Botao_Voltar" href="Listagem_campaigns.jsp" class="button_options">Voltar</a> 
             </center>
             <br><br><hr><br>
-                        
+                            
+            <!-- Créditos --> 
             <div id="footer">
                 <font size="4"><i>AdBot</i> - PMR2490 (turma 4-B)</a></font>
             </div>
+            
         </div>
 
         <img id="bottom" src="bottom.png" alt="">

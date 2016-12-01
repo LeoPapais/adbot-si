@@ -17,7 +17,7 @@ import utils.Transacao;
 
 public class AdvertiserData {
     
-    // Adquirir Crédito disponível de Advertiser
+    // Adquirir Crédito disponível de Advertiser [Diego: 23/11/2016]
     public AdvertiserCredito_disponivelDTO getCredito_disponivel(int Usuario_ID, Transacao tr) throws Exception {
         
         Connection con = tr.obterConexao();
