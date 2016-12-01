@@ -105,7 +105,7 @@ create table Campaign
 	Black_ou_whitelist varchar(5) default "black" CHECK (Tipo_de_Lista IN ("black", "white", "desativado")), # Tipo de lista: "black" (blacklist), "white" (whitelist) ou "desativado"
 	Data_de_criacao datetime default NOW(), # Data de criação da Campaign
     
-	# Relacionamento cadastra
+	# Relacionamento anuncia
 	Usuario_ID int,
 	foreign key (Usuario_ID) references Usuario (ID)
 );
