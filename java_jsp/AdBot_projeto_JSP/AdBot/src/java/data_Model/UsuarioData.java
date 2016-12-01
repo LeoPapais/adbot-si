@@ -8,6 +8,8 @@
  *                              - getUsuarioBloqueioDTO
  *           [28/11/2016] Nelson - inclusao de edicao de perfil de usuario
  *           [01/12/2016] Diego - getTipoUsuario
+ *                              - visualizarPerfilAdvertiserPublisher se não tiver 
+ *                                senha armazenada no banco de dados (não pode ocorrer)
  *
  */
 
@@ -79,7 +81,7 @@ public class UsuarioData {
         return u;
     } //getBloqueioUsuario
     
-    // Adquirir dados de perfil do usuário necessários à página Perfil_de_advertiser.jsp [Diego: 23/11/2016]
+    // Adquirir dados de perfil do usuário necessários à página Perfil_de_advertiser.jsp [Diego: 23/11/2016, 01/12/2016]
     public VisualizacaoAdvertiserPublisherDTO visualizarPerfilAdvertiserPublisher(int Usuario_ID, Transacao tr) throws Exception {
         
         Connection con = tr.obterConexao();
@@ -109,10 +111,16 @@ public class UsuarioData {
 
         // O que é passado para visualização é a indicativa de quantidade de caracteres da senha 
         String st = rs.getString("Senha");
-        String x = "*";
-        for(int i = 1; i < st.length(); i++){
-            x = x.concat("*");
+        String x;      
+        if(st.length() != 0) { // Se tiver senha armazenada no banco de dados
+            x = "*";
+            for(int i = 1; i < st.length(); i++){
+                x = x.concat("*");
+            }
+        } else { // Se não tiver senha armazenada no banco de dados (* É um caso que não pode ocorrer)
+            x = "SEM SENHA";
         }
+        
         u.setSenha(x);
         
         return u;
