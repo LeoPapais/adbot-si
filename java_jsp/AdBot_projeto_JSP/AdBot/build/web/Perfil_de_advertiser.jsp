@@ -129,8 +129,8 @@
                     <a id="Botao_Listagem_de_Campaigns" href="Listagem_campaigns.jsp" class="button_options">Listagem de <i> Campaigns </i></a> 
                 </center>
                 <center>
-                    <a id="Botao_Historico_de_movimentacao" href="Historico_de_movimentacao.jsp" class="button_balance">Histórico de movimentação</a> 
-                    <a id="Botao_Balance_do_usuario" href="Balance_do_usuario.jsp" class="button_balance"><i>Balance</i> do usuário</a> 
+                    <a id="Botao_Historico_de_movimentacao" href="historico_de_movimentacao.jsp" class="button_balance">Histórico de movimentação</a> 
+                    <a id="Botao_Balance_do_usuario" href="balance_do_usuario.jsp" class="button_balance"><i>Balance</i> do usuário</a> 
                 </center>
 <%
             }
