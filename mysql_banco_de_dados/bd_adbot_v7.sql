@@ -258,7 +258,7 @@ insert into Campaign
     values 
     (9, "Silver bullet", 5.00, "https://www.warewolf.com.br", "Artefato", "", 500.00, 100, 30, "Ambos", "");
     
-#Movimentação
+#Movimentações
 insert into Movimentacao 
 	(ID, Valor, Descricao, Data_movimentacao, Usuario_ID) 
     values 
@@ -272,7 +272,12 @@ insert into Movimentacao
 insert into Movimentacao 
 	(ID, Valor, Descricao, Data_movimentacao, Usuario_ID) 
     values 
-    (3, 15.00, "Débito", '2016/01/25 20:25:00', 6);
+    (3, -15.00, "Débito", '2016/01/26 21:20:00', 6);
+    
+insert into Movimentacao 
+	(ID, Valor, Descricao, Data_movimentacao, Usuario_ID) 
+    values 
+    (4, -10.00, "Débito", '2016/01/25 21:21:00', 6);
     
 # Medias
 insert into Media

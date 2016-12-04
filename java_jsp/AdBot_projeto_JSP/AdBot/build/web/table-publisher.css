@@ -1,0 +1,21 @@
+/*******************************************************************************
+                    Estilo da tabela do Publisher
+      (Ainda precisa editar as cores de acordo com a paleta do Publisher)
+*******************************************************************************/
+
+table {
+    font-family: "Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+}
+
+td, th {
+    border: 1px solid #FF5773;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #FFCCCB;
+}
+

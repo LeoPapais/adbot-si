@@ -1,0 +1,20 @@
+/*******************************************************************************
+                    Estilo da tabela do Advertiser
+*******************************************************************************/
+
+table {
+    font-family: "Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+}
+
+td, th {
+    border: 1px solid #FF5773;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #FFCCCB;
+}
+
