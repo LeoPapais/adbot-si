@@ -110,17 +110,62 @@ public class UsuarioController {
             UsuarioData userData = new UsuarioData();
             // Completa info recebidas com info do database
             VisualizacaoAdvertiserPublisherDTO userProfDTO = userData.visualizarPerfilAdvertiserPublisher(usuario_ID, tr);
-            if (updateUsuarioDTO.getUserName() == null)       updateUsuarioDTO.setUserName        (userProfDTO.getUserName()      );
-            if (updateUsuarioDTO.getNome() == null)           updateUsuarioDTO.setNome            (userProfDTO.getNome()          );
-            if (updateUsuarioDTO.getSobrenome() == null)      updateUsuarioDTO.setSobrenome       (userProfDTO.getSobrenome()     );
-            if (updateUsuarioDTO.getE_mail() == null)         updateUsuarioDTO.setE_mail          (userProfDTO.getE_mail()        );
-            if (updateUsuarioDTO.getConta_de_banco() == null) updateUsuarioDTO.setConta_de_banco  (userProfDTO.getConta_de_banco());
-            if (updateUsuarioDTO.getSenha() == null)          updateUsuarioDTO.setSenha           (userProfDTO.getSenha()         );
-            if (!"Advertiser".equals(updateUsuarioDTO.getTipo_Usuario())){
-                if (!"Publisher".equals(updateUsuarioDTO.getTipo_Usuario())){
-                    if (!"Administrador".equals(updateUsuarioDTO.getTipo_Usuario())){
-                        if (updateUsuarioDTO.getTipo_Usuario() == null) {
-                            updateUsuarioDTO.setTipo_Usuario    (userProfDTO.getTipo_Usuario()  );
+            String userName = updateUsuarioDTO.getUserName(); // mantem codigo limpo [Nelson:05/12/2016]
+            String nome = updateUsuarioDTO.getNome();
+            String sobrenome = updateUsuarioDTO.getSobrenome();
+            String e_mail = updateUsuarioDTO.getE_mail();
+            String conta_de_banco = updateUsuarioDTO.getConta_de_banco();
+            String senha = updateUsuarioDTO.getSenha();
+            String tipo_usuario = updateUsuarioDTO.getTipo_Usuario();
+            
+            // A) USERNAME
+            if (userName==null){
+                updateUsuarioDTO.setUserName (userProfDTO.getUserName() );
+            } else{
+                if(userName.length()<2) updateUsuarioDTO.setUserName (userProfDTO.getUserName());
+            } // fim: processamento username
+
+            // B) NOME
+            if (nome==null) {       
+                updateUsuarioDTO.setNome(userProfDTO.getNome());
+            } else{
+                if(nome.length()<2) updateUsuarioDTO.setNome(userProfDTO.getNome());;
+            } // fim: procesamento nome
+            
+            // C) SOBRENOME
+            if (sobrenome==null){
+                updateUsuarioDTO.setSobrenome(userProfDTO.getSobrenome());
+            } else{
+                if(sobrenome.length()<2)updateUsuarioDTO.setSobrenome(userProfDTO.getSobrenome());
+            } // fim: processamento sobrenome
+            
+            // D) E_MAIL
+            if (e_mail==null){
+               updateUsuarioDTO.setE_mail(userProfDTO.getE_mail());
+            } else{
+               if(e_mail.length()<2) updateUsuarioDTO.setE_mail(userProfDTO.getE_mail());
+            } // fim: processamento e_mail
+            
+            // E) CONTA_DE_BANCO
+            if (conta_de_banco==null) { 
+               updateUsuarioDTO.setConta_de_banco  (userProfDTO.getConta_de_banco());
+            } else{
+               if(conta_de_banco.length()<5) updateUsuarioDTO.setConta_de_banco  (userProfDTO.getConta_de_banco());
+            } // fim: processamento conta_de_banco
+
+            // F) SENHA
+            if (senha==null){ 
+               updateUsuarioDTO.setSenha(userProfDTO.getSenha());
+            } else{
+               if(senha.length()<2) updateUsuarioDTO.setSenha(userProfDTO.getSenha());
+            } // fim: processamento senha
+            
+            // G) TIPO_USUARIO
+            if (!"Advertiser".equals(tipo_usuario)){
+                if (!"Publisher".equals(tipo_usuario)){
+                    if (!"Administrador".equals(tipo_usuario)){
+                        if (tipo_usuario == null || !"".equals(tipo_usuario) ) {
+                            updateUsuarioDTO.setTipo_Usuario( userProfDTO.getTipo_Usuario() );
                         } // if: tipo_usuario == null
                     } // if: tipo_usuario != Administrador
                 } // if: tipo_usuario != Publisher
