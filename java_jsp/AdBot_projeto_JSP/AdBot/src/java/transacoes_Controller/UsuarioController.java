@@ -97,12 +97,50 @@ public class UsuarioController {
             String conta_de_banco = updateUsuarioDTO.getConta_de_banco();
             String senha = updateUsuarioDTO.getSenha();
             String tipo_usuario = updateUsuarioDTO.getTipo_Usuario();
-            if (userName==null ||userName.length()<2)              updateUsuarioDTO.setUserName        (userProfDTO.getUserName()      );
-            if (nome==null || nome.length()<2)                     updateUsuarioDTO.setNome            (userProfDTO.getNome()          );
-            if (sobrenome==null || sobrenome.length()<2)           updateUsuarioDTO.setSobrenome       (userProfDTO.getSobrenome()     );
-            if (e_mail==null || e_mail.length()<2)                 updateUsuarioDTO.setE_mail          (userProfDTO.getE_mail()        );
-            if (conta_de_banco==null || conta_de_banco.length()<5) updateUsuarioDTO.setConta_de_banco  (userProfDTO.getConta_de_banco());
-            if (senha==null || senha.length()<2)                   updateUsuarioDTO.setSenha           (userProfDTO.getSenha()         );
+            
+            // A) USERNAME
+            if (userName==null){
+                updateUsuarioDTO.setUserName (userProfDTO.getUserName() );
+            } else{
+                if(userName.length()<2) updateUsuarioDTO.setUserName (userProfDTO.getUserName());
+            } // fim: processamento username
+
+            // B) NOME
+            if (nome==null) {       
+                updateUsuarioDTO.setNome(userProfDTO.getNome());
+            } else{
+                if(nome.length()<2) updateUsuarioDTO.setNome(userProfDTO.getNome());;
+            } // fim: procesamento nome
+            
+            // C) SOBRENOME
+            if (sobrenome==null){
+                updateUsuarioDTO.setSobrenome(userProfDTO.getSobrenome());
+            } else{
+                if(sobrenome.length()<2)updateUsuarioDTO.setSobrenome(userProfDTO.getSobrenome());
+            } // fim: processamento sobrenome
+            
+            // D) E_MAIL
+            if (e_mail==null){
+               updateUsuarioDTO.setE_mail(userProfDTO.getE_mail());
+            } else{
+               if(e_mail.length()<2) updateUsuarioDTO.setE_mail(userProfDTO.getE_mail());
+            } // fim: processamento e_mail
+            
+            // E) CONTA_DE_BANCO
+            if (conta_de_banco==null) { 
+               updateUsuarioDTO.setConta_de_banco  (userProfDTO.getConta_de_banco());
+            } else{
+               if(conta_de_banco.length()<5) updateUsuarioDTO.setConta_de_banco  (userProfDTO.getConta_de_banco());
+            } // fim: processamento conta_de_banco
+
+            // F) SENHA
+            if (senha==null){ 
+               updateUsuarioDTO.setSenha(userProfDTO.getSenha());
+            } else{
+               if(senha.length()<2) updateUsuarioDTO.setSenha(userProfDTO.getSenha());
+            } // fim: processamento senha
+            
+            // G) TIPO_USUARIO
             if (!"Advertiser".equals(tipo_usuario)){
                 if (!"Publisher".equals(tipo_usuario)){
                     if (!"Administrador".equals(tipo_usuario)){
