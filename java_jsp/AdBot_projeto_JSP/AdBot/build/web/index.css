@@ -78,6 +78,19 @@ hr {
     font-size: 14px;
     margin: 2px 2px;
     cursor: pointer;
+}  
+
+.button_options_publisher {
+    background-color: #006400;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    text-align: right;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 2px 2px;
+    cursor: pointer;
 }   
 .button_balance {
     background-color: #E04C64;
@@ -131,6 +144,10 @@ hr {
     cursor: pointer;
 }
 
+#Botao_Perfil_publisher {
+    background-color: #006400;
+}
+
 table.A {
     width: 100%; 
 }
@@ -174,22 +191,6 @@ tr.B:nth-child(odd) {
     border-style: solid;
     border-width: 3px;
     border-color: #FF91A4;
-}
-
-table {
-    font-family: "Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
-    border-collapse: collapse;
-    width: 80%;
-}
-
-td, th {
-    border: 1px solid #FF5773;
-    text-align: left;
-    padding: 8px;
-}
-
-tr:nth-child(even) {
-    background-color: #FFCCCB;
 }
 
 /*
