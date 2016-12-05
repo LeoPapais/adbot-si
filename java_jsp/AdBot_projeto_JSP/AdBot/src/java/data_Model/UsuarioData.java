@@ -196,5 +196,58 @@ public class UsuarioData {
         } // fim: try-catch
 
     } // fim: editarPerfilAdvertiserPublisher
+    
+    // Obtém do DB todas as movimentações feitas em nome do usuário ided por usuario_id
+    public List<MovimentacaoDTO> getMovimentacoes(int usuario_id, Transacao tr) throws Exception {
+        
+        Connection con = tr.obterConexao();
+
+        String sql = "select * from Movimentacao where Usuario_ID = ?";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, usuario_id);
+        ResultSet rs = ps.executeQuery();
+        System.out.println("Query executada");
+        
+        //Cria a lista de movimentações que irá guardar os valores obtidos do DB
+        List<MovimentacaoDTO> movimentacoes = new ArrayList<MovimentacaoDTO>();
+        
+        // Enquanto houver linhas a se ler, atualize as movimentações
+        while (rs.next()){
+            //Cria o DTO da movimentação
+            MovimentacaoDTO movimentacao = new MovimentacaoDTO();
+            
+            // Atualiza o DTO e depois o adiciona à lista
+            movimentacao.setId(rs.getInt("ID"));
+            movimentacao.setValor(rs.getDouble("Valor"));
+            movimentacao.setDescricao(rs.getString("Descricao"));
+            movimentacao.setDataHora(rs.getTimestamp("Data_movimentacao"));
+            movimentacao.setUsuarioId(rs.getInt("Usuario_ID"));
+            movimentacoes.add(movimentacao); 
+        }
+        
+        return movimentacoes;
+    } //getMovimentacoes
+    
+    // Obtém do DB todas as movimentações feitas em nome do usuário ided por usuario_id
+    // Depois calcula o saldo
+    public double getBalance(int usuario_id, Transacao tr) throws Exception {
+        
+        Connection con = tr.obterConexao();
+
+        String sql = "select Valor from Movimentacao where Usuario_ID = ?";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, usuario_id);
+        ResultSet rs = ps.executeQuery();
+        System.out.println("Query executada");
+        
+        //Saldo do usuário
+        double balance = 0;
+        
+        // Enquanto houver linhas a se ler, soma ao balance
+        while (rs.next())
+            balance += rs.getDouble("Valor"); 
+        
+        return balance;
+    } //getBalance
 
 } // fim: UsuarioData

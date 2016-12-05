@@ -80,7 +80,7 @@ hr {
     cursor: pointer;
 }   
 .button_balance {
-    background-color: #C84057;
+    background-color: #E04C64;
     border: none;
     color: white;
     padding: 10px 15px;
@@ -174,6 +174,22 @@ tr.B:nth-child(odd) {
     border-style: solid;
     border-width: 3px;
     border-color: #FF91A4;
+}
+
+table {
+    font-family: "Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+}
+
+td, th {
+    border: 1px solid #FF5773;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #FFCCCB;
 }
 
 /*

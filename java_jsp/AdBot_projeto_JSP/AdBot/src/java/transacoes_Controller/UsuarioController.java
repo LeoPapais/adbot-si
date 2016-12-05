@@ -136,5 +136,44 @@ public class UsuarioController {
         } // fim: try-catch
 
     } // fim: editarPerfilAdvertiserPublisher
+    
+    // Obtém as movimentações feitas pelo usuário identificado por usuario_id
+    // Retorna uma lista com todas as movimentações
+    public List<MovimentacaoDTO> getMovimentacao(int usuario_id) throws Exception {
+
+        Transacao tr = new Transacao();
+        try {
+            tr.beginReadOnly();
+            UsuarioData udata = new UsuarioData();
+            List<MovimentacaoDTO> movimentacoes = udata.getMovimentacoes(usuario_id, tr);
+            tr.commit();
+            System.out.println("OK ");   
+            return movimentacoes;
+        } catch(Exception e) {
+            System.out.println("Erro ao pesquisar perfil do Usuário " + usuario_id);
+            e.printStackTrace();
+        }
+        return null;
+    
+    } //getMovimentacao
+    
+    // Obtém o balance do usuário
+    public double getBalance(int usuario_id) throws Exception {
+
+        Transacao tr = new Transacao();
+        try {
+            tr.beginReadOnly();
+            UsuarioData udata = new UsuarioData();
+            double balance = udata.getBalance(usuario_id, tr);
+            tr.commit();
+            System.out.println("OK ");   
+            return balance;
+        } catch(Exception e) {
+            System.out.println("Erro ao pesquisar perfil do Usuário " + usuario_id);
+            e.printStackTrace();
+        }
+        return 0;
+    
+    } //getMovimentacao
 
 } // fim: UsuarioController
