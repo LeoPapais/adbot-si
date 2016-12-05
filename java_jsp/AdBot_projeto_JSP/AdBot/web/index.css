@@ -78,22 +78,9 @@ hr {
     font-size: 14px;
     margin: 2px 2px;
     cursor: pointer;
-}  
-
-.button_options_publisher {
-    background-color: #006400;
-    border: none;
-    color: white;
-    padding: 10px 15px;
-    text-align: right;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
-    margin: 2px 2px;
-    cursor: pointer;
 }   
 .button_balance {
-    background-color: #CC0000;
+    background-color: #C84057;
     border: none;
     color: white;
     padding: 10px 15px;
@@ -142,10 +129,6 @@ hr {
     font-size: 14px;
     margin: 2px 2px;
     cursor: pointer;
-}
-
-#Botao_Perfil_publisher {
-    background-color: #006400;
 }
 
 table.A {

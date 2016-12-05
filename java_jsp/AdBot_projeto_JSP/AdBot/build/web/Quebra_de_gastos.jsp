@@ -71,7 +71,7 @@
             <!------ Linha 1 ------>
             <h2>
                 <form action="Logout">
-                    <input id="Botao_Log_out" type="submit" class="button_log_out" value="Logout"> <!-- [Victor Teodoro: 28/11/2016] -->
+                    <input id="Botao_Log_out" type="submit" class="button_log_out" value="Log out"> <!-- [Victor Teodoro: 28/11/2016] -->
                     <i><left><font color="#BF223C">&nbsp&nbsp&nbspAdBot: Advertiser</font></left></i>  
                 </form> 
             </h2>

@@ -41,7 +41,7 @@
     
     // Verificação do tipo do usuário
     UsuarioTipoDTO ut = uc.getTipoUsuario(Usuario_ID);
-    if (!ut.getTipo().toLowerCase().equals("advertiser")) { // Se o usuário não for Advertiser, não deixá-lo ir para esta página
+    if ( ut.getTipo() == "Advertiser") { // Se o usuário não for Advertiser, não deixá-lo ir para esta página
         pageContext.forward("Homepage.jsp");
     }
     
@@ -67,7 +67,7 @@
             <!------ Linha 1 ------>
             <h2>
                 <form action="Logout"> <!-- [Victor Teodoro: 28/11/2016] -->
-                    <input id="Botao_Log_out" type="submit" class="button_log_out" value="Logout">
+                    <input id="Botao_Log_out" type="submit" class="button_log_out" value="Log out">
                     <i><left><font color="#BF223C">&nbsp&nbsp&nbspAdBot: Advertiser</font></left></i>  
                 </form> 
             </h2>
@@ -116,8 +116,8 @@
                     <a id="Botao_Listagem_de_Campaigns" class="button_blocked">Listagem de <i> Campaigns </i></a> 
                 </center>               
                 <center>
-                    <a id="Botao_Historico_de_movimentacao" href="Historico_de_movimentacao.jsp" class="button_blocked">Histórico de movimentação</a> 
-                    <a id="Botao_Balance_do_usuario" href="Balance_do_adverstiser.jsp" class="button_blocked"><i>Balance</i> do usuário</a> 
+                    <a id="Botao_Historico_de_movimentacao" href="Historico_de_movimentacao_advertiser.jsp" class="button_blocked">Histórico de movimentação</a> 
+                    <a id="Botao_Balance_do_usuario" href="Balance_do_advertiser.jsp" class="button_blocked"><i>Balance</i> do usuário</a> 
                 </center> 
 <%
             } else{ // Se o usuário não estiver bloqueado
@@ -129,7 +129,7 @@
                     <a id="Botao_Listagem_de_Campaigns" href="Listagem_campaigns.jsp" class="button_options">Listagem de <i> Campaigns </i></a> 
                 </center>
                 <center>
-                    <a id="Botao_Historico_de_movimentacao" href="Historico_de_movimentacao_advertiser.jsp" class="button_options">Histórico de movimentação</a> 
+                    <a id="Botao_Historico_de_movimentacao" href="Historico_de_movimentacao_advertiser.jsp" class="button_balance">Histórico de movimentação</a> 
                     <a id="Botao_Balance_do_usuario" href="Balance_do_advertiser.jsp" class="button_balance"><i>Balance</i> do usuário</a> 
                 </center>
 <%
