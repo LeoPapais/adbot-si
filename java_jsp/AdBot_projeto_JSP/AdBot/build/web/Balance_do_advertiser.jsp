@@ -1,6 +1,6 @@
 <%-- 
-    Document   : Historico_de_movimentacao_publisher
-    Created on : 04/12/2016, 19:13:04
+    Document   : Balance_do_advertiser
+    Created on : 04/12/2016, 21:54:10
     Author     : Victor
 --%>
 
@@ -9,6 +9,7 @@
 <%@ page import="java.sql.*" %>                 <!-- Importando biblioteca SQL do Java -->
 <%@ page import="java.util.Vector" %>           <!-- Importando variável Vector de Java -->
 <%@ page import="java.util.List" %>             <!-- Importando Listas -->
+<%@ page import="java.util.Date" %>             <!-- Importando Date -->
 <%@ page import="transacoes_Controller.*" %>    <!-- Importando Controllers -->
 <%@ page import="data_Model.*" %>               <!-- Importando Models -->
 <%@ page import="DTO_Objects.*" %>              <!-- Importando DTOs -->
@@ -24,7 +25,7 @@
 <html>
     <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>AdBot Advertiser: Movimentação de Advertiser</title> 
+        <title>AdBot Advertiser: Balance do Advertiser</title> 
         <link rel="stylesheet" type="text/css" href="view.css" media="all">
         <script type="text/javascript" src="view.js"></script>
         <!-- Arquivo com as formatações de página e cores dos tipos de botão -->
@@ -48,7 +49,7 @@
             
             // Verificação do tipo do usuário
             UsuarioTipoDTO ut = uc.getTipoUsuario(usuario_id);
-            if ( ut.getTipo() == "Advertiser") {
+            if (!ut.getTipo().toLowerCase().equals("advertiser")) {
                 pageContext.forward("Homepage.jsp");
             }
 
@@ -76,16 +77,17 @@
             VisualizacaoAdvertiserPublisherDTO vap = uc.visualizarPerfilAdvertiserPublisher(usuario_id);
             
             // Obtém os dados das movimentações do advertiser
-            List<MovimentacaoDTO> movimentacoes = uc.getMovimentacao(usuario_id);
+            double balance = uc.getBalance(usuario_id);
             
             // Cria o formato de hora e data a ser exibido
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            Date date = new Date();
 %>
 
             <font size="3" color="#BF223C">&nbsp&nbsp&nbspAdvertiser: <%= String.format("%s %s", ud.getNome(), ud.getSobrenome()) %> </font>
                 
             <!------ Título da página ------>
-            <h3><center><font size="5" color="#E04C64">Movimentações do Advertiser</font></center></h3>
+            <h3><center><font size="5" color="#E04C64">Balance do Advertiser</font></center></h3>
 
             <br><hr><br>
             <center><IMG src="imagens/perfil_advertiser.jpg" width="60" height="80" align="center" border="0"></center>
@@ -93,22 +95,15 @@
             <center>
                 <table>
                     <tr>
-                      <th>ID</th>
-                      <th>Valor</th>
-                      <th>Descrição</th>
-                      <th>Data e Hora</th>
+                        <th>Data de hoje</th>
+                        <th>Nome</th>
+                        <th>Balance</th>
                     </tr>
-                    <% for (int i = 0; i < movimentacoes.size(); ++i){
-                    %>
                         <tr>
-                            <% MovimentacaoDTO movimentacao = movimentacoes.get(i); %>
-                            <td> <%= movimentacao.getId() %> </td>
-                            <td> <%= String.format("R$ %6.2f", movimentacao.getValor()) %> </td>
-                            <td> <%= movimentacao.getDescricao() %> </td>
-                            <td> <%= dateFormat.format(movimentacao.getDataHora()) %> </td>
-                    <%
-                    }
-                    %>
+                            <td> <%= dateFormat.format(date) %> </td>
+                            <td> <%= String.format("%s %s", ud.getNome(), ud.getSobrenome()) %> </td>
+                            <td> <%= String.format("R$ %6.2f", balance) %> </td>
+                        </tr>
                     <br>
                 </table>
             </center>
@@ -123,7 +118,9 @@
                     <a id="Botao_Editar_perfil" class="button_blocked"> Editar perfil </a> 
                     <a id="Botao_Inserir_credito" class="button_blocked">Inserir crédito</a> 
                     <a id="Botao_Listagem_de_Campaigns" class="button_blocked">Listagem de Campaigns</a> 
-                    <a id="Botao_Balance_do_usuario" href="Balance_do_advertiser.jsp" class="button_blocked">Balance do usuário</a> 
+                    <a id="Botao_Historico_de_movimentacao" href="Historico_de_movimentacao_advertiser.jsp" class="button_balance">
+                        Histórico de movimentação
+                    </a> 
                 </center> 
 <%
             } else{ // Se o usuário não estiver bloqueado
@@ -133,7 +130,9 @@
                     <a id="Botao_Editar_perfil" href="Edicao_de_perfil_de_advertiser.jsp" class="button_options"> Editar perfil </a> 
                     <a id="Botao_Inserir_credito" href="Insercao_de_credito.jsp" class="button_options">Inserir crédito</a> 
                     <a id="Botao_Listagem_de_Campaigns" href="Listagem_campaigns.jsp" class="button_options">Listagem de Campaigns</a> 
-                    <a id="Botao_Balance_do_usuario" href="Balance_do_advertiser.jsp" class="button_balance">Balance do usuário</a> 
+                    <a id="Botao_Historico_de_movimentacao" href="Historico_de_movimentacao_advertiser.jsp" class="button_balance">
+                        Histórico de movimentação
+                    </a>
                 </center>
 <%
             }

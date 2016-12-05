@@ -278,6 +278,26 @@ insert into Movimentacao
 	(ID, Valor, Descricao, Data_movimentacao, Usuario_ID) 
     values 
     (4, -10.00, "Débito", '2016/01/25 21:21:00', 6);
+
+insert into Movimentacao 
+	(ID, Valor, Descricao, Data_movimentacao, Usuario_ID) 
+    values 
+    (5, -10.00, "Débito", '2016/05/25 21:21:00', 5);
+
+insert into Movimentacao 
+	(ID, Valor, Descricao, Data_movimentacao, Usuario_ID) 
+    values 
+    (6, -18.00, "Débito", '2016/01/26 10:15:13', 5);
+
+insert into Movimentacao 
+	(ID, Valor, Descricao, Data_movimentacao, Usuario_ID) 
+    values 
+    (7, 45.50, "Débito", '2016/01/28 14:33:00', 5);
+
+insert into Movimentacao 
+	(ID, Valor, Descricao, Data_movimentacao, Usuario_ID) 
+    values 
+    (8, 12.35, "Débito", '2016/01/29 22:28:12', 5);
     
 # Medias
 insert into Media

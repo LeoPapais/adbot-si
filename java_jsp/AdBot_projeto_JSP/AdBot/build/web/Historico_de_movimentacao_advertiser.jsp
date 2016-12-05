@@ -85,7 +85,7 @@
             <font size="3" color="#BF223C">&nbsp&nbsp&nbspAdvertiser: <%= String.format("%s %s", ud.getNome(), ud.getSobrenome()) %> </font>
                 
             <!------ Título da página ------>
-            <h3><center><font size="5" color="#E04C64">Movimentações de Advertiser</font></center></h3>
+            <h3><center><font size="5" color="#E04C64">Movimentações do Advertiser</font></center></h3>
 
             <br><hr><br>
             <center><IMG src="imagens/perfil_advertiser.jpg" width="60" height="80" align="center" border="0"></center>
@@ -103,7 +103,7 @@
                         <tr>
                             <% MovimentacaoDTO movimentacao = movimentacoes.get(i); %>
                             <td> <%= movimentacao.getId() %> </td>
-                            <td> <%= String.format("%6.2f", movimentacao.getValor()) %> </td>
+                            <td> <%= String.format("R$ %6.2f", movimentacao.getValor()) %> </td>
                             <td> <%= movimentacao.getDescricao() %> </td>
                             <td> <%= dateFormat.format(movimentacao.getDataHora()) %> </td>
                     <%
@@ -123,7 +123,7 @@
                     <a id="Botao_Editar_perfil" class="button_blocked"> Editar perfil </a> 
                     <a id="Botao_Inserir_credito" class="button_blocked">Inserir crédito</a> 
                     <a id="Botao_Listagem_de_Campaigns" class="button_blocked">Listagem de Campaigns</a> 
-                    <a id="Botao_Balance_do_usuario" href="Balance_do_usuario.jsp" class="button_blocked"><i>Balance</i> do usuário</a> 
+                    <a id="Botao_Balance_do_usuario" href="Balance_do_advertiser.jsp" class="button_blocked">Balance do usuário</a> 
                 </center> 
 <%
             } else{ // Se o usuário não estiver bloqueado
@@ -133,7 +133,7 @@
                     <a id="Botao_Editar_perfil" href="Edicao_de_perfil_de_advertiser.jsp" class="button_options"> Editar perfil </a> 
                     <a id="Botao_Inserir_credito" href="Insercao_de_credito.jsp" class="button_options">Inserir crédito</a> 
                     <a id="Botao_Listagem_de_Campaigns" href="Listagem_campaigns.jsp" class="button_options">Listagem de Campaigns</a> 
-                    <a id="Botao_Balance_do_usuario" href="Balance_do_usuario.jsp" class="button_balance">Balance do usuário</a> 
+                    <a id="Botao_Balance_do_usuario" href="Balance_do_advertiser.jsp" class="button_balance">Balance do usuário</a> 
                 </center>
 <%
             }

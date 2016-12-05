@@ -41,7 +41,7 @@
     
     // Verificação do tipo do usuário
     UsuarioTipoDTO ut = uc.getTipoUsuario(Usuario_ID);
-    if ( ut.getTipo() == "Advertiser") { // Se o usuário não for Advertiser, não deixá-lo ir para esta página
+    if (!ut.getTipo().toLowerCase().equals("advertiser")) { // Se o usuário não for Advertiser, não deixá-lo ir para esta página
         pageContext.forward("Homepage.jsp");
     }
     
@@ -117,7 +117,7 @@
                 </center>               
                 <center>
                     <a id="Botao_Historico_de_movimentacao" href="Historico_de_movimentacao.jsp" class="button_blocked">Histórico de movimentação</a> 
-                    <a id="Botao_Balance_do_usuario" href="Balance_do_usuario.jsp" class="button_blocked"><i>Balance</i> do usuário</a> 
+                    <a id="Botao_Balance_do_usuario" href="Balance_do_adverstiser.jsp" class="button_blocked"><i>Balance</i> do usuário</a> 
                 </center> 
 <%
             } else{ // Se o usuário não estiver bloqueado
@@ -130,7 +130,7 @@
                 </center>
                 <center>
                     <a id="Botao_Historico_de_movimentacao" href="Historico_de_movimentacao_advertiser.jsp" class="button_balance">Histórico de movimentação</a> 
-                    <a id="Botao_Balance_do_usuario" href="Balance_do_usuario_advertiser.jsp" class="button_balance"><i>Balance</i> do usuário</a> 
+                    <a id="Botao_Balance_do_usuario" href="Balance_do_advertiser.jsp" class="button_balance"><i>Balance</i> do usuário</a> 
                 </center>
 <%
             }

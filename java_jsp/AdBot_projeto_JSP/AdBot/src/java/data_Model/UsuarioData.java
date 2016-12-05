@@ -226,6 +226,28 @@ public class UsuarioData {
         }
         
         return movimentacoes;
-    } //visualizarPerfilAdvertiserPublisher
+    } //getMovimentacoes
+    
+    // Obtém do DB todas as movimentações feitas em nome do usuário ided por usuario_id
+    // Depois calcula o saldo
+    public double getBalance(int usuario_id, Transacao tr) throws Exception {
+        
+        Connection con = tr.obterConexao();
+
+        String sql = "select Valor from Movimentacao where Usuario_ID = ?";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, usuario_id);
+        ResultSet rs = ps.executeQuery();
+        System.out.println("Query executada");
+        
+        //Saldo do usuário
+        double balance = 0;
+        
+        // Enquanto houver linhas a se ler, soma ao balance
+        while (rs.next())
+            balance += rs.getDouble("Valor"); 
+        
+        return balance;
+    } //getBalance
 
 } // fim: UsuarioData
