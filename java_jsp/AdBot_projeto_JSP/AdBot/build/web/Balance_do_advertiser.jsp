@@ -130,7 +130,7 @@
                     <a id="Botao_Editar_perfil" href="Edicao_de_perfil_de_advertiser.jsp" class="button_options"> Editar perfil </a> 
                     <a id="Botao_Inserir_credito" href="Insercao_de_credito.jsp" class="button_options">Inserir crédito</a> 
                     <a id="Botao_Listagem_de_Campaigns" href="Listagem_campaigns.jsp" class="button_options">Listagem de Campaigns</a> 
-                    <a id="Botao_Historico_de_movimentacao" href="Historico_de_movimentacao_advertiser.jsp" class="button_balance">
+                    <a id="Botao_Historico_de_movimentacao" href="Historico_de_movimentacao_advertiser.jsp" class="button_options">
                         Histórico de movimentação
                     </a>
                 </center>

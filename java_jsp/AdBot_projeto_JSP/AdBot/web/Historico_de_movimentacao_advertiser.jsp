@@ -82,7 +82,7 @@
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 %>
 
-            <font size="3" color="#BF223C">&nbsp&nbsp&nbspAdvertiser: <%= String.format("%s %s", ud.getNome(), ud.getSobrenome()) %> </font>
+            <font size="3" color="#E04C64">&nbsp&nbsp&nbspAdvertiser: <%= String.format("%s %s", ud.getNome(), ud.getSobrenome()) %> </font>
                 
             <!------ Título da página ------>
             <h3><center><font size="5" color="#E04C64">Movimentações do Advertiser</font></center></h3>
@@ -133,7 +133,7 @@
                     <a id="Botao_Editar_perfil" href="Edicao_de_perfil_de_advertiser.jsp" class="button_options"> Editar perfil </a> 
                     <a id="Botao_Inserir_credito" href="Insercao_de_credito.jsp" class="button_options">Inserir crédito</a> 
                     <a id="Botao_Listagem_de_Campaigns" href="Listagem_campaigns.jsp" class="button_options">Listagem de Campaigns</a> 
-                    <a id="Botao_Balance_do_usuario" href="Balance_do_advertiser.jsp" class="button_balance">Balance do usuário</a> 
+                    <a id="Botao_Balance_do_usuario" href="Balance_do_advertiser.jsp" class="button_options">Balance do usuário</a> 
                 </center>
 <%
             }

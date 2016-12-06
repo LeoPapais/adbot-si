@@ -19,3 +19,16 @@ tr:nth-child(even) {
     background-color: #f5fffa;
 }
 
+.button_options_publisher {
+    background-color: #006400;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    text-align: right;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 2px 2px;
+    cursor: pointer;
+}
+

@@ -46,6 +46,7 @@
             // Instanciar UsuarioController
             UsuarioController uc = new UsuarioController();
             
+            
             // Verificação do tipo do usuário
             UsuarioTipoDTO ut = uc.getTipoUsuario(usuario_id);
             if (!ut.getTipo().toLowerCase().equals("publisher")) {
@@ -69,7 +70,7 @@
             </h2>
             
             <!------ Linha 2 ------>
-            <a id="Botao_Perfil_publisher" href="Perfil_de_publisher.jsp" class="button_options">Perfil do Publisher</a>
+            <a id="Botao_Perfil_publisher" href="Perfil_de_publisher.jsp" class="button_options_publisher">Perfil do Publisher</a>
 
 <%           
             // Obter dados para visualização do perfil de Advertiser
