@@ -19,6 +19,30 @@ import utils.Transacao;
 
 public class CampaignData {
     
+    public boolean createCampaign(CreateCampaignDTO C, Transacao tr) throws Exception {
+        Connection con = tr.obterConexao();
+        String sql = "insert into Campaign (Nome, clickURL, Bid, Tipo_produto, Marca_produto, Gasto_total, Autorizacao, Genero_alvo, "
+                + "Idade_alvo_min, Idade_alvo_max, Link_figura_da_impression, Black_ou_whitelist) "
+                + "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        
+     PreparedStatement ps = con.prepareStatement(sql);
+     int index=0;
+     ps.setString(++index, C.getNome());
+     ps.setString(++index, C.getClickURL());
+     ps.setFloat(++index, C.getBid());
+     ps.setString(++index, C.getTipo_produto());
+     ps.setString(++index, C.getMarca_produto());
+     ps.setFloat(++index, C.getGasto_total());
+     ps.setInt(++index, C.getAutorizacao());
+     ps.setString(++index, C.getGenero_alvo());
+     ps.setInt(++index, C.getIdade_alvo_min());
+     ps.setInt(++index, C.getIdade_alvo_max());
+     ps.setString(++index, C.getLink_figura_da_impression());
+     ps.setString(++index, C.getBlack_ou_whitelist());
+     int result = ps.executeUpdate();
+     return (result != 0);
+    }
+    
     // Adquirir dados necessários à página Listagem_campaigns.jsp [Diego: 02/11/2016, 22/11/2016]
     public Vector getListagemCampaigns(int Usuario_ID, Transacao tr) throws Exception {
         
