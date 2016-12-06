@@ -1,3 +1,4 @@
+
 <html>
 <header>
   <title>Inserir Contato</title>
@@ -28,32 +29,32 @@
     String Usuario_ID_st = (String)session.getAttribute("Usuario_ID");
     int Usuario_ID = Integer.parseInt(Usuario_ID_st);
 %>
-    Olá <%= Usuario_ID_st %>, Insira os parâmetros da campanha
+    Insira os parâmetros da campanha:
 
            <table>
             <tr>
                <td>Nome da Campanha</td>
-               <td><input type="text" name="Nome" maxlength="500"/>
+               <td><input type="text" name="Nome" maxlength="500" required/>
             </tr>
             <tr>
                <td>clickURL</td>
-               <td><input type="url" name="clickURL" maxlength="200"/>
+               <td><input type="url" name="clickURL" maxlength="200" required/>
             </tr>
             <tr>
                <td>Bid</td>
-               <td><input type="number" name="Bid" min="0" step="0.01" max="4000000000"/>
+               <td><input type="number" name="Bid" min="0" step="0.01" max="4000000000" required/>
             </tr>
             <tr>
                <td>Tipo do Produto</td>
-               <td><input type="text" name="Tipo_produto" maxlength="25"/>
+               <td><input type="text" name="Tipo_produto" maxlength="25" required/>
             </tr>
             <tr>
                <td>Marca do Produto</td>
-               <td><input type="text" name="Marca_produto" maxlength="25"/>
+               <td><input type="text" name="Marca_produto" maxlength="25" required/>
             </tr>
             <tr>
-               <td>Gasto Total</td>
-               <td><input type="number" name="Gasto_total" min="0" step="0.01" max="4000000000"/>
+               <td>Limite de Gasto</td>
+               <td><input type="number" name="Limite_gasto" min="0" step="0.01" max="4000000000" required/>
             </tr>
             <tr>
                <td>Genero Alvo</td>
@@ -72,7 +73,7 @@
             </tr>
             <tr>
                <td>Link da Figura</td>
-               <td><input type="url" name="Link_figura_da_impression" maxlength="1000"/>
+               <td><input type="url" name="Link_figura_da_impression" maxlength="1000" required/>
             </tr>
             <tr>
                <td>Black ou Whitelist?</td>
@@ -101,10 +102,16 @@
        cDTO.setLink_figura_da_impression(request.getParameter("Link_figura_da_impression"));
        cDTO.setBlack_ou_whitelist(request.getParameter("Black_ou_whitelist"));
        cDTO.setBid(Float.parseFloat(request.getParameter("Bid")));
-       cDTO.setGasto_total(Float.parseFloat(request.getParameter("Gasto_total")));
-       cDTO.setAutorizacao(0);
-       cDTO.setIdade_alvo_min(Integer.parseInt(request.getParameter("Idade_alvo_min")));
-       cDTO.setIdade_alvo_max(Integer.parseInt(request.getParameter("Idade_alvo_max")));
+       cDTO.setLimite_gasto(Float.parseFloat(request.getParameter("Limite_gasto")));
+       cDTO.setAutorizacao(1);
+       if (request.getParameter("Idade_alvo_min").length() > 0) 
+           cDTO.setIdade_alvo_min(Integer.parseInt(request.getParameter("Idade_alvo_min")));
+       else 
+           cDTO.setIdade_alvo_min(0);
+       if (request.getParameter("Idade_alvo_max").length() > 0) 
+           cDTO.setIdade_alvo_min(Integer.parseInt(request.getParameter("Idade_alvo_max")));
+       else
+           cDTO.setIdade_alvo_max(130);
        
        if ( cc.criarCampaign(cDTO) ) {
          // avisar usuario que transacao foi feita com sucesso
@@ -115,8 +122,11 @@
           </form>
 <%     } else {
 %>
-          Erro ao criar campanha. Erro:
-          <form action="./Criacao_de_campaign.jsp" method="post">
+          Erro ao criar Campaign. 
+          Idade alvo máxima deve ser maior que a Idade alvo Mínima.
+          Gasto Máximo deve ser maior do que Bid.
+          
+          <form action="./Perfil_de_advertiser.jsp" method="post">
              <input type="submit" name="retry" value="Repetir" />
           </form>
 <%     }

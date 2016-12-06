@@ -14,19 +14,26 @@ import DTO_Objects.*;
 import java.sql.*;
 import utils.*;
 import java.util.*;
+import static javax.faces.component.UIInput.isEmpty;
 import utils.Transacao;
 
 public class CampaignController {
-
-    public CampaignController() {
-    }
     
     public boolean criarCampaign(CreateCampaignDTO C) throws Exception {
         
      // validacao das regras de negocio
-        System.out.println("C.getNome()");
-        System.out.println(C.getNome());
-     if ( (isEmpty(C.getNome())) ) {
+     if (C.getLimite_gasto() < C.getBid() ) {
+         System.out.println("C.getLimite_gasto()");
+         System.out.println(C.getLimite_gasto());
+         System.out.println("C.getBid()");
+         System.out.println(C.getBid());
+       return false;
+     }
+     else if (C.getIdade_alvo_max()< C.getIdade_alvo_min()) {
+         System.out.println("C.getIdade_alvo_max()");
+         System.out.println(C.getIdade_alvo_max());
+         System.out.println("C.getIdade_alvo_min()");
+         System.out.println(C.getIdade_alvo_min());
        return false;
      }
 
