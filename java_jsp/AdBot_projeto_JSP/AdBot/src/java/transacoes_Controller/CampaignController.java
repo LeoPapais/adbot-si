@@ -20,6 +20,34 @@ public class CampaignController {
 
     public CampaignController() {
     }
+    
+    public boolean criarCampaign(CreateCampaignDTO C) throws Exception {
+        
+     // validacao das regras de negocio
+        System.out.println("C.getNome()");
+        System.out.println(C.getNome());
+     if ( (isEmpty(C.getNome())) ) {
+       return false;
+     }
+
+     // efetuando a transacao
+     Transacao tr = new Transacao();
+     try {
+        System.out.println("try");
+       tr.begin();
+         CampaignData cdata = new CampaignData();
+         cdata.createCampaign(C, tr);
+       tr.commit();
+       return true;
+     } catch(Exception e) {
+        System.out.println("catch");
+        System.out.println(e);
+         tr.rollback();
+         System.out.println("erro ao incluir ");
+         e.printStackTrace();
+     }
+     return false;
+    }
 
     // Adquirir dados necessários à página Listagem_campaigns.jsp e Sumario_geral_das_metricas_de_performance_de_campaigns.jsp [Diego: 02/11/2016]
     public Vector getListagemCampaigns(int Usuario_ID) throws Exception {
