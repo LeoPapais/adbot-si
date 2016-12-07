@@ -64,7 +64,7 @@
                     <tr class ="C">
                         <td>
                             <form method="post" action="Remover_publisher.jsp?id_to_use=<%=id_to_use%>">
-                                Confirmar<input id="Botao_confirmar" type="submit" class="button_options2"/>
+                                <input id="Botao_confirmar" type="submit" class="button_options2" value="Confirmar"/>
                                 <input type="hidden" name="Confirmar" />
                             </form>
                         </td>
