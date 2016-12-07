@@ -78,11 +78,13 @@
                     <br><br>
                     Sobrenome <input type="text" name="Sobrenome" required/>
                     <br><br>
-                    Senha <input type="text" name="Senha" required/>
+                    Senha <input type="password" name="Senha" required/>
                     <br><br>
-                    Email <input type="text" name="Email" required/>
+                    Email <input type="email" name="Email" required/>
                     <br><br>
-                    Tipo de usuario <input type="text" name="Tipo_usuario"required />
+                    Tipo de usuario <td><input type="radio" name="Tipo_usuario" value="Publisher"/> Publisher
+                                    <td><input type="radio" name="Tipo_usuario" value="Advertiser"/> Advertiser
+                    
                     <br><br>
                     Conta de banco <input type="text" name="Conta_banco"required />
                     <br><br>

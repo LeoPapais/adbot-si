@@ -257,4 +257,23 @@ public class UsuarioController {
         }
         return false;
     }
+    
+    public int removerCadastro(int usuario_ID) {
+
+        Transacao tr = new Transacao();
+        try {
+            System.out.println("UsuarioControler: Rem.UB: begin.");
+            tr.begin();
+            UsuarioData uData = new UsuarioData();
+            int remove_ok = uData.removerCadastro(usuario_ID, tr);
+            tr.commit();
+            System.out.println("UsuarioControler: Rem.UB: Success.");
+            return remove_ok;
+        } catch(Exception e) {
+            System.out.println("UsuarioControler: Rem.UB: Failed. Exception.");
+            e.printStackTrace();
+            return 0;
+        }
+
+    } // fim: removerCadastro
 } // fim: UsuarioController
