@@ -86,14 +86,8 @@
         </form>
 
 <%      } else { 
-%>
-<! ------------------------------------------------------------------->
-<!--   se nao for o request inicial, acionar a transacao de negocio -->
-
-
-<%
        CampaignController cc = new CampaignController();
-       CreateCampaignDTO cDTO = new CreateCampaignDTO();
+       CreateUpdateCampaignDTO cDTO = new CreateUpdateCampaignDTO();
        cDTO.setNome(request.getParameter("Nome"));
        cDTO.setClickURL(request.getParameter("clickURL"));
        cDTO.setTipo_produto(request.getParameter("Tipo_produto"));
@@ -109,7 +103,7 @@
        else 
            cDTO.setIdade_alvo_min(0);
        if (request.getParameter("Idade_alvo_max").length() > 0) 
-           cDTO.setIdade_alvo_min(Integer.parseInt(request.getParameter("Idade_alvo_max")));
+           cDTO.setIdade_alvo_max(Integer.parseInt(request.getParameter("Idade_alvo_max")));
        else
            cDTO.setIdade_alvo_max(130);
        
@@ -124,7 +118,7 @@
 %>
           Erro ao criar Campaign. 
           Idade alvo máxima deve ser maior que a Idade alvo Mínima.
-          Gasto Máximo deve ser maior do que Bid.
+          Limite de gasto deve ser maior do que Bid.
           
           <form action="./Perfil_de_advertiser.jsp" method="post">
              <input type="submit" name="retry" value="Repetir" />

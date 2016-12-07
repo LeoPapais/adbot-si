@@ -9,7 +9,10 @@ package DTO_Objects;
  *
  * @author leo
  */
-public class CreateCampaignDTO {
+public class CreateUpdateCampaignDTO {
+
+    public CreateUpdateCampaignDTO() {
+    }
     
     private String Nome;
     private String clickURL;

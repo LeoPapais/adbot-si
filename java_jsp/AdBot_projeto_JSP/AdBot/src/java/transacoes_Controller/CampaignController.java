@@ -19,7 +19,35 @@ import utils.Transacao;
 
 public class CampaignController {
     
-    public boolean criarCampaign(CreateCampaignDTO C) throws Exception {
+    public boolean editarCampaign(int Usuario_ID, int Campaign_ID, CreateUpdateCampaignDTO C)throws Exception{
+     Transacao tr = new Transacao();
+     try {
+        tr.begin();
+        CampaignData cdata = new CampaignData();
+        cdata.editCampaign(Usuario_ID, Campaign_ID, C, tr);
+        tr.commit();
+        return true;
+     } catch(Exception e) {
+        System.out.println(e);
+        tr.rollback();
+        e.printStackTrace();
+        return false;
+     }
+    }
+    
+    public VisualizacaoCampaignDTO visualizarCampaign(int Campaign_ID) throws Exception{
+     Transacao tr = new Transacao();
+     try {
+        tr.begin();
+        return (new CampaignData()).visualizacaoCampaign(Campaign_ID, tr);
+     } catch(Exception e) {
+        System.out.println(e);
+        tr.rollback();
+        return null;
+     }
+    }
+    
+    public boolean criarCampaign(CreateUpdateCampaignDTO C) throws Exception {
         
      // validacao das regras de negocio
      if (C.getLimite_gasto() < C.getBid() ) {
@@ -29,7 +57,7 @@ public class CampaignController {
          System.out.println(C.getBid());
        return false;
      }
-     else if (C.getIdade_alvo_max()< C.getIdade_alvo_min()) {
+     else if (C.getIdade_alvo_max() < C.getIdade_alvo_min()) {
          System.out.println("C.getIdade_alvo_max()");
          System.out.println(C.getIdade_alvo_max());
          System.out.println("C.getIdade_alvo_min()");
@@ -40,17 +68,14 @@ public class CampaignController {
      // efetuando a transacao
      Transacao tr = new Transacao();
      try {
-        System.out.println("try");
        tr.begin();
          CampaignData cdata = new CampaignData();
          cdata.createCampaign(C, tr);
        tr.commit();
        return true;
      } catch(Exception e) {
-        System.out.println("catch");
         System.out.println(e);
          tr.rollback();
-         System.out.println("erro ao incluir ");
          e.printStackTrace();
      }
      return false;
@@ -81,8 +106,8 @@ public class CampaignController {
         Transacao tr = new Transacao();
         try {
             tr.beginReadOnly();
-              CampaignData cdata = new CampaignData();
-              Vector v = cdata.getQuebraCampaignMedia(Usuario_ID, tr);
+            CampaignData cdata = new CampaignData();
+            Vector v = cdata.getQuebraCampaignMedia(Usuario_ID, tr);
             tr.commit();
             System.out.println("OK ");   
             return v;
