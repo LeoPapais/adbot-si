@@ -101,5 +101,48 @@ public class AdministradorData {
         }
 
     } // fim: getListagemPublishers
-
+    
+    // 4) Bloquear Campaign [Douglas]
+    public int bloquearCampaign (int campaing_ID, BloqueioCampaignDTO blockDTO, Transacao tr) throws Exception{
+        System.out.println("AdminData: Blk.Camp: Begin.");
+        Connection con = tr.obterConexao();
+        String sql;
+        sql = "update Campaing set Bloqueio = ? where ID = ?";
+        PreparedStatement ps = con.prepareStatement(sql);
+        if (blockDTO.getBloqueio()==1)
+            ps.setBoolean(1,true);
+        else
+            ps.setBoolean(1, false);
+        ps.setInt(2,campaing_ID);
+        try{
+            int rs = ps.executeUpdate();
+            System.out.println("AdminData: Blk.Camp: Database Updated. Number of modifications = "+rs);
+            return rs;
+        }
+        catch(Exception e){
+            System.out.println("AdminData: Blk.Camp: Failed Exception. No modifications on Database.");
+            e.printStackTrace();
+            return 0;
+        }
+    } // fim : bloquearCampaign
+    
+    // 5) Remover Advertiser Publisher [Douglas]
+    public int removerAdvertiserPublisher(int usuario_ID, Transacao tr) throws Exception{
+        System.out.println("AdminData: Rem.UB: Begin.");
+        Connection con = tr.obterConexao();
+        String sql;
+        sql = "Delete from Usuario where ID = ?  ";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1,usuario_ID);
+        try{
+            int rs = ps.executeUpdate();
+            System.out.println("AdminData: Rem.UB: Database Updated. Number of modifications = "+rs);
+            return rs;
+        }
+        catch(Exception e){
+            System.out.println("AdminData: Rem.UB: Failed Exception. No modifications on Database.");
+            e.printStackTrace();
+            return 0;
+        }
+    }// fim: removerAdvertiserPublisher
 } // fim: AdministradorData
