@@ -46,6 +46,30 @@
     
     // Nome + Sobrenome do usuário
     UsuarioNomeDTO ud = uc.getNomeUsuario(Usuario_ID); 
+    
+    if (request.getParameter("Acao") != null){
+        System.out.println("Listagem_medias.jsp: Action: " + request.getParameter("Acao"));
+        // Case A - to block publisher
+        if (Integer.parseInt( (String)request.getParameter("Acao") ) == 1){
+            System.out.println("Listagem_medias.jsp: Action: TestModeOFF");
+            int id_to_use = Integer.parseInt( (String)request.getParameter("id_to_use") );
+            TestModeDTO testDTO = new TestModeDTO( 1 );
+            MediaController MedCtl = new MediaController();
+            MedCtl.mudarTestMode(id_to_use, testDTO);
+            System.out.println("Listagem_medias.jsp: Action: TestModeOFF: proceed...");
+        } // fim: case a
+        
+        // Case B - to unblock publisher
+        if (Integer.parseInt( (String)request.getParameter("Acao") ) == 0){
+            System.out.println("Listagem_medias.jsp: Action: TestModeON");
+            int id_to_use = Integer.parseInt( (String)request.getParameter("id_to_use") );
+            TestModeDTO testDTO = new TestModeDTO( 0 );
+            MediaController MedCtl = new MediaController();
+            MedCtl.mudarTestMode(id_to_use, testDTO);
+            System.out.println("Listagem_medias.jsp: Action: TestModeON: proceed...");
+        } // fim: case b
+        
+    }
 %>    
 
     <head>
@@ -90,6 +114,9 @@
                     <th class="B" bgcolor="#FFFFFF"><center>CPC Mínimo</center></th>
 
                     <th class="B" bgcolor="#FFFFFF"><center>Ação</center></th>
+                    <th class="B" bgcolor="#FFFFFF"><center></center></th>
+                    <th class="B" bgcolor="#FFFFFF"><center>Test Mode</center></th>
+
                 </tr>
                 
 <%
@@ -182,9 +209,36 @@
                                         </tr>
                                     </table>
                                 </th>
-                            </tr>  
-
+                              
+ <%                           if(m.getTestMode() == 0) {
+%>    
+                                    <th bgcolor="#90EE90">
+                                        <table class="A">
+                                            <tr>
+                                                <center>
+                                                    <a id=<%= String.format("Botao_%d_TestMode", i)%>, href="Listagem_medias.jsp?Acao=1&id_to_use=<%=m.getID()%>" type="button" class="button_pause">&nbsp TestMode &nbsp</a> 
+                                                </center>
+                                            </tr>
+                                            <td class="A"><font size="4" color = "green"> <center>ATIVO</center></font></td>
+                                        </table>
+                                    </th>    
 <%
+                            } else { // Media inativa
+%>
+                                    <th bgcolor="#FFAF96">
+                                        <table class="A">
+                                            <tr>
+                                                <center>
+                                                    <a id=<%= String.format("Botao_%d_TestMode", i)%>, href="Listagem_medias.jsp?Acao=0&id_to_use=<%=m.getID()%>" type="button" class="button_play">&nbsp TestMode &nbsp</a> 
+                                                </center>
+                                            </tr>
+                                            <td class="A"><font size="4" color = "red"> <center>INATIVO</center></font></td>  
+                                        </table>
+                                    </th>  
+                            </tr>  
+<%
+                            }
+                                            
                         }
 %>
                         <tr class="B"> <!-- Exibir os valores dos totais na última linha da tabela -->
@@ -197,6 +251,9 @@
                                 <td class="B" bgcolor="#ADD8E6" style="text-align:right"> </td>
                                 <td class="B" bgcolor="#ADD8E6" style="text-align:right"> </td>                             
                         </tr>
+      
+                                
+                                
 <%
                     }
 %>

@@ -39,7 +39,7 @@ public class MediaData {
             l.setID(rs.getInt("ID"));       
             l.setTipo_produto(rs.getString("Tipo_produto")); 
             l.setEstado(rs.getInt("Estado"));
-            l.setTestMode(rs.getString("TestMode"));
+            l.setTestMode(rs.getInt("TestMode"));
             l.setEndereco_REST_API_chatbot(rs.getString("Endereco_REST_API_chatbot"));
             l.setTotal_visualizacoes(rs.getInt("Total_visualizacoes"));         
             l.setCPC_minimo(rs.getFloat("CPC_minimo"));  

@@ -16,7 +16,7 @@ public class ListagemMediasDTO {
     private String Nome;
     private int ID;
     private int Estado;
-    private String TestMode;
+    private int TestMode;
     private String Tipo_produto;
     private String Endereco_REST_API_chatbot;
     private int Total_visualizacoes;
@@ -48,7 +48,7 @@ public class ListagemMediasDTO {
         this.Estado = Estado;
     }
 
-    public void setTestMode(String TestMode) {
+    public void setTestMode(int TestMode) {
         this.TestMode = TestMode;
     }
 
@@ -73,7 +73,7 @@ public class ListagemMediasDTO {
         return Estado;
     }
 
-    public String getTestMode() {
+    public int getTestMode() {
         return TestMode;
     }
 

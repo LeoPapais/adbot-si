@@ -52,17 +52,18 @@
     
     // Nome + Sobrenome do usuário
     UsuarioNomeDTO ud = uc.getNomeUsuario(Usuario_ID); 
-    if (request.getParameter("Acao") != null){
-        // Case A - to unauthorize
-        if (Integer.parseInt( (String)request.getParameter("Acao") ) == 1){
-            System.out.println("Listagem_campaign.jsp: Action: unauthorize");
-            int id_to_use = Integer.parseInt( (String)request.getParameter("id_to_use") );
-            BloqueioCampaignDTO blockDTO = new BloqueioCampaignDTO( 0 );
-            AdministradorController adminCtl = new AdministradorController();
-            adminCtl.bloquearCampaign(id_to_use, blockDTO);
-            System.out.println("Listagem_Campaign.jsp: Action: unauthorize: proceed...");
-        } // fim: case a
-    }
+    
+//    if (request.getParameter("Acao") != null){
+//        // Case A - to unauthorize
+//        if (Integer.parseInt( (String)request.getParameter("Acao") ) == 1){
+//            System.out.println("Listagem_campaign.jsp: Action: unauthorize");
+//            int id_to_use = Integer.parseInt( (String)request.getParameter("id_to_use") );
+//            BloqueioCampaignDTO blockDTO = new BloqueioCampaignDTO( 0 );
+//            AdministradorController adminCtl = new AdministradorController();
+//            adminCtl.bloquearCampaign(id_to_use, blockDTO);
+//            System.out.println("Listagem_Campaign.jsp: Action: unauthorize: proceed...");
+//        } // fim: case a
+//    }
 %>    
 
     <head>
@@ -109,7 +110,7 @@
                     <th class="B" bgcolor="#FFFFFF"><center>Limite máximo de gasto (R$)</center></th>
                     <th class="B" bgcolor="#FFFFFF"><center><i>Status</i></center></th>
                     <th class="B" bgcolor="#FFFFFF"><center>Ação</center></th>
-                    <th class="B" bgcolor="#FFFFFF"><center>Autorizacao</center></th>
+                    <!--<th class="B" bgcolor="#FFFFFF"><center>Autorizacao</center></th>-->
 
                 </tr>
                 
@@ -224,7 +225,7 @@
                                     </table>
                                 </th>
                                             
-                                <td>
+<!--                                <td>
                                     <table class="A">
                                         <tr>
                                             <center>
@@ -232,7 +233,7 @@
                                             </center>
                                         </tr>
                                     </table>
-                                </td>
+                                </td>-->
                             </tr>  
 
 <%
