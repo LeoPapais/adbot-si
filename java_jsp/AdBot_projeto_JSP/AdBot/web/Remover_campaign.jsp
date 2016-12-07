@@ -63,20 +63,25 @@
             <font size="3" color="#BF223C"><i>&nbsp&nbsp&nbspPublisher</i>: <%= String.format("%s %s", ud.getNome(), ud.getSobrenome()) %> </font>
                 
             <!------ Título da página ------>
-            <h3><center><font size="5" color="#FF5773">Remoção de <i>Media</i></font></center></h3>
+            <h3><center><font size="5" color="#FF5773">Remoção de <i>Campaign</i></font></center></h3>
  <%    
      String Campaign_ID_str = request.getParameter("Campaign_ID");
-     int Campaign_ID = Integer.parseInt(Campaign_ID_str);                
+        int Campaign_ID = Integer.parseInt(Campaign_ID_str); 
+       
                 
      if ( request.getParameter("Confirmar") != null ) { 
-       System.out.println("RM_confirmou");
+       System.out.println("Campaign_ID_str");
+       System.out.println(Campaign_ID_str);
+       System.out.println("RC_confirmou");             
        CampaignController tn = new CampaignController();
        tn.removerCampaign(Campaign_ID);
        pageContext.forward("Listagem_campaigns.jsp");
 }
+       System.out.println("Campaign_ID_str");
+       System.out.println(Campaign_ID_str);
 %>
             <br><hr><br>
-                        <form method="post" action=Remover_campaign.jsp?Campaign_ID= <%= Campaign_ID_str %>>
+                        <form method="post" action=Remover_campaign.jsp>
                 <input id="Botao_confirmar" type="submit" class="button_options2"/>
                 <input type="hidden" name="Confirmar" value="OK"/>
                 <input type="hidden" name="Campaign_ID" value="<%= Campaign_ID_str %>" />

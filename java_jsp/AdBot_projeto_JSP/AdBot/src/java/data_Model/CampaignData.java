@@ -173,7 +173,7 @@ public class CampaignData {
     } //getQuebraCampaignMediaDTO
     public boolean removerCampaign (int Campaign_ID, Transacao tr) throws Exception {
         Connection con = tr.obterConexao();
-        String sql= "Delete from Media where ID=?";
+        String sql= "Delete from Campaign where ID=?";
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setInt(1, Campaign_ID);
         int result = ps.executeUpdate();
