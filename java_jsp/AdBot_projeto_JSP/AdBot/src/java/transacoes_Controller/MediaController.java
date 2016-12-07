@@ -125,4 +125,29 @@ public class MediaController {
             return 0;
         }
   }
+  
+  //Confirma saque de dinheiro da media para as páginas Edicao_de_media.jsp e Saque_de_dinheiro.jsp [Breno]
+    public boolean saqueMedia(int Media_ID, SaqueMediaDTO ps) throws Exception {
+        Transacao tr = new Transacao();
+        try {
+            boolean b;
+            tr.begin();
+            MediaData mdata = new MediaData();
+            DinheiroArrecadadoDTO viz = mdata.getDinheiroArrecadadoForUpdate(Media_ID, tr);
+            if (viz.getDinheiro_arrecadado() >= ps.getValor()) {
+                float saldo = viz.getDinheiro_arrecadado() - ps.getValor();
+                b = mdata.saqueMedia(Media_ID, saldo, tr);
+            } else {
+                b = false;
+            }
+            tr.commit();
+            System.out.println("OK");
+            return b;
+        } catch (Exception e) {
+            System.out.println("Erro ao sacar dinheiro");
+            e.printStackTrace();
+        }
+        return false;
+    }
+  
 }

@@ -110,4 +110,44 @@ public class MediaData {
             return 0;
         }
     }//fim: mudarTestMode
+    
+    //Confirma saque de dinheiro da media para as páginas Edicao_de_media.jsp e Saque_de_dinheiro.jsp [Breno]
+    public boolean saqueMedia(int Media_ID, float valor, Transacao tr) throws Exception{
+        try{
+            Connection con = tr.obterConexao();
+            String sql = "update Media set Dinheiro_arrecadado=? where ID=?";                    
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setFloat(1, valor);
+            stmt.setInt(2, Media_ID);            
+            stmt.executeUpdate();
+            stmt.close();
+            return true;
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }        
+        return false;
+    }//fim do saqueMedia
+    
+    public DinheiroArrecadadoDTO getDinheiroArrecadadoForUpdate(int Media_ID, Transacao tr) throws Exception{
+        try{
+            Connection con = tr.obterConexao();
+            String sql = "select Dinheiro_arrecadado from Media where ID=?";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, Media_ID);
+            ResultSet rs = stmt.executeQuery();
+            System.out.println("Query executada");
+            
+            rs.next(); // Antes de começar a ler os resultados, precisa desta linha
+            
+            DinheiroArrecadadoDTO da = new DinheiroArrecadadoDTO();
+            da.setDinheiro_arrecadado(rs.getFloat("Dinheiro_arrecadado"));
+            return da;
+        }catch(Exception e){
+            e.printStackTrace();
+        }        
+        return null;
+    }
+    
+    
 }

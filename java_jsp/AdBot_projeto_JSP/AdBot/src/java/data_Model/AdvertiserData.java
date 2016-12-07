@@ -36,4 +36,25 @@ public class AdvertiserData {
         return a;
     } //getCredito_disponivel
     
+    //setar crédito disponível do advertiser
+    public boolean setCredito_disponivel(int Usuario_ID, AdvertiserCredito_disponivelDTO c, Transacao tr) throws Exception{
+        
+        try{
+            Connection con = tr.obterConexao();
+
+            String sql = "update Usuario set Credito_disponivel= Credito_disponivel + ? where ID=?";
+                    
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ps.setFloat(1, c.getCredito_disponivel());
+            ps.setInt(2, Usuario_ID);
+            ps.executeUpdate();
+            ps.close();
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return false;
+    }//setCredito_disponivel
+    
 }

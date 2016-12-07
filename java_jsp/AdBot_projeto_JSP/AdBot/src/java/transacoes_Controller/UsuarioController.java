@@ -257,4 +257,20 @@ public class UsuarioController {
         }
         return false;
     }
+    
+     public boolean setMovimentacao(int Usuario_ID, MovimentacaoDTO m) throws Exception{
+        Transacao tr = new Transacao();
+        try{
+            tr.begin();
+            UsuarioData udata = new UsuarioData();
+            boolean b = udata.setMovimentacao(Usuario_ID, m, tr);            
+            tr.commit();
+            System.out.println("OK ");   
+            return b;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return false;
+    }
+    
 } // fim: UsuarioController

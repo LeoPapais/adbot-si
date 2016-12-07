@@ -294,4 +294,55 @@ public class UsuarioData {
        return true;
       
     }
+    
+    public boolean setMovimentacao(int Usuario_ID, MovimentacaoDTO m, Transacao tr)throws Exception{
+        System.out.println("UserData: MovimentacaoEdit: Begin.");
+        int update_result = 0; // valor de atualizacoes no database       
+        Connection con = tr.obterConexao();
+        
+        // 1) Construcao das sentencas da query
+        String query_block          = "select M.Descricao, M.Valor, M.Data_movimentacao from Movimentacao M where ID = ?";
+        String update_Descricao      = "update Movimentacao set Descricao = ?       where ID = ?";
+        String update_Valor          = "update Movimentacao set Valor = ?           where ID = ?";
+        String update_Data_movimentacao     = "update Movimentacao set Data_movimentacao = ?      where ID = ?";
+        
+
+        // 2) Construcao dos preparedStatements
+        PreparedStatement st_block              = con.prepareStatement(query_block          );
+        PreparedStatement st_update_Descricao    = con.prepareStatement(update_Descricao      );
+        PreparedStatement st_update_Valor        = con.prepareStatement(update_Valor          );
+        PreparedStatement st_update_Data_movimentacao   = con.prepareStatement(update_Data_movimentacao     );
+        
+        
+        // 3) Introduzir dados do Usuario nos prepared Statements
+        st_block.setInt(1, Usuario_ID);
+        st_update_Descricao.setString    (1, m.getDescricao() );
+        st_update_Descricao.setInt       (2, Usuario_ID );
+        st_update_Valor.setFloat        (1, m.getValor() );
+        st_update_Valor.setInt           (2, Usuario_ID );
+        st_update_Data_movimentacao.setDate   (1, m.getData_movimentacao() );
+        st_update_Data_movimentacao.setInt      (2, Usuario_ID );
+        
+
+        // 4) Execucao das querrys e updates
+        try {
+            System.out.println("UserData: CreditEdit: blocking database...");
+            //ResultSet block_result = st_block.executeQuery();
+            System.out.println("UserData: CreditEdit: changing Descricao...");
+            update_result += st_update_Descricao.executeUpdate();
+            System.out.println("UserData: CreditEdit: changing Valor...");
+            update_result += st_update_Valor.executeUpdate();
+            System.out.println("UserData: CreditEdit: changing Data movimentacao...");
+            update_result += st_update_Data_movimentacao.executeUpdate();            
+            System.out.println("UserData: profEdit: Database updated. Number of modifications: " + update_result);
+            if (update_result == 3){
+                return true;
+            }            
+        } catch (Exception e){
+            System.out.println("UserData: profEdit: Failed Exception. No modifications on Database.");
+            e.printStackTrace();            
+        } // fim: try-catch
+        return false;
+    }
+    
 } // fim: UsuarioData

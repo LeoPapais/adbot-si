@@ -38,5 +38,24 @@ public class AdvertiserController {
         }
         return null;
     } //getCredito_disponivel
+    
+    //Alterar crédito disponível para o advertiser
+    public boolean setCredito_disponivel(int Usuario_ID, AdvertiserCredito_disponivelDTO c)throws Exception{
+        Transacao tr = new Transacao();
+        try{
+            tr.begin();
+            AdvertiserData adata = new AdvertiserData();
+            CampaignController cc = new CampaignController();            
+            boolean b;
+            b = adata.setCredito_disponivel(Usuario_ID, c,tr);                        
+            tr.commit();
+            System.out.println("OK ");   
+            return b;
+        }catch (Exception e){
+            System.out.println("Erro ao pesquisar perfil do Usuário " + Usuario_ID);
+            e.printStackTrace();
+        }
+        return false;
+    }// fim da alteração de crédito disponível para o advertiser
    
 }
