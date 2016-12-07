@@ -273,4 +273,25 @@ public class UsuarioData {
             return -1;
     } //verificaSenha
 
+    public boolean cadastroUsuario(CriacaoUpdateAdvertiserPublisherDTO u, Transacao tr) throws Exception {
+        
+        Connection con = tr.obterConexao();
+
+        
+        String sql = "insert into usuario (Nome, Sobrenome, UserName, E_mail, Conta_de_banco, Senha, Tipo_Usuario ) values ( ? , ? , ? , ? , ? , ? , ?)";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1, u.getNome());
+        ps.setString(2, u.getSobrenome());
+        ps.setString(3, u.getUserName());
+        ps.setString(4, u.getE_mail());
+        ps.setString(5, u.getConta_de_banco());
+        ps.setString(6, u.getSenha());
+        ps.setString(7, u.getTipo_Usuario());
+        
+        int Result = ps.executeUpdate();
+        System.out.println("Query executada");
+        
+       return true;
+      
+    }
 } // fim: UsuarioData
