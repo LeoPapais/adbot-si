@@ -34,7 +34,7 @@
        System.out.println("confirmou");
        AdministradorController Admctr = new AdministradorController();
        Admctr.removerAdvertiserPublisher(id_to_use);
-       pageContext.forward("Listagem_advertiser.jsp");
+       pageContext.forward("Listagem_advertisers.jsp");
 }
 %>
 
@@ -63,14 +63,14 @@
                 <table class="A">
                     <tr class ="C">
                         <td>
-                            <form method="post" action="Remover_publisher.jsp?id_to_use=<%=id_to_use%>">
+                            <form method="post" action="Remover_advertiser.jsp?id_to_use=<%=id_to_use%>">
                                 Confirmar<input id="Botao_confirmar" type="submit" class="button_options2"/>
                                 <input type="hidden" name="Confirmar" />
                             </form>
                         </td>
                         <td>
                             <center>
-                                <a id=<%= String.format("Botao_cancelar")%>, href="Listagem_advertiser.jsp" class="button_blocked">&nbsp Cancelar &nbsp</a>
+                                <a id=<%= String.format("Botao_cancelar")%>, href="Listagem_advertisers.jsp" class="button_blocked">&nbsp Cancelar &nbsp</a>
                             </center>
                         </td>
                     </tr>
