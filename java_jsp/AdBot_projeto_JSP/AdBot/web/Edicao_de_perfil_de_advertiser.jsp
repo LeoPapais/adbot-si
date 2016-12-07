@@ -121,7 +121,10 @@
                 </table>
                 <input id="botao_submit_changes" type="submit" name="Botao_Log_in" value="Finalizar Edição" />
                 <input type="hidden" name="Profile_Edit" />
-
+                
+                <center>
+                <a id=<%= String.format("Botao_descadastrar_advertiser")%>, href="Descadastro_advertiser.jsp?id_to_use=<%=usuario_ID%>" type="button" class="button_blocked">&nbsp Descadastrar conta &nbsp</a>
+                </center>
             </center></form>
             <br> <br>
             <div id="footer">

@@ -278,7 +278,7 @@ public class UsuarioData {
         Connection con = tr.obterConexao();
 
         
-        String sql = "insert into usuario (Nome, Sobrenome, UserName, E_mail, Conta_de_banco, Senha, Tipo_Usuario ) values ( ? , ? , ? , ? , ? , ? , ?)";
+        String sql = "insert into Usuario (Nome, Sobrenome, UserName, E_mail, Conta_de_banco, Senha, Tipo_Usuario ) values ( ? , ? , ? , ? , ? , ? , ?)";
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setString(1, u.getNome());
         ps.setString(2, u.getSobrenome());
@@ -294,4 +294,24 @@ public class UsuarioData {
        return true;
       
     }
+    
+    public int removerCadastro(int usuario_ID, Transacao tr) throws Exception{
+        System.out.println("uData: Rem.UB: Begin.");
+        Connection con = tr.obterConexao();
+        String sql;
+        sql = "Delete From Usuario"+
+                " Where ID = ? ";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1,usuario_ID);
+        try{
+            ps.executeUpdate();
+            System.out.println("uData: Rem.UB: Database Updated. Number of modifications = 1");
+            return 1;
+        }
+        catch(Exception e){
+            System.out.println("uData: Rem.UB: Failed Exception. No modifications on Database.");
+            e.printStackTrace();
+            return 0;
+        }
+    }// fim: removerCadastro
 } // fim: UsuarioData
