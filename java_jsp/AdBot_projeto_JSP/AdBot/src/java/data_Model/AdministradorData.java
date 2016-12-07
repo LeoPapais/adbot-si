@@ -105,7 +105,7 @@ public class AdministradorData {
         System.out.println("AdminData: Blk.Camp: Begin.");
         Connection con = tr.obterConexao();
         String sql;
-        sql = "update Campaing set Bloqueio = ? where ID = ?";
+        sql = "update Campaing set Autorizacao = ? where ID = ?";
         PreparedStatement ps = con.prepareStatement(sql);
         if (blockDTO.getBloqueio()==1)
             ps.setBoolean(1,true);
