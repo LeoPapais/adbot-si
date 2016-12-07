@@ -24,8 +24,17 @@ public class CreateUpdateCampaignDTO {
     private String Genero_alvo;
     private int Idade_alvo_min;
     private int Idade_alvo_max;
+    private int Usuario_ID;
     private String Link_figura_da_impression;
     private String Black_ou_whitelist;
+
+    public void setUsuario_ID(int Usuario_ID) {
+        this.Usuario_ID = Usuario_ID;
+    }
+    
+    public int getUsuario_ID() {
+        return Usuario_ID;
+    }
 
 
     public String getNome() {

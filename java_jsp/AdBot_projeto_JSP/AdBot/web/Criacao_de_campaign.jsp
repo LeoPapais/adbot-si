@@ -17,7 +17,11 @@
 <! ------------------------------------------------------------>
 <!--   se for o request inicial, mostrar somente o formulario -->
 
-<%     if ( null == request.getParameterValues("incluir") ) {
+<%     
+
+    String Usuario_ID_st = (String)session.getAttribute("Usuario_ID");
+    int Usuario_ID = Integer.parseInt(Usuario_ID_st);
+if ( null == request.getParameterValues("incluir") ) {
 %>
        <form action="./Criacao_de_campaign.jsp" method="post">
 <%
@@ -26,8 +30,6 @@
        pageContext.forward("Homepage.jsp");
     }
 
-    String Usuario_ID_st = (String)session.getAttribute("Usuario_ID");
-    int Usuario_ID = Integer.parseInt(Usuario_ID_st);
 %>
     Insira os parâmetros da campanha:
 
@@ -106,6 +108,7 @@
            cDTO.setIdade_alvo_max(Integer.parseInt(request.getParameter("Idade_alvo_max")));
        else
            cDTO.setIdade_alvo_max(130);
+           cDTO.setUsuario_ID(Usuario_ID);
        
        if ( cc.criarCampaign(cDTO) ) {
          // avisar usuario que transacao foi feita com sucesso

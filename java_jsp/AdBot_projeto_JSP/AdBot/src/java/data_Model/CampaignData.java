@@ -25,8 +25,8 @@ public class CampaignData {
     public boolean createCampaign(CreateUpdateCampaignDTO C, Transacao tr) throws Exception {
         Connection con = tr.obterConexao();
         String sql = "insert into Campaign (Nome, clickURL, Bid, Tipo_produto, Marca_produto, Gasto_total, Autorizacao, Genero_alvo, "
-                + "Idade_alvo_min, Idade_alvo_max, Link_figura_da_impression, Black_ou_whitelist) "
-                + "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                + "Idade_alvo_min, Idade_alvo_max, Link_figura_da_impression, Black_ou_whitelist, Usuario_ID) "
+                + "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         
      PreparedStatement ps = con.prepareStatement(sql);
      int index=0;
@@ -42,6 +42,7 @@ public class CampaignData {
      ps.setInt(++index, C.getIdade_alvo_max());
      ps.setString(++index, C.getLink_figura_da_impression());
      ps.setString(++index, C.getBlack_ou_whitelist());
+     ps.setInt(++index, C.getUsuario_ID());
      int result = ps.executeUpdate();
      return (result != 0);
     }
