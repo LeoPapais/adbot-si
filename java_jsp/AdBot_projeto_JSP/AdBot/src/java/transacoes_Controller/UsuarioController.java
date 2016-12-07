@@ -240,4 +240,21 @@ public class UsuarioController {
     
     } //getBalance
 
+    public boolean cadastroUsuario(CriacaoUpdateAdvertiserPublisherDTO u2) throws Exception {
+
+        Transacao tr = new Transacao();
+        try {
+            tr.beginReadOnly();
+              UsuarioData udata = new UsuarioData();
+              boolean conf = udata.cadastroUsuario( u2, tr);
+            tr.commit();
+            System.out.println("OK ");   
+            return conf;
+       
+        } catch(Exception e) {
+            System.out.println("Erro no cadastro!");
+            e.printStackTrace();
+        }
+        return false;
+    }
 } // fim: UsuarioController
