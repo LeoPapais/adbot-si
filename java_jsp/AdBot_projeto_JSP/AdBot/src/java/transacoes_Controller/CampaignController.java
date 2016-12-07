@@ -117,4 +117,22 @@ public class CampaignController {
         return null;
     } //getQuebraCampaignMediaDTO
    
+      public boolean removerCampaign(int Campaign_ID) throws Exception {
+      System.out.println("entrou no media controler");
+      Transacao tr = new Transacao();
+      try{
+          tr.begin();
+          CampaignData CData = new CampaignData();
+          CData.removerCampaign(Campaign_ID, tr);
+          tr.commit();
+          return true;
+      } catch (Exception e){
+          tr.rollback();
+          System.out.println("erro");
+          
+          e.printStackTrace();
+      }
+      return false;
+  }
+    
 }

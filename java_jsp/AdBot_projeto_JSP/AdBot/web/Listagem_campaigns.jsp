@@ -219,7 +219,7 @@
                                         </tr>
                                         <tr>
                                             <center>
-                                                <input id=<%= String.format("Botao_%d_Remover_campaign", i)%>, href="Remover_campaign.jsp?Campaign_ID=<%=c.getID()%>" type="button" class="button_menu" value="&nbsp Remover &nbsp">
+                                                <a id=<%= String.format("Botao_%d_Remover_campaign", i)%>, href="Remover_campaign.jsp?Campaign_ID=<%=c.getID()%>" type="button" class="button_menu" value="&nbsp Remover &nbsp">Remover</a>
                                             </center>
                                         </tr>
                                     </table>

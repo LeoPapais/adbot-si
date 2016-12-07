@@ -171,5 +171,13 @@ public class CampaignData {
         }
         return lista;
     } //getQuebraCampaignMediaDTO
-    
+    public boolean removerCampaign (int Campaign_ID, Transacao tr) throws Exception {
+        Connection con = tr.obterConexao();
+        String sql= "Delete from Media where ID=?";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, Campaign_ID);
+        int result = ps.executeUpdate();
+        System.out.println("remocao realizada");
+        return (result !=0);
+    }
 }
