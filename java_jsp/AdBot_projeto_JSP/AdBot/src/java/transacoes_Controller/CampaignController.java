@@ -18,6 +18,7 @@ import static javax.faces.component.UIInput.isEmpty;
 import utils.Transacao;
 
 public class CampaignController {
+<<<<<<< HEAD
     
     public boolean editarCampaign(int Usuario_ID, int Campaign_ID, CreateUpdateCampaignDTO C)throws Exception{
      Transacao tr = new Transacao();
@@ -46,6 +47,8 @@ public class CampaignController {
         return null;
      }
     }
+=======
+>>>>>>> master
     
     public boolean criarCampaign(CreateUpdateCampaignDTO C) throws Exception {
         
@@ -57,7 +60,11 @@ public class CampaignController {
          System.out.println(C.getBid());
        return false;
      }
+<<<<<<< HEAD
      else if (C.getIdade_alvo_max() < C.getIdade_alvo_min()) {
+=======
+     else if (C.getIdade_alvo_max()< C.getIdade_alvo_min()) {
+>>>>>>> master
          System.out.println("C.getIdade_alvo_max()");
          System.out.println(C.getIdade_alvo_max());
          System.out.println("C.getIdade_alvo_min()");

@@ -219,6 +219,42 @@ public class UsuarioController {
         }
         return 0;
     
-    } //getMovimentacao
+    } //getBalance
+    
+    // Obtém o balance do usuário
+    public int verificaSenha(String usuario, String senha) throws Exception {
 
+        Transacao tr = new Transacao();
+        try {
+            tr.beginReadOnly();
+            UsuarioData udata = new UsuarioData();
+            int id = udata.verificaSenha(usuario, senha, tr);
+            tr.commit();
+            System.out.println("OK ");   
+            return id;
+        } catch(Exception e) {
+            System.out.println("Erro ao acessar senha do usuário " + usuario);
+            e.printStackTrace();
+        }
+        return -1;
+    
+    } //getBalance
+
+    public boolean cadastroUsuario(CriacaoUpdateAdvertiserPublisherDTO u2) throws Exception {
+
+        Transacao tr = new Transacao();
+        try {
+            tr.beginReadOnly();
+              UsuarioData udata = new UsuarioData();
+              boolean conf = udata.cadastroUsuario( u2, tr);
+            tr.commit();
+            System.out.println("OK ");   
+            return conf;
+       
+        } catch(Exception e) {
+            System.out.println("Erro no cadastro!");
+            e.printStackTrace();
+        }
+        return false;
+    }
 } // fim: UsuarioController

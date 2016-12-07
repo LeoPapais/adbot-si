@@ -103,7 +103,11 @@
        else 
            cDTO.setIdade_alvo_min(0);
        if (request.getParameter("Idade_alvo_max").length() > 0) 
+<<<<<<< HEAD
            cDTO.setIdade_alvo_max(Integer.parseInt(request.getParameter("Idade_alvo_max")));
+=======
+           cDTO.setIdade_alvo_min(Integer.parseInt(request.getParameter("Idade_alvo_max")));
+>>>>>>> master
        else
            cDTO.setIdade_alvo_max(130);
        
@@ -118,7 +122,11 @@
 %>
           Erro ao criar Campaign. 
           Idade alvo máxima deve ser maior que a Idade alvo Mínima.
+<<<<<<< HEAD
           Limite de gasto deve ser maior do que Bid.
+=======
+          Gasto Máximo deve ser maior do que Bid.
+>>>>>>> master
           
           <form action="./Perfil_de_advertiser.jsp" method="post">
              <input type="submit" name="retry" value="Repetir" />

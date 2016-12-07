@@ -14,6 +14,8 @@
             [23/11/2016] Nelson - Atualização: segundo requisistos V3 e mudanças no database
             [28/11/2016] Nelson - Rename do Arquivo
             [28/11/2016] Nelson - Cor azul para admin
+            [06/12/2016] Douglas - Botao Remover
+
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -137,6 +139,7 @@
                     <th class="C" bgcolor="#FFFFFF"><center>ID<br>(Data de Cadastro)</center></th>
                     <th class="C" bgcolor="#FFFFFF"><center>Conta do Banco</center></th>
                     <th class="C" bgcolor="#FFFFFF"><center>Situação</center></th>
+                    <th class="A" bgcolor="#FFFFFF"><center>Remover</center></th>
                 </tr>
                 <!--FIM: Headers da Tabela -->
 <%
@@ -207,6 +210,17 @@
                                         </table>
                                     </th>
                                 <% } // fim: caso b - publisher não bloqueado
+                                // Botao de Remoçao  [Douglas - 06/12/16]%>
+                            <td>
+                                <table class="A">
+                                    <tr>
+                                        <center>
+                                            <a id=<%= String.format("Botao_%d_Remover_publisher", i)%>, href="Remover_publisher.jsp?id_to_use=<%=pbshDTO.getID()%>" type="button" class="button_blocked">&nbsp Remover &nbsp</a>
+                                        </center>
+                                    </tr>
+                                </table>
+                            </td>
+                        <% // fim botão de remoçao
                         } // fim - for: percorre comprimento da lista de publishers
                     } // fim: case b: há publishers
 %>
