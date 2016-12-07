@@ -249,5 +249,28 @@ public class UsuarioData {
         
         return balance;
     } //getBalance
+    
+    // Verifica a senha do usuário baseado em UserName no DB, se houver
+    public int verificaSenha(String usuario, String senha, Transacao tr) throws Exception {
+        
+        Connection con = tr.obterConexao();
+
+        String sql = "select * from Usuario where UserName = ?";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1, usuario);
+        ResultSet rs = ps.executeQuery();
+        System.out.println("Query executada");
+        
+        //Se o usuário foi localizado e a senha confere, retorna o ID
+        //Se não, retorna -1 (sinal de falha)
+        rs.next();
+        if (senha.equals(rs.getString("Senha"))){
+            System.out.println("Senha OK!");
+            System.out.println("ID = " + rs.getInt("ID"));
+            return rs.getInt("ID");
+        }
+        else
+            return -1;
+    } //verificaSenha
 
 } // fim: UsuarioData
