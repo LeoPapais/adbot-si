@@ -79,5 +79,45 @@ public class AdministradorController {
         }
 
     } // fim: BloqueioAdvertiserPublisher
+    
+    // Bloquear Campaign - [Douglas]
+    public int bloquearCampaign(int campaign_ID, BloqueioCampaignDTO blockDTO) {
+
+        Transacao tr = new Transacao();
+        try {
+            System.out.println("AdministradorControler: Blk.Camp: begin.");
+            tr.begin();
+            AdministradorData adminData = new AdministradorData();
+            int bloqueio_ok = adminData.bloquearCampaign(campaign_ID, blockDTO, tr);
+            tr.commit();
+            System.out.println("AdministradorControler: Blk.Camp: Success.");
+            return bloqueio_ok;
+        } catch(Exception e) {
+            System.out.println("AdministradorControler: Blk.Camp: Failed. Exception.");
+            e.printStackTrace();
+            return 0;
+        }
+
+    } // fim: BloqueioCampaign
+    
+    // Remover Advertiser Publisher - [Douglas]
+    public int removerAdvertiserPublisher(int usuario_ID) {
+
+        Transacao tr = new Transacao();
+        try {
+            System.out.println("AdministradorControler: Rem.UB: begin.");
+            tr.begin();
+            AdministradorData adminData = new AdministradorData();
+            int remove_ok = adminData.removerAdvertiserPublisher(usuario_ID, tr);
+            tr.commit();
+            System.out.println("AdministradorControler: Rem.UB: Success.");
+            return remove_ok;
+        } catch(Exception e) {
+            System.out.println("AdministradorControler: Rem.UB: Failed. Exception.");
+            e.printStackTrace();
+            return 0;
+        }
+
+    } // fim: removerAdvertiserPublisher
 
 } // fim: AdministradorController
