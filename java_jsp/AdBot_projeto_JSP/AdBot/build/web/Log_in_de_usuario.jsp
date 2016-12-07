@@ -46,7 +46,11 @@
             
             <br>
             
-            <font size="4"><center><i>TESTE DE <i>LOG IN</i> SOMENTE PARA <i>ADVERTISER</i> <br> Usar o Usuario_ID = 6 para testes</i> </center></font>
+                <font size="4">
+                    <center>
+                        <p>Entre com seu Usuário e Senha cadastrados no sistema.</p>
+                    </center>
+                </font>
             <br><br>
                     
             <hr>
