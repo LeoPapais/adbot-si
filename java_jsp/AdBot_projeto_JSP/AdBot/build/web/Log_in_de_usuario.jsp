@@ -80,6 +80,10 @@
                         System.out.println("Usuario_ID = " + session.getAttribute("Usuario_ID"));
                         pageContext.forward("Perfil_de_advertiser.jsp");
                     }
+                    else if (ut.getTipo().toLowerCase().equals("administrador")){
+                        System.out.println("É administrador!");
+                        pageContext.forward("Perfil_de_administrador.jsp");
+                    }
                 }
                 else if (id == -1) { 
 %>
