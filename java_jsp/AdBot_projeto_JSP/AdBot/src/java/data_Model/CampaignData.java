@@ -18,8 +18,11 @@ import java.util.*;
 import utils.Transacao;
 
 public class CampaignData {
+
+    public CampaignData() {
+    }
     
-    public boolean createCampaign(CreateCampaignDTO C, Transacao tr) throws Exception {
+    public boolean createCampaign(CreateUpdateCampaignDTO C, Transacao tr) throws Exception {
         Connection con = tr.obterConexao();
         String sql = "insert into Campaign (Nome, clickURL, Bid, Tipo_produto, Marca_produto, Gasto_total, Autorizacao, Genero_alvo, "
                 + "Idade_alvo_min, Idade_alvo_max, Link_figura_da_impression, Black_ou_whitelist) "
@@ -41,6 +44,69 @@ public class CampaignData {
      ps.setString(++index, C.getBlack_ou_whitelist());
      int result = ps.executeUpdate();
      return (result != 0);
+    }
+    
+    public VisualizacaoCampaignDTO visualizacaoCampaign(int Campaign_ID, Transacao tr) throws Exception {
+    Connection con = tr.obterConexao();
+    String sql = "select * from Campaign where ID=?";
+        
+     PreparedStatement ps = con.prepareStatement(sql);
+     ps.setInt(1, Campaign_ID);
+     ResultSet rs = ps.executeQuery();
+     if( rs.next() ){
+         VisualizacaoCampaignDTO c = new VisualizacaoCampaignDTO();
+         c.setNome(rs.getString("Nome"));
+         c.setClickURL(rs.getString("clickURL"));
+         c.setTipo_produto(rs.getString("Tipo_produto"));
+         c.setMarca_produto(rs.getString("Marca_produto"));
+         c.setGenero_alvo(rs.getString("Genero_alvo"));
+         c.setLink_figura_da_impression(rs.getString("Link_figura_da_impression"));
+         c.setBlack_ou_whitelist(rs.getString("Black_ou_whitelist"));
+         
+        c.setBid(rs.getFloat("Bid"));
+        c.setGasto_total(rs.getFloat("Gasto_total"));
+        c.setLimite_gasto(rs.getFloat("Limite_gasto"));
+        
+        c.setIdade_alvo_min(rs.getInt("Idade_alvo_min"));
+        c.setIdade_alvo_max(rs.getInt("Idade_alvo_max"));
+        c.setID(rs.getInt("ID"));
+        c.setTotal_visualizacoes(rs.getInt("Total_visualizacoes"));
+        c.setTotal_clicks(rs.getInt("Total_clicks"));
+        c.setAutorizacao(rs.getInt("Autorizacao"));
+        
+        c.setData_de_criacao(rs.getDate("Data_de_criacao"));
+        
+        return c;
+     }
+     else return null;
+     
+    }
+    
+    public boolean editCampaign(int Usuario_ID, int Campaign_ID, CreateUpdateCampaignDTO C, Transacao tr)throws Exception{
+        Connection con = tr.obterConexao();
+        String sql = "update Campaign set Nome=?, clickURL=?,"
+                    +"Tipo_produto=?, Marca_produto=?, Genero_alvo=?"
+                    +",Link_figura_da_impression=?,"
+                    +"Black_ou_whitelist=?, Bid=?, "
+                    +"Limite_gasto=?,Idade_alvo_min=?,"
+                    +"Idade_alvo_max=? where ID=? AND Usuario_ID=?";
+        PreparedStatement ps = con.prepareStatement(sql);
+        int i = 0;
+        ps.setString(++i, C.getNome());
+        ps.setString(++i, C.getClickURL());
+        ps.setString(++i, C.getTipo_produto());
+        ps.setString(++i, C.getMarca_produto());
+        ps.setString(++i, C.getGenero_alvo());
+        ps.setString(++i, C.getLink_figura_da_impression());
+        ps.setString(++i, C.getBlack_ou_whitelist());
+        ps.setFloat(++i, C.getBid());
+        ps.setFloat(++i, C.getLimite_gasto());
+        ps.setInt(++i, C.getIdade_alvo_min());
+        ps.setInt(++i, C.getIdade_alvo_max());
+        ps.setInt(++i, Campaign_ID);
+        ps.setInt(++i, Usuario_ID);
+        
+        return (ps.executeUpdate() != 0);
     }
     
     // Adquirir dados necessários à página Listagem_campaigns.jsp [Diego: 02/11/2016, 22/11/2016]
