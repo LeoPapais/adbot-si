@@ -101,17 +101,17 @@ public class AdministradorData {
     } // fim: getListagemPublishers
     
     // 4) Bloquear Campaign [Douglas]
-    public int bloquearCampaign (int campaing_ID, BloqueioCampaignDTO blockDTO, Transacao tr) throws Exception{
+    public int bloquearCampaign (int campaign_ID, BloqueioCampaignDTO blockDTO, Transacao tr) throws Exception{
         System.out.println("AdminData: Blk.Camp: Begin.");
         Connection con = tr.obterConexao();
         String sql;
-        sql = "update Campaing set Autorizacao = ? where ID = ?";
+        sql = "update Campaign set Autorizacao = ? where ID = ?";
         PreparedStatement ps = con.prepareStatement(sql);
         if (blockDTO.getBloqueio()==1)
             ps.setBoolean(1,true);
         else
             ps.setBoolean(1, false);
-        ps.setInt(2,campaing_ID);
+        ps.setInt(2,campaign_ID);
         try{
             int rs = ps.executeUpdate();
             System.out.println("AdminData: Blk.Camp: Database Updated. Number of modifications = "+rs);
