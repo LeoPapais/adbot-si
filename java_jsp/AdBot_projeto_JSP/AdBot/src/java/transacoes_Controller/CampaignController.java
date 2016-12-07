@@ -14,7 +14,6 @@ import DTO_Objects.*;
 import java.sql.*;
 import utils.*;
 import java.util.*;
-import  javax.faces.component.UIInput.isEmpty;
 import utils.Transacao;
 
 public class CampaignController {

@@ -111,7 +111,7 @@
          // avisar usuario que transacao foi feita com sucesso
 %>
           Campaign Criada com sucesso!
-          <form action="./Homepage.jsp" method="post">
+          <form action="./Listagem_campaigns.jsp" method="post">
              <input type="submit" name="voltar" value="Voltar" />
           </form>
 <%     } else {
@@ -120,7 +120,7 @@
           Idade alvo máxima deve ser maior que a Idade alvo Mínima.
           Limite de gasto deve ser maior do que Bid.
           
-          <form action="./Perfil_de_advertiser.jsp" method="post">
+          <form action="./Listagem_campaigns.jsp" method="post">
              <input type="submit" name="retry" value="Repetir" />
           </form>
 <%     }
