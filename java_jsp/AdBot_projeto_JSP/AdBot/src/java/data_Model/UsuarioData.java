@@ -249,5 +249,49 @@ public class UsuarioData {
         
         return balance;
     } //getBalance
+    
+    // Verifica a senha do usuário baseado em UserName no DB, se houver
+    public int verificaSenha(String usuario, String senha, Transacao tr) throws Exception {
+        
+        Connection con = tr.obterConexao();
 
+        String sql = "select * from Usuario where UserName = ?";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1, usuario);
+        ResultSet rs = ps.executeQuery();
+        System.out.println("Query executada");
+        
+        //Se o usuário foi localizado e a senha confere, retorna o ID
+        //Se não, retorna -1 (sinal de falha)
+        rs.next();
+        if (senha.equals(rs.getString("Senha"))){
+            System.out.println("Senha OK!");
+            System.out.println("ID = " + rs.getInt("ID"));
+            return rs.getInt("ID");
+        }
+        else
+            return -1;
+    } //verificaSenha
+
+    public boolean cadastroUsuario(CriacaoUpdateAdvertiserPublisherDTO u, Transacao tr) throws Exception {
+        
+        Connection con = tr.obterConexao();
+
+        
+        String sql = "insert into usuario (Nome, Sobrenome, UserName, E_mail, Conta_de_banco, Senha, Tipo_Usuario ) values ( ? , ? , ? , ? , ? , ? , ?)";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1, u.getNome());
+        ps.setString(2, u.getSobrenome());
+        ps.setString(3, u.getUserName());
+        ps.setString(4, u.getE_mail());
+        ps.setString(5, u.getConta_de_banco());
+        ps.setString(6, u.getSenha());
+        ps.setString(7, u.getTipo_Usuario());
+        
+        int Result = ps.executeUpdate();
+        System.out.println("Query executada");
+        
+       return true;
+      
+    }
 } // fim: UsuarioData

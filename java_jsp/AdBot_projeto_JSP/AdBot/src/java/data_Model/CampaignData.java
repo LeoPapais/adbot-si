@@ -32,7 +32,7 @@ public class CampaignData {
      ps.setFloat(++index, C.getBid());
      ps.setString(++index, C.getTipo_produto());
      ps.setString(++index, C.getMarca_produto());
-     ps.setFloat(++index, C.getGasto_total());
+     ps.setFloat(++index, C.getLimite_gasto());
      ps.setInt(++index, C.getAutorizacao());
      ps.setString(++index, C.getGenero_alvo());
      ps.setInt(++index, C.getIdade_alvo_min());

@@ -16,7 +16,7 @@ public class CreateCampaignDTO {
     private float Bid;
     private String Tipo_produto;
     private String Marca_produto;
-    private float Gasto_total;
+    private float Limite_gasto;
     private int Autorizacao;
     private String Genero_alvo;
     private int Idade_alvo_min;
@@ -45,8 +45,8 @@ public class CreateCampaignDTO {
         return Marca_produto;
     }
 
-    public float getGasto_total() {
-        return Gasto_total;
+    public float getLimite_gasto() {
+        return Limite_gasto;
     }
 
     public int getAutorizacao() {
@@ -93,8 +93,8 @@ public class CreateCampaignDTO {
         this.Marca_produto = Marca_produto;
     }
 
-    public void setGasto_total(float Gasto_total) {
-        this.Gasto_total = Gasto_total;
+    public void setLimite_gasto(float Limite_gasto) {
+        this.Limite_gasto = Limite_gasto;
     }
 
     public void setAutorizacao(int Autorizacao) {

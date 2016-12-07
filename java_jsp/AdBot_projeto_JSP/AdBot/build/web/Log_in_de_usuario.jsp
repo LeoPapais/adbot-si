@@ -46,28 +46,61 @@
             
             <br>
             
-            <font size="4"><center><i>TESTE DE <i>LOG IN</i> SOMENTE PARA <i>ADVERTISER</i> <br> Usar o Usuario_ID = 6 para testes</i> </center></font>
+                <font size="4">
+                    <center>
+                        <p>Entre com seu Usuário e Senha cadastrados no sistema.</p>
+                    </center>
+                </font>
             <br><br>
                     
             <hr>
             
 <%
             if ( request.getParameter("Campo_controle") != null ) { 
+                // Instanciar UsuarioController
+                UsuarioController uc = new UsuarioController();
                 
-                // PRECISA do procedimento abaixo após obter o Usuario_ID (as outras páginas vão utilizar esse número):
-                String Usuario_ID = request.getParameter("Usuario_ID");
-                session.setAttribute("Usuario_ID", Usuario_ID);     
-                // Aqui precisa verificar o tipo de usuário
-                pageContext.forward("Perfil_de_advertiser.jsp");
+                // Verifica a senha
+                String usuario = request.getParameter("usuario");
+                String senha = request.getParameter("senha");
+                int id = uc.verificaSenha(usuario, senha);
                 
+                // Se estiver OK, continua. Se não, imprime mensagem
+                if (id != -1) {
+                    String Usuario_ID = "" + id;
+                    session.setAttribute("Usuario_ID", Usuario_ID);
+                    // Verificação do tipo do usuário
+                    UsuarioTipoDTO ut = uc.getTipoUsuario(id);
+                    if (ut.getTipo().toLowerCase().equals("publisher")){
+                        System.out.println("É publisher!");
+                        pageContext.forward("Perfil_de_publisher.jsp");
+                    }
+                    else if (ut.getTipo().toLowerCase().equals("advertiser")) {
+                        System.out.println("É advertiser!");
+                        System.out.println("Usuario_ID = " + session.getAttribute("Usuario_ID"));
+                        pageContext.forward("Perfil_de_advertiser.jsp");
+                    }
+                }
+                else if (id == -1) { 
+%>
+                
+                <center>
+                    <font size="3" color="#E04C64">
+                        <p>Usuário ou senha estão errados!</p><br>
+                    </font>
+                </center>
+                
+<%
+                }                
             }
 %>
 
             <br>
 
             <center>
-                <form method="post" action=Perfil_de_advertiser.jsp>
-                    Usuario_ID <input type="text" name="Usuario_ID" /> <!-- No lugar disto, teria que estar UserName e Senha -->
+                <form method="post" action="Log_in_de_usuario.jsp">
+                    Usuário: <input type="text" name="usuario" /> <br><!-- No lugar disto, teria que estar UserName e Senha -->
+                    Senha: &nbsp;&nbsp;<input type="password" name="senha" /> <br>
                     <input id="Botao_Log_in" type="submit" name="Botao_Log_in" value="Log in" />
                     <input type="hidden" name="Campo_controle" />
                 </form>

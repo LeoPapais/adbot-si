@@ -65,7 +65,7 @@
             <h2>
                 <form action="Logout"> <!-- [Victor Teodoro: 28/11/2016] -->
                     <input id="Botao_Log_out" type="submit" class="button_log_out" value="Logout">
-                    <left><font color="#006400">&nbsp&nbsp&nbspAdBot: Publisher</font></left> 
+                    <left><font color="#4CAF50">&nbsp&nbsp&nbspAdBot: Publisher</font></left> 
                 </form> 
             </h2>
             
@@ -83,10 +83,10 @@
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 %>
 
-            <font size="3" color="#006400">&nbsp&nbsp&nbspAdvertiser: <%= String.format("%s %s", ud.getNome(), ud.getSobrenome()) %> </font>
+            <font size="3" color="#4CAF50">&nbsp&nbsp&nbspAdvertiser: <%= String.format("%s %s", ud.getNome(), ud.getSobrenome()) %> </font>
                 
             <!------ Título da página ------>
-            <h3><center><font size="5" color="#006400">Movimentações do Advertiser</font></center></h3>
+            <h3><center><font size="5" color="#4CAF50">Movimentações do Advertiser</font></center></h3>
 
             <br><hr><br>
             <center><IMG src="imagens/perfil_publisher.jpg" width="60" height="80" align="center" border="0"></center>

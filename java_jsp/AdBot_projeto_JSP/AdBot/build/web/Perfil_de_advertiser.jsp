@@ -33,15 +33,17 @@
     if ( session.getAttribute("Usuario_ID") == null) {
        pageContext.forward("Log_in_de_usuario.jsp");
     }
-    String Usuario_ID_st = (String)session.getAttribute("Usuario_ID"); // Obter o Usuario_ID da página "Homepage.jsp"
-    int Usuario_ID = Integer.parseInt(Usuario_ID_st); // Converter para número
+    
+    //Pega o usuario
+    System.out.println("Cheguei aqui!");
+    int Usuario_ID = Integer.parseInt((String)session.getAttribute("Usuario_ID"));
 
     // Instanciar UsuarioController
     UsuarioController uc = new UsuarioController();
     
     // Verificação do tipo do usuário
     UsuarioTipoDTO ut = uc.getTipoUsuario(Usuario_ID);
-    if ( ut.getTipo() == "Advertiser") { // Se o usuário não for Advertiser, não deixá-lo ir para esta página
+    if (!ut.getTipo().toLowerCase().equals("advertiser")) { // Se o usuário não for Advertiser, não deixá-lo ir para esta página
         pageContext.forward("Homepage.jsp");
     }
     

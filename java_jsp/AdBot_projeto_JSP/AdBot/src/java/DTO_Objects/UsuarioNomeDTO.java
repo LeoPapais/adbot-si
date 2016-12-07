@@ -1,6 +1,6 @@
 /*
- * UsuarioNomeDTO: Classe que contém o objeto de transferência de dados (DTO)
- *                          para verificar nome+sobrenome de usuário
+ * QuebraCampaignMediaDTO: Classe que contém o objeto de transferência de dados (DTO)
+ *                          para Quebra_de_gastos.jsp [Diego]
  *
  * Histórico de edição deste arquivo :
  *           [02/11/2016] Diego - Versão inicial

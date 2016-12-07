@@ -35,6 +35,47 @@ hr {
     background-color: #eee;
 }
 
+
+.button_play {
+    background-color: #FF3F3F;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 2px 2px;
+    cursor: pointer;
+}     
+
+.button_pause {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 2px 2px;
+    cursor: pointer;
+}
+
+.button_blocked {
+    background-color: #919191;
+    border: none;
+    color: black;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 2px 2px;
+    cursor: pointer;
+}
+
+
 /*
     2: Formatações de página e cores dos tipos de botão usados nas páginas Homepage.jsp, Log_in_de_usuario.jsp e Cadastro_de_usuario.jsp
 */
@@ -92,45 +133,6 @@ hr {
     cursor: pointer;
 }   
 
-.button_play {
-    background-color: #FF3F3F;
-    border: none;
-    color: white;
-    padding: 10px 15px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
-    margin: 2px 2px;
-    cursor: pointer;
-}     
-
-.button_pause {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 10px 15px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
-    margin: 2px 2px;
-    cursor: pointer;
-}
-
-.button_blocked {
-    background-color: #919191;
-    border: none;
-    color: black;
-    padding: 10px 15px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
-    margin: 2px 2px;
-    cursor: pointer;
-}
-
 table.A {
     width: 100%; 
 }
@@ -179,8 +181,89 @@ tr.B:nth-child(odd) {
 /*
     4: Formatações de página e cores dos tipos de botão usados nas páginas de Publisher/Media
 */
+.button_menu2 {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 2px 2px;
+    cursor: pointer;
+}
 
-/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>FAZER */
+.button_options2 {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    text-align: right;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 2px 2px;
+    cursor: pointer;
+}   
+.button_balance2 {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    text-align: right;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 2px 2px;
+    cursor: pointer;
+}   
+
+
+table.A2 {
+    width: 100%; 
+}
+
+table.B2 {
+    width: 100%; 
+    padding: 5px;
+    border-spacing: 5px;
+    border-collapse: collapse;
+    overflow: scroll;
+    border-style: solid;
+    border-width: 5px;
+    border-color: #FF91A4;
+}
+
+th.B2 {
+    border: 1px solid graytext;
+    border-collapse: collapse;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #FF91A4;
+}
+
+td.B2 {
+    border: 1px solid graytext;
+    border-collapse: collapse;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #FF91A4;
+}
+
+tr.B2:nth-child(even) {
+    background-color: #FFC0CB;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #FF91A4;
+}
+
+tr.B2:nth-child(odd) {
+    background-color:#4CAF50;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #FF91A4;
+}
 
 
 /*
