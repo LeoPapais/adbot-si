@@ -257,4 +257,98 @@ public class UsuarioController {
         }
         return false;
     }
+    
+        // Adquirir dados de perfil do usuário necessários à página Perfil_de_administrador.jsp
+    public VisualizacaoAdministradorDTO visualizarPerfilAdministrador(int Usuario_ID) throws Exception {
+
+        Transacao tr = new Transacao();
+        try {
+            tr.beginReadOnly();
+            UsuarioData udata = new UsuarioData();
+            VisualizacaoAdministradorDTO u = udata.visualizarPerfilAdministrador(Usuario_ID, tr);
+            tr.commit();
+            System.out.println("OK ");   
+            return u;
+        } catch(Exception e) {
+            System.out.println("Erro ao pesquisar perfil do Usuário " + Usuario_ID);
+            e.printStackTrace();
+        }
+        return null;
+    
+    } //visualizarPerfilAdministrador
+
+    // editarPerfilAdministrador 
+    public int editarPerfilAdministrador(int usuario_ID, UpdateAdministradorDTO updateUsuarioDTO) {
+
+        Transacao tr = new Transacao();
+        try {
+            System.out.println("UsuarioControler: profEdit: begin.");
+            tr.begin();
+            UsuarioData userData = new UsuarioData();
+            // Completa info recebidas com info do database
+            VisualizacaoAdministradorDTO userProfDTO = userData.visualizarPerfilAdministrador(usuario_ID, tr);
+            String userName = updateUsuarioDTO.getUserName(); // mantem codigo limpo [Nelson:05/12/2016]
+            String nome = updateUsuarioDTO.getNome();
+            String sobrenome = updateUsuarioDTO.getSobrenome();
+            String e_mail = updateUsuarioDTO.getE_mail();
+            String senha = updateUsuarioDTO.getSenha();
+            String tipo_usuario = updateUsuarioDTO.getTipo_Usuario();
+            
+            // A) USERNAME
+            if (userName==null){
+                updateUsuarioDTO.setUserName (userProfDTO.getUserName() );
+            } else{
+                if(userName.length()<2) updateUsuarioDTO.setUserName (userProfDTO.getUserName());
+            } // fim: processamento username
+
+            // B) NOME
+            if (nome==null) {       
+                updateUsuarioDTO.setNome(userProfDTO.getNome());
+            } else{
+                if(nome.length()<2) updateUsuarioDTO.setNome(userProfDTO.getNome());;
+            } // fim: procesamento nome
+            
+            // C) SOBRENOME
+            if (sobrenome==null){
+                updateUsuarioDTO.setSobrenome(userProfDTO.getSobrenome());
+            } else{
+                if(sobrenome.length()<2)updateUsuarioDTO.setSobrenome(userProfDTO.getSobrenome());
+            } // fim: processamento sobrenome
+            
+            // D) E_MAIL
+            if (e_mail==null){
+               updateUsuarioDTO.setE_mail(userProfDTO.getE_mail());
+            } else{
+               if(e_mail.length()<2) updateUsuarioDTO.setE_mail(userProfDTO.getE_mail());
+            } // fim: processamento e_mail
+            
+            // E) SENHA
+            if (senha==null){ 
+               updateUsuarioDTO.setSenha(userProfDTO.getSenha());
+            } else{
+               if(senha.length()<2) updateUsuarioDTO.setSenha(userProfDTO.getSenha());
+            } // fim: processamento senha
+            
+            // F) TIPO_USUARIO
+            if (!"Advertiser".equals(tipo_usuario)){
+                if (!"Publisher".equals(tipo_usuario)){
+                    if (!"Administrador".equals(tipo_usuario)){
+                        if (tipo_usuario == null || !"".equals(tipo_usuario) ) {
+                            updateUsuarioDTO.setTipo_Usuario( userProfDTO.getTipo_Usuario() );
+                        } // if: tipo_usuario == null
+                    } // if: tipo_usuario != Administrador
+                } // if: tipo_usuario != Publisher
+            } // if: tipo_usuario != Advertiser
+            int bloqueio_ok = userData.editarPerfilAdministrador(usuario_ID, updateUsuarioDTO, tr);
+            tr.commit();
+            System.out.println("UsuarioControler: profEdit: Success.");
+            return bloqueio_ok;
+        } catch(Exception e) {
+            System.out.println("UsuarioControler: profEdit: Failed. Exception.");
+            e.printStackTrace();
+            return 0;
+        } // fim: try-catch
+
+    } // fim: editarPerfilAdministrador
+   
 } // fim: UsuarioController
